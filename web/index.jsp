@@ -12,6 +12,12 @@
   </head>
   <body>
   <h3 class="message"><%=HelloWorld.getMessage()%></h3>
-  <input type="button" value="This is a button.">
+  <form action="HelloWorld" method="post">
+    <button type="submit" name="show">Show</button>
+    <button type="submit" name="hide">Hide</button>
+  </form>
+  <h4><%=HelloWorld.getPassengers()%></h4>
   </body>
+
 </html>
+

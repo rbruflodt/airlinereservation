@@ -1,0 +1,20 @@
+<dataSource name="MySQL - airlinereservations@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="airlinereservations">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema" />
+    <schema id="3" name="mysql" />
+    <schema id="4" name="performance_schema" />
+    <schema id="5" name="sakila" />
+    <schema id="6" name="sys" />
+    <schema id="7" name="world" />
+    <table id="8" parent="1" name="passengers" />
+    <column id="9" parent="8" name="Passenger_ID">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="10" parent="8" name="Name">
+      <data-type>varchar(45)|0</data-type>
+    </column>
+  </database-model>
+</dataSource>
