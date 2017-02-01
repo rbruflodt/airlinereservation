@@ -52,7 +52,7 @@ public class HelloWorld extends HttpServlet{
             passengers = "";
         }
         try {
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            response.sendRedirect("/index.jsp");
         }catch(Exception e){
             e.printStackTrace();
         }

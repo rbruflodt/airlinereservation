@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4dc2d33-4f28-4685-bd84-b7da711b8262" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/WEB-INF/classes/Sample/HelloWorld.class" afterPath="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/WEB-INF/classes/Sample/HelloWorld.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/airlinereservation/Sample/HelloWorld.class" afterPath="$PROJECT_DIR$/out/production/airlinereservation/Sample/HelloWorld.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/index.jsp" afterPath="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sample/HelloWorld.java" afterPath="$PROJECT_DIR$/src/Sample/HelloWorld.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.jsp" afterPath="$PROJECT_DIR$/web/index.jsp" />
     </list>
     <ignored path="airlinereservation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,15 +60,15 @@
       <file leaf-file-name="HelloWorld.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Sample/HelloWorld.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+            <state relative-caret-position="237">
+              <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#436#437#0" expanded="true" />
                 <element signature="e#473#474#0" expanded="true" />
                 <element signature="e#516#517#0" expanded="true" />
                 <element signature="e#549#550#0" expanded="true" />
-                <marker date="1485975783313" expanded="true" signature="1019:1043" ph="SELECT * FRO... passengers" />
+                <marker date="1485976027382" expanded="true" signature="1019:1043" ph="SELECT * FRO... passengers" />
               </folding>
             </state>
           </provider>
@@ -819,12 +814,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1485961020104</updated>
-      <workItem from="1485961024074" duration="13709000" />
+      <workItem from="1485961024074" duration="13948000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13709000" />
+    <option name="totallyTimeSpent" value="13948000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -950,15 +945,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Sample/HelloWorld.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+        <state relative-caret-position="237">
+          <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#436#437#0" expanded="true" />
             <element signature="e#473#474#0" expanded="true" />
             <element signature="e#516#517#0" expanded="true" />
             <element signature="e#549#550#0" expanded="true" />
-            <marker date="1485975783313" expanded="true" signature="1019:1043" ph="SELECT * FRO... passengers" />
+            <marker date="1485976027382" expanded="true" signature="1019:1043" ph="SELECT * FRO... passengers" />
           </folding>
         </state>
       </provider>
