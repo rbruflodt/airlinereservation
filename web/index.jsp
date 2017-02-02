@@ -18,6 +18,5 @@
   </form>
   <h4><%=HelloWorld.getPassengers()%></h4>
   </body>
-
 </html>
 
