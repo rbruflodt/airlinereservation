@@ -15,6 +15,8 @@
   <form action="HelloWorld" method="post">
     <button type="submit" name="show">Show</button>
     <button type="submit" name="hide">Hide</button>
+    <br>
+    <button type="submit" name="otherpage">Go to Other Page</button>
   </form>
   <h4><%=HelloWorld.getPassengers()%></h4>
   </body>
