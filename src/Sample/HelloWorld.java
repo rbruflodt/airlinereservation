@@ -13,6 +13,7 @@ import java.sql.*;
 @WebServlet("/HelloWorld")
 public class HelloWorld extends HttpServlet{
     public static String passengers = "";
+    Connection conn;
     public static String getMessage() {
         return "Hello, world";
     }
@@ -23,10 +24,23 @@ public class HelloWorld extends HttpServlet{
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         if (request.getParameter("show") != null) {
-            Connection conn;
             try {
-                    Class.forName("com.mysql.jdbc.Driver").newInstance();
-                    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/airlinereservations", "root", "pass");
+                    if(conn == null) {
+                        if (System.getProperty("RDS_HOSTNAME") != null) {
+                            Class.forName("com.mysql.jdbc.Driver");
+                            String dbName = System.getProperty("RDS_DB_NAME");
+                            String userName = System.getProperty("RDS_USERNAME");
+                            String password = System.getProperty("RDS_PASSWORD");
+                            String hostname = System.getProperty("RDS_HOSTNAME");
+                            String port = System.getProperty("RDS_PORT");
+                            String jdbcUrl = "jdbc:mysql://" + hostname + ":" + port + "/" + dbName + "?user=" + userName + "&password=" + password;
+                            conn = DriverManager.getConnection(jdbcUrl);
+                        }
+                        else {
+                            Class.forName("com.mysql.jdbc.Driver").newInstance();
+                            conn = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
+                        }
+                    }
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM passengers");
                 String s = "<html><ul style=\"list-style-type:circle\">";
