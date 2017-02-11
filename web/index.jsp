@@ -1,4 +1,5 @@
-<%@ page import="Sample.HelloWorld" %><%--
+<%@ page import="MainPackage.SignInServlet" %>
+<%@ page import="MainPackage.User" %><%--
   Created by IntelliJ IDEA.
   User: Rachel
   Date: 2/1/2017
@@ -8,15 +9,45 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>Simple JSP Page</title>
+    <title>Iowa Air</title>
   </head>
   <body>
-  <h3 class="message"><%=HelloWorld.getMessage()%></h3>
-  <form action="HelloWorld" method="post">
-    <button type="submit" name="show">Show</button>
-    <button type="submit" name="hide">Hide</button>
-  </form>
-  <h4><%=HelloWorld.getPassengers()%></h4>
+    <h1 style="text-align:center">Iowa Air</h1>
+    <div style="text-align:center">
+  <img src="/Images/plane.jpg" style="width:300px;height:128px;">
+    </div>
+    <div style="border:solid;float:left;padding:5px">
+        <%if(session.getAttribute("currentuser")==null){%>
+        <h3>Sign In</h3>
+            <form action="/signin">
+            <div style="padding:5px">Email address: </div>
+            <input type="text" name="email">
+            <div style="padding:5px">Password: </div>
+            <input type="password" name="password">
+        <div style="padding:5px">
+            <input type="submit" name="signin" value="Sign in">
+            <input type="submit" name="newaccount" value="Create account">
+        </div>
+            </form>
+        <%if(session.getAttribute("loginmessage")!=null){%>
+        <div style="color:red">
+        <%=session.getAttribute("loginmessage")%>
+        </div>
+        <%
+            session.removeAttribute("loginmessage");
+        }
+        }
+        else{
+            User user = (User) session.getAttribute("currentuser");
+        %>
+        <h3>Welcome, <%=user.getFirstName() + " "+user.getLastName()+"!"%></h3>
+        <form action="/signin">
+            <input type="submit" name="signout" value="Sign out">
+        </form>
+        <%}%>
+  </div>
   </body>
 </html>
+
+<%@ include file="flights.jsp"%>
 
