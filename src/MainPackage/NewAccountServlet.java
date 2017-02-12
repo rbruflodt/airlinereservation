@@ -85,7 +85,7 @@ public class NewAccountServlet extends HttpServlet{
             else {
                 info.setPassword(password);
                 Properties properties = new Properties();
-                properties.put("mail.smtp.host", "email-smtp.us-east-1.amazonaws.com");
+                properties.put("mail.smtp.host", "smtp.gmail.com");
                 properties.put("mail.smtp.port", "587");
                 properties.put("mail.smtp.auth", "true");
                 properties.put("mail.smtp.starttls.enable", "true");
@@ -93,7 +93,7 @@ public class NewAccountServlet extends HttpServlet{
                 // creates a new session with an authenticator
                 Authenticator auth = new Authenticator() {
                     public PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("AKIAJYQ3FKFLAJUHTNAA", "AmZ2IadUASNFK3Up6445Fxmip7eWQjFceC61TUSH/92p");
+                        return new PasswordAuthentication("IowaAirTeam10@gmail.com", "team1010");
                     }
                 };
 
@@ -102,7 +102,7 @@ public class NewAccountServlet extends HttpServlet{
                 // creates a new e-mail message
                 Message msg = new MimeMessage(s);
 
-                msg.setFrom(new InternetAddress("rachelbruflodt@gmail.com"));
+                msg.setFrom(new InternetAddress("IowaAirTeam10@gmail.com"));
                 InternetAddress[] toAddresses = { new InternetAddress(email) };
                 msg.setRecipients(Message.RecipientType.TO, toAddresses);
                 msg.setSubject("Iowa Air Account Verification");
