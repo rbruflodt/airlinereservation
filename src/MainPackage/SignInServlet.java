@@ -6,8 +6,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
+
 
 /**
  * Created by Rachel on 2/11/2017.
@@ -18,6 +21,7 @@ public class SignInServlet extends HttpServlet {
             throws ServletException, java.io.IOException {
         HttpSession session = request.getSession(true);
         if (request.getParameter("newaccount") != null) {
+            session.setAttribute("enteredinfo",new User("","",null,request.getParameter("email"),""));
             response.sendRedirect("newaccount.jsp");
         }
         else if(request.getParameter("signout")!=null){
@@ -28,12 +32,17 @@ public class SignInServlet extends HttpServlet {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
+                MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+                messageDigest.update(("Aaaaaaaa").getBytes());
+                byte[] x = messageDigest.digest();
+                messageDigest.update(request.getParameter("password").getBytes());
                 Statement stmt = con.createStatement();
                 String search = "select * from users where email='"
                         + request.getParameter("email")
-                        + "' AND password='"
-                        + request.getParameter("password")
+                        + "' AND HEX(password)='"
+                        + DatatypeConverter.printHexBinary(messageDigest.digest())
                         + "'";
+                byte[] y =messageDigest.digest(request.getParameter("password").getBytes());
                 ResultSet rs = stmt.executeQuery(search);
                 if (!rs.next()) {
                     session.setAttribute("loginmessage", "Invalid email or password.");
@@ -47,6 +56,8 @@ public class SignInServlet extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch(NoSuchAlgorithmException e){
                 e.printStackTrace();
             }
         }
