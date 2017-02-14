@@ -48,6 +48,7 @@ public class VerifyAccountServlet extends HttpServlet{
                     session.removeAttribute("code");
                     session.removeAttribute("verifymessage");
                     con.close();
+                    session.setAttribute("currentuser",enteredInfo);
                     response.sendRedirect("/index.jsp");
                 } else {
                     session.setAttribute("codeerrormessage", "Incorrect code.");

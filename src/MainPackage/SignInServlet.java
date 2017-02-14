@@ -21,20 +21,21 @@ public class SignInServlet extends HttpServlet {
             throws ServletException, java.io.IOException {
         HttpSession session = request.getSession(true);
         if (request.getParameter("newaccount") != null) {
-            session.setAttribute("enteredinfo",new User("","",null,request.getParameter("email"),""));
+            session.setAttribute("enteredinfo",new User("","",null,request.getParameter("email"),"",false,false));
             response.sendRedirect("newaccount.jsp");
         }
         else if(request.getParameter("signout")!=null){
             session.removeAttribute("currentuser");
            response.sendRedirect("/index.jsp");
         }
+        else if(request.getParameter("newpassword")!=null){
+            response.sendRedirect("/newpassword.jsp");
+        }
         else{
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
                 MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-                messageDigest.update(("Aaaaaaaa").getBytes());
-                byte[] x = messageDigest.digest();
                 messageDigest.update(request.getParameter("password").getBytes());
                 Statement stmt = con.createStatement();
                 String search = "select * from users where email='"
@@ -42,13 +43,12 @@ public class SignInServlet extends HttpServlet {
                         + "' AND HEX(password)='"
                         + DatatypeConverter.printHexBinary(messageDigest.digest())
                         + "'";
-                byte[] y =messageDigest.digest(request.getParameter("password").getBytes());
                 ResultSet rs = stmt.executeQuery(search);
                 if (!rs.next()) {
                     session.setAttribute("loginmessage", "Invalid email or password.");
                     response.sendRedirect("/index.jsp");
                 } else {
-                    session.setAttribute("currentuser", new User(rs.getString("first_name"), rs.getString("last_name"), rs.getLong("phone_number"), rs.getString("email"), rs.getString("password")));
+                    session.setAttribute("currentuser", new User(rs.getString("first_name"), rs.getString("last_name"), rs.getLong("phone_number"), rs.getString("email"), rs.getString("password"),rs.getBoolean("is_manager"),rs.getBoolean("is_admin")));
                     session.removeAttribute("loginmessage");
                     response.sendRedirect("/index.jsp");
                 }

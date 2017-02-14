@@ -9,13 +9,17 @@ public class User {
     private Long phoneNumber;
     private String email;
     private String password;
+    private boolean isAdmin;
+    private boolean isManager;
 
-    public User(String firstName, String lastName, Long phoneNumber, String email, String password) {
+    public User(String firstName, String lastName, Long phoneNumber, String email, String password,boolean isManager, boolean isAdmin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
+        this.isManager=isManager;
+        this.isAdmin=isAdmin;
     }
 
     public User(){
@@ -43,6 +47,14 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public boolean isManager() {
+        return isManager;
     }
 
     public void setFirstName(String firstName) {

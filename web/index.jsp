@@ -43,11 +43,23 @@
         <h3>Welcome, <%=user.getFirstName() + " "+user.getLastName()+"!"%></h3>
         <form action="/signin">
             <input type="submit" name="signout" value="Sign out">
+            <input type="submit" name="newpassword" value="Change password">
         </form>
-        <%}%>
+        <% if(session.getAttribute("newpasswordmessage")!=null){%>
+        <%=session.getAttribute("newpasswordmessage")%>
+        <%session.removeAttribute("newpasswordmessage");}%>
+        <%}
+        %>
   </div>
   </body>
+  <% User user = (User) session.getAttribute("currentuser");
+      if(user!=null&&user.isAdmin()){%>
+        <%@ include file="admin.jsp"%>
+  <%} else if(user!=null&&user.isManager()){%>
+  <%@ include file="manager.jsp"%>
+  <%}else{%>
+  <%@ include file="user.jsp"%>
+<%}%>
 </html>
 
-<%@ include file="flights.jsp"%>
 
