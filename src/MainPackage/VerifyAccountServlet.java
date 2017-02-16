@@ -30,6 +30,7 @@ public class VerifyAccountServlet extends HttpServlet{
                 if (request.getParameter("codeinput").equals(session.getAttribute("code"))) {
                     createNewAccount(session,false);
                     session.setAttribute("currentuser", session.getAttribute("enteredinfo"));
+                    session.removeAttribute("enteredinfo");
                     response.sendRedirect("/index.jsp");
                 } else {
                     session.setAttribute("codeerrormessage", "Incorrect code.");
@@ -40,7 +41,7 @@ public class VerifyAccountServlet extends HttpServlet{
                 String message = "Please enter this code on the verification page: ";
                 Message msg = (Message) session.getAttribute("verifymessage");
                 Random r = new Random();
-                String code = String.valueOf(r.nextInt(99999));
+                String code = String.valueOf(r.nextInt(89999)+10000);
                 msg.setText(message+code);
                 session.setAttribute("code",code);
 
@@ -71,7 +72,6 @@ public class VerifyAccountServlet extends HttpServlet{
             stmt.setBoolean(6, false);
             stmt.setBoolean(7, is_manager);
             stmt.execute();
-            session.removeAttribute("enteredinfo");
             session.removeAttribute("code");
             session.removeAttribute("verifymessage");
             con.close();

@@ -107,7 +107,7 @@ public class NewAccountServlet extends HttpServlet{
                 msg.setRecipients(Message.RecipientType.TO, toAddresses);
                 msg.setSubject("Iowa Air Account Verification");
                 msg.setSentDate(new Date());
-                if(!(boolean)session.getAttribute("newmanager")) {
+                if(session.getAttribute("newmanager")==null) {
                     String message = "Please enter this code on the verification page: ";
                     Random r = new Random();
                     String code = String.valueOf(r.nextInt(99999));
@@ -126,6 +126,7 @@ public class NewAccountServlet extends HttpServlet{
                     // sends the e-mail
                     Transport.send(msg);
                     session.removeAttribute("newmanager");
+                    session.removeAttribute("enteredinfo");
                     session.setAttribute("newpasswordmessage","Manager account created successfully.");
                     response.sendRedirect("/index.jsp");
                 }

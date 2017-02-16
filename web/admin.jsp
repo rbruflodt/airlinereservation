@@ -1,4 +1,4 @@
-<%--
+<%@ page import="MainPackage.ManagerAccountsServlet" %><%--
   Created by IntelliJ IDEA.
   User: Rachel
   Date: 2/13/2017
@@ -17,9 +17,29 @@
     <a style="width:230px" href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Manage Aircraft')">Manage Aircraft</a>
 </div>
 
-<div id="Manager Accounts" class="tabcontent">
+<div id="Manager Accounts" class="tabcontent" style="text-align:left">
     <form action="/manageraccountsservlet">
         <input type="submit" value="Create new Manager Account" name="newmanager">
+        <h3>Managers</h3>
+        <table border="1">
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Email Address</th>
+                <th>Phone #</th>
+                <th>Delete Manager</th>
+            </tr>
+            <% User[] managers = ManagerAccountsServlet.getManagers();
+                for(User m : managers){%>
+            <tr>
+                <td><%=m.getLastName()%></td>
+                <td><%=m.getFirstName()%></td>
+                <td><%=m.getEmail()%></td>
+                <td><%=m.getPhoneNumber()%></td>
+                <td><input type="submit" value="Delete" name="deletemanager"></td>
+            </tr>
+            <%}%>
+        </table>
     </form>
 </div>
 
