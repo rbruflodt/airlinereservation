@@ -15,7 +15,6 @@
 
     /* Style the links inside the tab */
     div.tab a {
-        float: left;
         display: block;
         color: black;
         text-align: center;
@@ -23,6 +22,8 @@
         text-decoration: none;
         transition: 0.3s;
         font-size: 17px;
+        border-right:1px solid #ccc;
+        display: inline-block;
     }
 
     /* Change background color of links on hover */

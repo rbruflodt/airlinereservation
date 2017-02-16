@@ -12,8 +12,8 @@
 </head>
 <body>
 <div class="tab">
-    <a href="javascript:void(0)" id="defaultOpen" class="tablinks" onclick="openTab(event, 'Flights')">Flights</a>
-    <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Passenger Tickets')">Passenger Tickets</a>
+    <a style="width:360px" href="javascript:void(0)" id="defaultOpen" class="tablinks" onclick="openTab(event, 'Flights')">Flights</a>
+    <a style="width:360px" href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Passenger Tickets')">Passenger Tickets</a>
 </div>
 
 <div id="Flights" class="tabcontent">

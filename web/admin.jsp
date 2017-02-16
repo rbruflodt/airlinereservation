@@ -12,14 +12,15 @@
 </head>
 <body>
 <div class="tab">
-    <a href="javascript:void(0)" id="defaultOpen" class="tablinks" onclick="openTab(event, 'Manager Accounts')">Manager Accounts</a>
-    <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Flight Schedule')">Flight Schedule</a>
-    <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Manage Aircraft')">Manage Aircraft</a>
+    <a style="width:230px" href="javascript:void(0)" id="defaultOpen" class="tablinks" onclick="openTab(event, 'Manager Accounts')">Manager Accounts</a>
+    <a style="width:230px" href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Flight Schedule')">Flight Schedule</a>
+    <a style="width:230px" href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Manage Aircraft')">Manage Aircraft</a>
 </div>
 
 <div id="Manager Accounts" class="tabcontent">
-    <h3>Manager Accounts</h3>
-    <p></p>
+    <form action="/manageraccountsservlet">
+        <input type="submit" value="Create new Manager Account" name="newmanager">
+    </form>
 </div>
 
 <div id="Flight Schedule" class="tabcontent">

@@ -28,27 +28,8 @@ public class VerifyAccountServlet extends HttpServlet{
         try {
             if(request.getParameter("submit")!=null) {
                 if (request.getParameter("codeinput").equals(session.getAttribute("code"))) {
-                    Class.forName("com.mysql.jdbc.Driver");
-                    Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
-                    MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-                    String query = " insert into users (first_name, last_name, phone_number, email, password, is_admin, is_manager)"
-                            + " values (?, ?, ?, ?, ?, ?, ?)";
-                    PreparedStatement stmt = con.prepareStatement(query);
-                    User enteredInfo = (User) session.getAttribute("enteredinfo");
-                    messageDigest.update(enteredInfo.getPassword().getBytes());
-                    stmt.setString(1, enteredInfo.getFirstName());
-                    stmt.setString(2, enteredInfo.getLastName());
-                    stmt.setLong(3, enteredInfo.getPhoneNumber());
-                    stmt.setString(4, enteredInfo.getEmail());
-                    stmt.setBytes(5, messageDigest.digest());
-                    stmt.setBoolean(6, false);
-                    stmt.setBoolean(7, false);
-                    stmt.execute();
-                    session.removeAttribute("enteredinfo");
-                    session.removeAttribute("code");
-                    session.removeAttribute("verifymessage");
-                    con.close();
-                    session.setAttribute("currentuser",enteredInfo);
+                    createNewAccount(session,false);
+                    session.setAttribute("currentuser", session.getAttribute("enteredinfo"));
                     response.sendRedirect("/index.jsp");
                 } else {
                     session.setAttribute("codeerrormessage", "Incorrect code.");
@@ -67,13 +48,38 @@ public class VerifyAccountServlet extends HttpServlet{
                 Transport.send(msg);
                 response.sendRedirect("/verifyaccount.jsp");
             }
+        }catch(MessagingException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void createNewAccount(HttpSession session, boolean is_manager){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            String query = " insert into users (first_name, last_name, phone_number, email, password, is_admin, is_manager)"
+                    + " values (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = con.prepareStatement(query);
+            User enteredInfo = (User) session.getAttribute("enteredinfo");
+            messageDigest.update(enteredInfo.getPassword().getBytes());
+            stmt.setString(1, enteredInfo.getFirstName());
+            stmt.setString(2, enteredInfo.getLastName());
+            stmt.setLong(3, enteredInfo.getPhoneNumber());
+            stmt.setString(4, enteredInfo.getEmail());
+            stmt.setBytes(5, messageDigest.digest());
+            stmt.setBoolean(6, false);
+            stmt.setBoolean(7, is_manager);
+            stmt.execute();
+            session.removeAttribute("enteredinfo");
+            session.removeAttribute("code");
+            session.removeAttribute("verifymessage");
+            con.close();
         }catch(SQLException e){
             e.printStackTrace();
         }        catch(NoSuchAlgorithmException e){
             e.printStackTrace();
         }catch(ClassNotFoundException e){
-            e.printStackTrace();
-        }catch(MessagingException e){
             e.printStackTrace();
         }
     }

@@ -107,17 +107,31 @@ public class NewAccountServlet extends HttpServlet{
                 msg.setRecipients(Message.RecipientType.TO, toAddresses);
                 msg.setSubject("Iowa Air Account Verification");
                 msg.setSentDate(new Date());
-                String message = "Please enter this code on the verification page: ";
-                Random r = new Random();
-                String code = String.valueOf(r.nextInt(99999));
-                msg.setText(message+code);
-                session.setAttribute("code",code);
+                if(!(boolean)session.getAttribute("newmanager")) {
+                    String message = "Please enter this code on the verification page: ";
+                    Random r = new Random();
+                    String code = String.valueOf(r.nextInt(99999));
+                    session.setAttribute("code",code);
+                    msg.setText(message+code);
+                    // sends the e-mail
+                    Transport.send(msg);
+                    session.setAttribute("verifymessage",msg);
 
-                // sends the e-mail
-                Transport.send(msg);
-                session.setAttribute("verifymessage",msg);
+                    response.sendRedirect("/verifyaccount.jsp");
+                }
+                else{
+                    VerifyAccountServlet.createNewAccount(request.getSession(),true);
+                    String message = "An Iowa Air manager's account has been created for you.\nYour account password is: "+password+"\nVisit the website to login and change your password.";
+                    msg.setText(message);
+                    // sends the e-mail
+                    Transport.send(msg);
+                    session.removeAttribute("newmanager");
+                    session.setAttribute("newpasswordmessage","Manager account created successfully.");
+                    response.sendRedirect("/index.jsp");
+                }
 
-                response.sendRedirect("/verifyaccount.jsp");
+
+
             }
             con.close();
         }catch(ClassNotFoundException e){
