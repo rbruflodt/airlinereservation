@@ -13,10 +13,11 @@
   </head>
   <body>
     <h1 style="text-align:center">Iowa Air</h1>
-    <div style="text-align:center">
+    <div style="text-align:center;padding:5px">
   <img src="/Images/plane.jpg" style="width:300px;height:128px;">
     </div>
-    <div style="border:solid;float:left;padding:5px">
+    <div style="text-align:center;">
+            <div style="text-align:left; padding:5px; display:inline-block; border:solid; padding:5px; width:200px">
         <%if(session.getAttribute("currentuser")==null){%>
         <h3>Sign In</h3>
             <form action="/signin">
@@ -50,16 +51,19 @@
         <%session.removeAttribute("newpasswordmessage");}%>
         <%}
         %>
-  </div>
+        </div>
+        <div style="display:inline-block;width:800px; vertical-align: top">
+            <% User user = (User) session.getAttribute("currentuser");
+                if(user!=null&&user.isAdmin()){%>
+            <%@ include file="admin.jsp"%>
+            <%} else if(user!=null&&user.isManager()){%>
+            <%@ include file="manager.jsp"%>
+            <%}else{%>
+            <%@ include file="user.jsp"%>
+            <%}%>
+        </div>
+    </div>
   </body>
-  <% User user = (User) session.getAttribute("currentuser");
-      if(user!=null&&user.isAdmin()){%>
-        <%@ include file="admin.jsp"%>
-  <%} else if(user!=null&&user.isManager()){%>
-  <%@ include file="manager.jsp"%>
-  <%}else{%>
-  <%@ include file="user.jsp"%>
-<%}%>
 </html>
 
 

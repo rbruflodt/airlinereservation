@@ -11,6 +11,25 @@
     <title>Iowa Air Admin</title>
 </head>
 <body>
-This is an admin account.
+<div class="tab">
+    <a href="javascript:void(0)" id="defaultOpen" class="tablinks" onclick="openTab(event, 'Manager Accounts')">Manager Accounts</a>
+    <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Flight Schedule')">Flight Schedule</a>
+    <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Manage Aircraft')">Manage Aircraft</a>
+</div>
+
+<div id="Manager Accounts" class="tabcontent">
+    <h3>Manager Accounts</h3>
+    <p></p>
+</div>
+
+<div id="Flight Schedule" class="tabcontent">
+    <h3>Flight Schedule</h3>
+    <p></p>
+</div>
+<div id="Manage Aircraft" class="tabcontent">
+    <h3>Manage Aircraft</h3>
+    <p></p>
+</div>
 </body>
 </html>
+<%@ include file="tabs.jsp"%>
