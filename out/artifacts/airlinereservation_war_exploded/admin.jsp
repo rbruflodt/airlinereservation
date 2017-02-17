@@ -44,8 +44,7 @@
 </div>
 
 <div id="Flight Schedule" class="tabcontent">
-    <h3>Flight Schedule</h3>
-    <p></p>
+    <%@ include file="flights.jsp"%>
 </div>
 <div id="Manage Aircraft" class="tabcontent">
     <h3>Manage Aircraft</h3>

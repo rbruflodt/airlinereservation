@@ -13,8 +13,7 @@
 </div>
 
 <div id="Flights" class="tabcontent">
-    <h3>Flights</h3>
-    <p>Search for flights</p>
+    <%@ include file="flights.jsp"%>
 </div>
 
 <div id="Reservations" class="tabcontent">
