@@ -11,7 +11,7 @@
     <title>Flights</title>
 </head>
 <body>
-    <form action="flightsservlet" style="padding:10px; text-align:left">
+    <form action="flightsservlet" style="padding:10px; text-align:left; border-bottom:solid 1px #ccc">
         <h3>Search For Flights</h3>
         <label for="from">From: </label>
         <select id="from">
@@ -43,8 +43,17 @@
         <div id="returnpicker" style="visibility:hidden; display:inline-block">
         <label for="return">Return: </label>
         <input type="date" id="return">
-        </div>
+        </div><br>
+        <input type="submit" name="searchflights" value="Search">
     </form>
+    <table border="1" style="width:750px">
+        <tr>
+            <th>Flight</th>
+            <th>Depart</th>
+            <th>Arrive</th>
+            <th>Price</th>
+        </tr>
+        </table>
 </body>
 </html>
 <script>
