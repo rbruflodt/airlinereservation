@@ -54,18 +54,23 @@
             <th>Price</th>
         </tr>
         </table>
+    <script>
+        document.getElementById("oneway").onclick = function oneway() {
+            if(document.getElementById("departpicker")!=null&&document.getElementById("returnpicker")!=null) {
+                document.getElementById("departpicker").style.visibility = 'visible';
+                document.getElementById("returnpicker").style.visibility = 'hidden';
+            }
+        }
+        document.getElementById("roundtrip").onclick = function roundtrip() {
+            if(document.getElementById("departpicker")!=null&&document.getElementById("returnpicker")!=null) {
+                document.getElementById("departpicker").style.visibility = 'visible';
+                document.getElementById("returnpicker").style.visibility = 'visible';
+            }
+        }
+    </script>
 </body>
 </html>
-<script>
-    document.getElementById("oneway").onclick=function oneway(){
-        document.getElementById("departpicker").style.visibility='visible';
-        document.getElementById("returnpicker").style.visibility='hidden';
-    }
-    document.getElementById("roundtrip").onclick=function roundtrip(){
-        document.getElementById("departpicker").style.visibility='visible';
-        document.getElementById("returnpicker").style.visibility='visible';
-    }
-</script>
+
 
 
 

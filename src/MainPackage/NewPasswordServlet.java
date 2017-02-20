@@ -6,12 +6,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by Rachel on 2/13/2017.
@@ -25,6 +23,21 @@ public class NewPasswordServlet extends HttpServlet{
                 String errorMessage="";
                 String password = request.getParameter("password");
                 String confirmpassword = request.getParameter("confirmpassword");
+                String oldpassword = request.getParameter("oldpassword");
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
+                MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+                messageDigest.update(oldpassword.getBytes());
+                Statement statement = con.createStatement();
+                String search = "select * from users where email='"
+                        + ((User) session.getAttribute("currentuser")).getEmail()
+                        + "' AND HEX(password)='"
+                        + DatatypeConverter.printHexBinary(messageDigest.digest())
+                        + "'";
+                ResultSet rs = statement.executeQuery(search);
+                if(!rs.next()){
+                    errorMessage += "Incorrect old password.<html><br></html>";
+                }
                 if (password.toLowerCase().equals(password) || password.length() < 8) {
                     errorMessage += "Invalid password.<html><br></html>";
                 }
@@ -33,18 +46,17 @@ public class NewPasswordServlet extends HttpServlet{
                 }
                 if(!errorMessage.equals("")){
                     session.setAttribute("errormessage",errorMessage);
+                    con.close();
                     response.sendRedirect("/newpassword.jsp");
                 }
                 else{
-                    Class.forName("com.mysql.jdbc.Driver");
-                    Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
-                    MessageDigest messageDigest = MessageDigest.getInstance("MD5");
                     messageDigest.update(password.getBytes());
                     PreparedStatement stmt = con.prepareStatement("update users set password = ? where email = ?");
                     stmt.setBytes(1,messageDigest.digest());
                     stmt.setString(2,((User) session.getAttribute("currentuser")).getEmail());
                     stmt.executeUpdate();
                     session.setAttribute("newpasswordmessage","Password changed.");
+                    con.close();
                     response.sendRedirect("/index.jsp");
                 }
             } catch (SQLException e) {

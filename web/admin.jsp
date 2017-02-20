@@ -12,20 +12,20 @@
 </head>
 <body>
 <div class="tab">
-    <a style="width:230px" href="javascript:void(0)" id="defaultOpen" class="tablinks" onclick="openTab('Manager Accounts')">Manager Accounts</a>
-    <a style="width:230px" href="javascript:void(0)" class="tablinks" onclick="openTab('Flight Schedule')">Flight Schedule</a>
-    <a style="width:230px" href="javascript:void(0)" class="tablinks" onclick="openTab('Manage Aircraft')">Manage Aircraft</a>
+    <a style="width:230px" href="javascript:void(0)" id="defaultOpen" class="tablinks" onclick="openTab(event,'Manager Accounts')">Manager Accounts</a>
+    <a style="width:230px" href="javascript:void(0)" class="tablinks" onclick="openTab(event,'Flight Schedule')">Flight Schedule</a>
+    <a style="width:230px" href="javascript:void(0)" class="tablinks" onclick="openTab(event,'Manage Aircraft')">Manage Aircraft</a>
 </div>
 
 <%if(session.getAttribute("currenttab")!=null){
     if(session.getAttribute("currenttab").equals("Flight Schedule")){%>
         <script>
-            openTab("Flight Schedule")
+            openTab(event,"Flight Schedule")
         </script>
     <%}
     else if(session.getAttribute("currenttab").equals("Manage Aircraft")){%>
         <script>
-            openTab("Manage Aircraft")
+            openTab(event,"Manage Aircraft")
         </script>
     <%}
 }%>

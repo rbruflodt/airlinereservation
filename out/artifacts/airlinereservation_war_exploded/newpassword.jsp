@@ -13,13 +13,17 @@
 <body>
 <h1>New Password</h1>
 <form action="/newpasswordservlet">
+    <div style="padding:10px">
+        <span>Old Password: </span>
+        <input type="password" name="oldpassword">
+    </div>
 <div style="padding:10px">
     <p style="width:200px">Password must be at least 8 characters and contain one capital letter.</p>
-    <span>Password: </span>
+    <span>New Password: </span>
     <input type="password" name="password">
 </div>
 <div style="padding:10px">
-    <span style="padding:0px 10px 0px 0px">Confirm Password: </span>
+    <span style="padding:0px 10px 0px 0px">Confirm New Password: </span>
     <input type="password" name="confirmpassword">
 </div>
     <% if(session.getAttribute("errormessage")!=null){%>
