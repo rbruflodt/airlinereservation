@@ -31,6 +31,9 @@ public class SignInServlet extends HttpServlet {
         else if(request.getParameter("newpassword")!=null){
             response.sendRedirect("/newpassword.jsp");
         }
+        else if(request.getParameter("verifyaccount")!=null){
+            response.sendRedirect("/verifyaccount.jsp");
+        }
         else{
             try {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -47,7 +50,13 @@ public class SignInServlet extends HttpServlet {
                 if (!rs.next()) {
                     session.setAttribute("loginmessage", "Invalid email or password.");
                     response.sendRedirect("/index.jsp");
-                } else {
+                } else if(rs.getInt("verification")!=-1){
+                    session.setAttribute("code",String.valueOf(rs.getInt("verification")));
+                    session.setAttribute("enteredinfo",new User(rs.getString("first_name"), rs.getString("last_name"), rs.getLong("phone_number"), rs.getString("email"), rs.getString("password"),rs.getBoolean("is_manager"),rs.getBoolean("is_admin")));
+                    session.setAttribute("verificationoption","verify");
+                    response.sendRedirect("/index.jsp");
+                }
+                    else{
                     session.setAttribute("currentuser", new User(rs.getString("first_name"), rs.getString("last_name"), rs.getLong("phone_number"), rs.getString("email"), rs.getString("password"),rs.getBoolean("is_manager"),rs.getBoolean("is_admin")));
                     session.removeAttribute("loginmessage");
                     response.sendRedirect("/index.jsp");

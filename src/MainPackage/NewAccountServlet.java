@@ -1,5 +1,6 @@
 package MainPackage;
 
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.Authenticator;
@@ -84,29 +85,7 @@ public class NewAccountServlet extends HttpServlet{
             }
             else {
                 info.setPassword(password);
-                Properties properties = new Properties();
-                properties.put("mail.smtp.host", "smtp.gmail.com");
-                properties.put("mail.smtp.port", "587");
-                properties.put("mail.smtp.auth", "true");
-                properties.put("mail.smtp.starttls.enable", "true");
-
-                // creates a new session with an authenticator
-                Authenticator auth = new Authenticator() {
-                    public PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("IowaAirTeam10@gmail.com", "team1010");
-                    }
-                };
-
-                Session s = Session.getInstance(properties, auth);
-
-                // creates a new e-mail message
-                Message msg = new MimeMessage(s);
-
-                msg.setFrom(new InternetAddress("IowaAirTeam10@gmail.com"));
-                InternetAddress[] toAddresses = { new InternetAddress(email) };
-                msg.setRecipients(Message.RecipientType.TO, toAddresses);
-                msg.setSubject("Iowa Air Account Verification");
-                msg.setSentDate(new Date());
+                Message msg = getEmailMessage(email);
                 if(session.getAttribute("newmanager")==null) {
                     String message = "Please enter this code on the verification page: ";
                     Random r = new Random();
@@ -115,12 +94,11 @@ public class NewAccountServlet extends HttpServlet{
                     msg.setText(message+code);
                     // sends the e-mail
                     Transport.send(msg);
-                    session.setAttribute("verifymessage",msg);
-
+                    VerifyAccountServlet.createNewAccount(session,false,Integer.valueOf(code));
                     response.sendRedirect("/verifyaccount.jsp");
                 }
                 else{
-                    VerifyAccountServlet.createNewAccount(request.getSession(),true);
+                    VerifyAccountServlet.createNewAccount(request.getSession(),true,-1);
                     String message = "An Iowa Air manager's account has been created for you.\nYour account password is: "+password+"\nVisit the website to login and change your password.";
                     msg.setText(message);
                     // sends the e-mail
@@ -144,5 +122,36 @@ public class NewAccountServlet extends HttpServlet{
         catch(javax.mail.MessagingException e){
             e.printStackTrace();
         }
+    }
+
+    public static Message getEmailMessage(String email){
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+
+        // creates a new session with an authenticator
+        Authenticator auth = new Authenticator() {
+            public PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("IowaAirTeam10@gmail.com", "team1010");
+            }
+        };
+
+        Session s = Session.getInstance(properties, auth);
+
+        // creates a new e-mail message
+        Message msg = new MimeMessage(s);
+
+        try {
+            msg.setFrom(new InternetAddress("IowaAirTeam10@gmail.com"));
+            InternetAddress[] toAddresses = {new InternetAddress(email)};
+            msg.setRecipients(Message.RecipientType.TO, toAddresses);
+            msg.setSubject("Iowa Air Account Verification");
+            msg.setSentDate(new Date());
+        }catch(MessagingException e){
+            e.printStackTrace();
+        }
+        return msg;
     }
 }

@@ -29,6 +29,10 @@
             <input type="submit" name="signin" value="Sign in">
             <input type="submit" name="newaccount" value="Create account">
         </div>
+                <%if(session.getAttribute("verificationoption")!=null){%>
+                <p>Account not verified.</p>
+                <input type="submit" name="verifyaccount" value="Verify Account">
+                <%session.removeAttribute("verificationoption");}%>
             </form>
         <%if(session.getAttribute("loginmessage")!=null){%>
         <div style="color:red">

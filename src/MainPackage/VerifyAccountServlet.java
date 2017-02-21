@@ -28,9 +28,15 @@ public class VerifyAccountServlet extends HttpServlet{
         try {
             if(request.getParameter("submit")!=null) {
                 if (request.getParameter("codeinput").equals(session.getAttribute("code"))) {
-                    createNewAccount(session,false);
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
+                    PreparedStatement stmt = con.prepareStatement("update users set verification = ? where email = ?");
+                    stmt.setInt(1,-1);
+                    stmt.setString(2,((User) session.getAttribute("enteredinfo")).getEmail());
+                    stmt.executeUpdate();
                     session.setAttribute("currentuser", session.getAttribute("enteredinfo"));
                     session.removeAttribute("enteredinfo");
+                    con.close();
                     response.sendRedirect("/index.jsp");
                 } else {
                     session.setAttribute("codeerrormessage", "Incorrect code.");
@@ -39,11 +45,17 @@ public class VerifyAccountServlet extends HttpServlet{
             }
             else{
                 String message = "Please enter this code on the verification page: ";
-                Message msg = (Message) session.getAttribute("verifymessage");
+                Message msg = NewAccountServlet.getEmailMessage(((User) session.getAttribute("enteredinfo")).getEmail());
                 Random r = new Random();
                 String code = String.valueOf(r.nextInt(89999)+10000);
                 msg.setText(message+code);
                 session.setAttribute("code",code);
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
+                PreparedStatement stmt = con.prepareStatement("update users set verification = ? where email = ?");
+                stmt.setInt(1,Integer.valueOf(code));
+                stmt.setString(2,((User) session.getAttribute("enteredinfo")).getEmail());
+                stmt.executeUpdate();
 
                 // sends the e-mail
                 Transport.send(msg);
@@ -51,16 +63,20 @@ public class VerifyAccountServlet extends HttpServlet{
             }
         }catch(MessagingException e){
             e.printStackTrace();
+        }catch(ClassNotFoundException e){
+            e.printStackTrace();
+        }catch(SQLException e){
+            e.printStackTrace();
         }
     }
 
-    public static void createNewAccount(HttpSession session, boolean is_manager){
+    public static void createNewAccount(HttpSession session, boolean is_manager,int code){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            String query = " insert into users (first_name, last_name, phone_number, email, password, is_admin, is_manager)"
-                    + " values (?, ?, ?, ?, ?, ?, ?)";
+            String query = " insert into users (first_name, last_name, phone_number, email, password, is_admin, is_manager, verification)"
+                    + " values (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(query);
             User enteredInfo = (User) session.getAttribute("enteredinfo");
             messageDigest.update(enteredInfo.getPassword().getBytes());
@@ -71,6 +87,7 @@ public class VerifyAccountServlet extends HttpServlet{
             stmt.setBytes(5, messageDigest.digest());
             stmt.setBoolean(6, false);
             stmt.setBoolean(7, is_manager);
+            stmt.setInt(8,code);
             stmt.execute();
             session.removeAttribute("code");
             session.removeAttribute("verifymessage");
