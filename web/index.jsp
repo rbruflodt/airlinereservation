@@ -8,15 +8,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<link rel="stylesheet" href="/css folder/css/style.css">
   <head>
     <title>Iowa Air</title>
   </head>
-  <body>
-    <h1 style="text-align:center">Iowa Air</h1>
+  <body class="banner" style="height:650px">
+    <h1 style="text-align:center;color:white;font-size:50pt">Iowa Air</h1>
     <div style="text-align:center;padding:5px">
-  <img src="/Images/plane.jpg" style="width:300px;height:128px;">
-    </div>
-    <div style="text-align:center;">
             <div style="text-align:left; padding:5px; display:inline-block; border:solid; padding:5px; width:200px">
         <%if(session.getAttribute("currentuser")==null){%>
         <h3>Sign In</h3>
@@ -69,5 +67,6 @@
     </div>
   </body>
 </html>
+
 
 
