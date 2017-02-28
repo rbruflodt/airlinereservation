@@ -7,10 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<link rel="stylesheet" href="/css folder/css/style.css">
 <head>
     <title>Iowa Air New Password</title>
 </head>
-<body>
+<body class="banner" style="heigt:650px">
 <h1>New Password</h1>
 <form action="/newpasswordservlet">
     <div style="padding:10px">

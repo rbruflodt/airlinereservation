@@ -7,11 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<link rel="stylesheet" href="/css folder/css/style.css">
 <head>
     <title>New Iowa Air Account</title>
 </head>
-<body>
-    <div style="border:solid;float:left;padding:5px">
+<body class="banner" style="height:650px">
+    <div style="border:solid;float:left;padding:5px;background:white">
         <h2>Iowa Air New Account Information</h2>
         <%User currentInfo = (User)session.getAttribute("enteredinfo");%>
         <form action="/newaccountservlet">
@@ -42,7 +43,7 @@
             <input type="password" name="confirmpassword" style="float:right">
                 </div>
             <% if(session.getAttribute("errormessage")!=null){%>
-            <div style="color:red; padding:5px">
+            <div style="color:#6f0000; padding:5px">
             <%=session.getAttribute("errormessage")%>
             </div>
             <%session.removeAttribute("errormessage");}%>

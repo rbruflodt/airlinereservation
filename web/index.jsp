@@ -33,7 +33,7 @@
                 <%session.removeAttribute("verificationoption");}%>
             </form>
         <%if(session.getAttribute("loginmessage")!=null){%>
-        <div style="color:red">
+        <div style="color:#6f0000">
         <%=session.getAttribute("loginmessage")%>
         </div>
         <%
