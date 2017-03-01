@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <div class="tab">
-    <a style="width:360px" href="javascript:void(0)" id="defaultOpen" class="tablinks" onclick="openTab(event, 'Flights')">Flights</a>
-    <a style="width:360px" href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Reservations')">Reservations</a>
+    <a style="width:363px" href="javascript:void(0)" id="defaultOpen" class="tablinks" onclick="openTab(event, 'Flights')">Flights</a>
+    <a style="width:363px" href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Reservations')">Reservations</a>
 </div>
 
 <div id="Flights" class="tabcontent">

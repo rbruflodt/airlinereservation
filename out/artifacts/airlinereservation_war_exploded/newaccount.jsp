@@ -7,11 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<link rel="stylesheet" href="/css folder/css/style.css">
+<link rel="stylesheet" href="/css%20folder/css/style.css">
 <head>
     <title>New Iowa Air Account</title>
 </head>
-<body class="banner" style="height:650px">
+<body style="background:url(Images/homebackground.jpg);height:1200px">
     <div style="border:solid;float:left;padding:5px;background:white">
         <h2>Iowa Air New Account Information</h2>
         <%User currentInfo = (User)session.getAttribute("enteredinfo");%>

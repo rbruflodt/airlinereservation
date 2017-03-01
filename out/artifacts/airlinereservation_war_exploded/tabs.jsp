@@ -10,19 +10,18 @@
     div.tab {
         overflow: hidden;
         border: 1px solid #ccc;
-        background-color: #b5b5b5;
+        background-color: #a7bdcc;
     }
 
     /* Style the links inside the tab */
     div.tab a {
         display: block;
-        color: black;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
         transition: 0.3s;
         font-size: 17px;
-        border-right:1px solid #ccc;
+        border-right:1px solid #a7bdcc;
         display: inline-block;
         font-weight:bold;
         color:white;
@@ -30,12 +29,12 @@
 
     /* Change background color of links on hover */
     div.tab a:hover {
-        background-color: #4a4a4a;
+        background-color: #6983b5;
     }
 
     /* Create an active/current tablink class */
     div.tab a:focus, .active {
-        background-color: black;
+        background-color: #2c71c9;
     }
 
     /* Style the tab content */
