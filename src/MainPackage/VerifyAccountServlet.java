@@ -56,7 +56,6 @@ public class VerifyAccountServlet extends HttpServlet{
                 stmt.setInt(1,Integer.valueOf(code));
                 stmt.setString(2,((User) session.getAttribute("enteredinfo")).getEmail());
                 stmt.executeUpdate();
-
                 // sends the e-mail
                 Transport.send(msg);
                 response.sendRedirect("/verifyaccount.jsp");

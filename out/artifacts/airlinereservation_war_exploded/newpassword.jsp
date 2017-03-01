@@ -11,7 +11,7 @@
 <head>
     <title>Iowa Air New Password</title>
 </head>
-<body class="banner" style="heigt:650px">
+<body class="banner" style="heigt:800px">
 <h1>New Password</h1>
 <form action="/newpasswordservlet">
     <div style="padding:10px">

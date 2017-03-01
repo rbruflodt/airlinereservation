@@ -12,7 +12,7 @@
   <head>
     <title>Iowa Air</title>
   </head>
-  <body class="banner" style="height:650px">
+  <body class="banner" style="height:800px">
     <h1 style="text-align:center;color:white;font-size:50pt">Iowa Air</h1>
     <div style="text-align:center;padding:5px">
             <div style="text-align:left; padding:5px; display:inline-block; border:solid; padding:5px; width:200px">
