@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<link rel="stylesheet" href="/css%20folder/css/style.css">
+<link rel="stylesheet" href="/style.css">
 <head>
     <title>Iowa Air New Password</title>
 </head>
@@ -28,11 +28,11 @@
     <input type="password" name="confirmpassword">
 </div>
     <% if(session.getAttribute("errormessage")!=null){%>
-    <div style="color:#932013; padding:5px">
+    <div style="font-weight:bold;color:#932013; padding:5px">
         <%=session.getAttribute("errormessage")%>
     </div>
     <%session.removeAttribute("errormessage");}%>
-    <input type="submit" name="changepassword" value="Change Password">
+    <input type="submit" class="signinbutton" name="changepassword" value="Change Password">
 </form>
 </body>
 </html>

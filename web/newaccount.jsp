@@ -7,13 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<link rel="stylesheet" href="/css%20folder/css/style.css">
+<link rel="stylesheet" href="/style.css">
 <head>
     <title>New Iowa Air Account</title>
 </head>
 <body style="background:url(Images/homebackground.jpg);height:1200px">
-    <div style="border:solid;float:left;padding:5px;background:white">
-        <h2>Iowa Air New Account Information</h2>
+    <div style="padding:5px;width:35%;margin:auto;color:white">
+        <h2 style="color:white;font-weight: bold">Iowa Air New Account Information</h2>
         <%User currentInfo = (User)session.getAttribute("enteredinfo");%>
         <form action="/newaccountservlet">
             <div style="padding:10px">
@@ -43,14 +43,19 @@
             <input type="password" name="confirmpassword" style="float:right">
                 </div>
             <% if(session.getAttribute("errormessage")!=null){%>
-            <div style="color:#932013; padding:5px">
+            <div style="font-weight:bold;color:#932013; padding:5px">
             <%=session.getAttribute("errormessage")%>
             </div>
             <%session.removeAttribute("errormessage");}%>
-            <input type="submit" name="createaccount" value="Create Account">
+            <input type="submit" class="signinbutton" name="createaccount" value="Create Account">
         </form>
     </div>
 </body>
 </html>
-
+<style>
+    .prettybutton{
+        background-color: #2c71c9;
+        color:white;
+    }
+</style>
 

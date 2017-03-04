@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<link rel="stylesheet" href="/style.css">
 <head>
     <title>Flights</title>
 </head>
@@ -100,31 +101,6 @@
 </body>
 </html>
 
-<style>
-    th{
-        background-color: #2c71c9;
-        color:white;
-        border-right: 1px solid white;
-    }
-
-    .prettytable{
-        border: 1px solid #2c71c9;
-        border-collapse: collapse;
-        padding: 10px;
-        width:750px;
-        font-size:14px;
-    }
-
-    td{
-        padding: 10px;
-        text-align: center;
-    }
-
-    .prettybutton{
-        background-color: #2c71c9;
-        color:white;
-    }
-</style>
 
 
 
