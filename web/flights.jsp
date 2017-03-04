@@ -12,7 +12,7 @@
 </head>
 <body>
     <form action="flightsservlet" style="padding:10px; text-align:left; border-bottom:solid 1px #ccc">
-        <h3 style="color:#2c71c9;;">Search For Flights</h3>
+        <h3 style="color:#2c71c9;">Search For Flights</h3>
         <label for="from">From: </label>
         <select id="from">
             <option>Iowa City, IA</option>
@@ -46,18 +46,19 @@
         </div><br>
         <input type="submit" class="prettybutton" name="searchflights" value="Search">
     </form>
-    <%if(session.getAttribute("currentuser")!=null&&((User)session.getAttribute("currentuser")).isAdmin()){%>
+    <%//User user = (User) session.getAttribute("currentuser");%>
+    <%if(user!=null&&user.isAdmin()){%>
     <form action="/newflightservlet" style="padding-bottom:10px">
         <input type="submit" class="prettybutton" name="newflight" value="Add new flight" style="float:left">
     </form>
     <%}%>
     <table class="prettytable" border="1">
         <tr>
-            <th>Flight</th>
             <th>Depart</th>
             <th>Arrive</th>
             <th>Price</th>
-            <%if(session.getAttribute("currentuser")!=null&&((User)session.getAttribute("currentuser")).isAdmin()){%>
+            <th>Aircraft</th>
+            <%if(user!=null&&user.isAdmin()){%>
                <th>Frequency</th>
             <th>Manage</th>
             <%}else{%>
@@ -65,16 +66,20 @@
             <%}%>
         </tr>
         <tr>
-            <td>Iowa City to Atlanta<br>Boeing 777</td>
-            <td>4/14/17 4:00 PM (CST)</td>
-            <td>4/14/17 8:00 PM (EST)</td>
+            <td>Iowa City, IA<br>4/14/17 4:00 PM (CST)</td>
+            <td>Atlanta, GA<br>4/14/17 8:00 PM (EST)</td>
             <td>$400</td>
-            <%if(session.getAttribute("currentuser")!=null&&((User)session.getAttribute("currentuser")).isAdmin()){%>
+            <%if(user!=null&&user.isAdmin()){%>
+            <td>Group 1</td>
             <td>Weekly: Mon Wed Fri Sat Sun</td>
             <td><input type="submit" class="prettybutton" value="Edit" name="editflight">
             <input type="submit" class="prettybutton" value="Delete" name="deleteflight"></td>
-            <%}else{%>
+            <%}else if(user!=null){%>
+            <td>Boeing 777</td>
             <td><input type="submit" class="prettybutton" value="Book Flight" name="bookflight"></td>
+            <%}else{%>
+            <td>Boeing 777</td>
+            <td style="color:#932013;font-size:12px">Sign in to book flight</td>
             <%}%>
         </tr>
         </table>
@@ -112,6 +117,7 @@
 
     td{
         padding: 10px;
+        text-align: center;
     }
 
     .prettybutton{

@@ -21,8 +21,38 @@
 </div>
 
 <div id="Passenger Tickets" class="tabcontent">
-    <h3>Passenger Tickets</h3>
-    <p></p>
+    <h3 style="color:#2c71c9;float:left">Search for Tickets</h3>
+    <br>
+    <form style="float:left;text-align: left">
+    <label for="ticketnum">Ticket number: </label>
+    <input type="number" id="ticketnum" style="width:150px">
+    <label for="lastname">Last name: </label>
+    <input type="text" id="lastname" style="width:150px">
+    <label for="firstname">First name: </label>
+    <input type="text" id="firstname" style="width:150px">
+        <br>
+        <br>
+    <input type="submit" class="prettybutton" name="searchtickets" value="Search">
+    </form>
+    <br>
+    <h3 style="color:#2c71c9;float:left">Passenger Tickets</h3>
+    <table class="prettytable" border="1">
+        <tr>
+            <th>Ticket Number</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>ID #</th>
+            <th>Manage</th>
+        </tr>
+        <tr>
+            <td>123456789</td>
+            <td>Smith</td>
+            <td>John</td>
+            <td>abc123jkl789</td>
+            <td style="text-align:center"><input type="submit" class="prettybutton" value="Check in" name="ticketnumber">
+                <input type="submit" class="prettybutton" value="Cancel ticket" name="cancelticketnumber"></td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>

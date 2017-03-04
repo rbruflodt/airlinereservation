@@ -17,8 +17,27 @@
 </div>
 
 <div id="Reservations" class="tabcontent">
-    <h3>Reservations</h3>
-    <p>Your Reservations</p>
+    <%if(session.getAttribute("currentuser")==null){%>
+    <h3 style="color:#2c71c9;">Please sign in to view your reservations.</h3>
+    <%}else{%>
+    <h3 style="color:#2c71c9;float:left">Your Reservations</h3>
+    <table class="prettytable" border="1">
+        <tr>
+            <th>Ticket Number</th>
+            <th>Passenger Name</th>
+            <th>Depart</th>
+            <th>Arrive</th>
+            <th>Manage</th>
+        </tr>
+        <tr>
+            <td>123456789</td>
+            <td>John Smith</td>
+            <td>Iowa City, IA<br>4/14/17 4:00 PM (CST)</td>
+            <td>Atlanta, GA<br>4/14/17 8:00 PM (EST)</td>
+            <td style="text-align:center"><input type="submit" class="prettybutton" value="Cancel Ticket" name="editaircraft"></td>
+        </tr>
+    </table>
+    <%}%>
 </div>
 
 </html>

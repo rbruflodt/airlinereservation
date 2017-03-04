@@ -70,16 +70,20 @@
         <table class="prettytable" border="1">
             <tr>
                 <th>Name</th>
+                <th>Type</th>
                 <th>Classes</th>
                 <th>Number</th>
                 <th>Manage</th>
             </tr>
             <tr>
+                <td>Group 1</td>
                 <td>Boeing 777</td>
                 <td>
-                    First Class: 40 seats
+                    <table>
+                    <tr><td>First Class</td><td>40 seats</td></tr>
                     <br>
-                    Economy Class: 160 seats
+                    <tr><td>Economy Class</td><td>160 seats</td></tr>
+                    </table>
                 </td>
                 <td>8</td>
                 <td style="text-align:center"><input type="submit" class="prettybutton" value="Edit" name="editaircraft">

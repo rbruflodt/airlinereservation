@@ -86,7 +86,7 @@ public class NewAccountServlet extends HttpServlet{
             else {
                 info.setPassword(password);
                 Message msg = getEmailMessage(email);
-                if(session.getAttribute("newmanager")==null) {
+                if(session.getAttribute("currentuser")==null||!(((User)(session.getAttribute("currentuser"))).isAdmin())) {
                     String message = "Please enter this code on the verification page: ";
                     Random r = new Random();
                     String code = String.valueOf(r.nextInt(99999));
