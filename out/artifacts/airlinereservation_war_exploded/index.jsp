@@ -13,7 +13,7 @@
     <title>Iowa Air</title>
   </head>
   <body style="background:url(Images/homebackground.jpg);height:1200px">
-    <h1 style="text-align:center;color:white;font-size:50pt">Iowa Air</h1>
+    <h1 style="text-align:center;color:white;font-size:50pt;">Iowa Air</h1>
     <div style="text-align:center;">
             <div style="text-align:left;color:white; padding:5px; display:inline-block; border:solid; padding:5px; width:200px">
         <%if(session.getAttribute("currentuser")==null){%>
@@ -33,7 +33,7 @@
                 <%session.removeAttribute("verificationoption");}%>
             </form>
         <%if(session.getAttribute("loginmessage")!=null){%>
-        <div style="color:#d52e1b;font-weight:bold">
+        <div style="color:#932013;font-weight:bold">
         <%=session.getAttribute("loginmessage")%>
         </div>
         <%

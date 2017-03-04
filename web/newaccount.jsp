@@ -43,7 +43,7 @@
             <input type="password" name="confirmpassword" style="float:right">
                 </div>
             <% if(session.getAttribute("errormessage")!=null){%>
-            <div style="color:#6f0000; padding:5px">
+            <div style="color:#932013; padding:5px">
             <%=session.getAttribute("errormessage")%>
             </div>
             <%session.removeAttribute("errormessage");}%>

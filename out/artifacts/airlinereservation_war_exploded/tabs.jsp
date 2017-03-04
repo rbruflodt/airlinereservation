@@ -10,7 +10,7 @@
     div.tab {
         overflow: hidden;
         border: 1px solid #ccc;
-        background-color: #a7bdcc;
+        background-color: #7fb0cc;
     }
 
     /* Style the links inside the tab */
@@ -21,7 +21,7 @@
         text-decoration: none;
         transition: 0.3s;
         font-size: 17px;
-        border-right:1px solid #a7bdcc;
+        border-right:1px solid #6998cc;
         display: inline-block;
         font-weight:bold;
         color:white;
@@ -29,7 +29,7 @@
 
     /* Change background color of links on hover */
     div.tab a:hover {
-        background-color: #6983b5;
+        background-color: #2c71c9;
     }
 
     /* Create an active/current tablink class */

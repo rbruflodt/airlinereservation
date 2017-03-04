@@ -32,9 +32,9 @@
 
 <div id="Manager Accounts" class="tabcontent" style="text-align:left">
     <form action="/manageraccountsservlet">
-        <input type="submit" value="Create new Manager Account" name="newmanager">
-        <h3>Managers</h3>
-        <table border="1">
+        <input type="submit" class="prettybutton" value="Create new Manager Account" name="newmanager">
+        <h3 style="color:#2c71c9;">Managers</h3>
+        <table class="prettytable" border="1">
             <tr>
                 <th>Last Name</th>
                 <th>First Name</th>
@@ -50,7 +50,7 @@
                 <td><%=m.getEmail()%></td>
                 <td><%=m.getPhoneNumber()%></td>
                 <form action="/manageraccountsservlet">
-                <td style="text-align:center"><input type="submit" value="Delete" name="<%=m.getEmail()%>"></td>
+                <td style="text-align:center"><input type="submit" class="prettybutton" value="Delete" name="<%=m.getEmail()%>"></td>
                 </form>
             </tr>
             <%}%>
@@ -61,9 +61,32 @@
 <div id="Flight Schedule" class="tabcontent">
     <%@ include file="flights.jsp"%>
 </div>
+
 <div id="Manage Aircraft" class="tabcontent">
-    <h3>Manage Aircraft</h3>
-    <p></p>
+    <form action="/manageaircraftservlet">
+        <input type="submit" class="prettybutton" style="bottom-padding:10px;float:left" value="Add Aircraft" name="newaircraft">
+        <br>
+        <h3 style="color:#2c71c9;float:left">Aircraft</h3>
+        <table class="prettytable" border="1">
+            <tr>
+                <th>Name</th>
+                <th>Classes</th>
+                <th>Number</th>
+                <th>Manage</th>
+            </tr>
+            <tr>
+                <td>Boeing 777</td>
+                <td>
+                    First Class: 40 seats
+                    <br>
+                    Economy Class: 160 seats
+                </td>
+                <td>8</td>
+                <td style="text-align:center"><input type="submit" class="prettybutton" value="Edit" name="editaircraft">
+                <input type="submit" class="prettybutton" value="Delete" name="deleteaircraft"></td>
+            </tr>
+        </table>
+    </form>
 </div>
 </body>
 </html>
