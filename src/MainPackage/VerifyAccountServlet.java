@@ -88,7 +88,6 @@ public class VerifyAccountServlet extends HttpServlet{
             stmt.setBoolean(7, is_manager);
             stmt.setInt(8,code);
             stmt.execute();
-            session.removeAttribute("code");
             session.removeAttribute("verifymessage");
             con.close();
         }catch(SQLException e){

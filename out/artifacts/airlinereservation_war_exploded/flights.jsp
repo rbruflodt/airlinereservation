@@ -69,7 +69,7 @@
         <tr>
             <td>Iowa City, IA<br>4/14/17 4:00 PM (CST)</td>
             <td>Atlanta, GA<br>4/14/17 8:00 PM (EST)</td>
-            <td>$400</td>
+            <td>Economy Class $400</td>
             <%if(user!=null&&user.isAdmin()){%>
             <td>Group 1</td>
             <td>Weekly: Mon Wed Fri Sat Sun</td>

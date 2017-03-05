@@ -28,7 +28,7 @@
     <input type="password" name="confirmpassword">
 </div>
     <% if(session.getAttribute("errormessage")!=null){%>
-    <div style="font-weight:bold;color:#932013; padding:5px">
+    <div style="font-weight:bold;color:#db8c3e; padding:5px">
         <%=session.getAttribute("errormessage")%>
     </div>
     <%session.removeAttribute("errormessage");}%>

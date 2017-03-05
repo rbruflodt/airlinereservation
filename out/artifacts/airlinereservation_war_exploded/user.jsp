@@ -35,7 +35,8 @@
             <td>John Smith</td>
             <td>Iowa City, IA<br>4/14/17 4:00 PM (CST)</td>
             <td>Atlanta, GA<br>4/14/17 8:00 PM (EST)</td>
-            <td style="text-align:center"><input type="submit" class="prettybutton" value="Cancel Ticket" name="editaircraft"></td>
+            <td style="text-align:center;"><input type="submit" class="prettybutton" value="Print Ticket" name="printticket">
+                <input type="submit" class="prettybutton" value="Cancel Ticket" name="cancelticket"></td>
         </tr>
     </table>
     <%}%>
