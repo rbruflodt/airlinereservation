@@ -52,10 +52,5 @@
     </div>
 </body>
 </html>
-<style>
-    .prettybutton{
-        background-color: #2c71c9;
-        color:white;
-    }
-</style>
+
 

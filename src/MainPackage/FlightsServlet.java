@@ -13,5 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 public class FlightsServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {
+        response.sendRedirect("/index.jsp");
     }
 }
