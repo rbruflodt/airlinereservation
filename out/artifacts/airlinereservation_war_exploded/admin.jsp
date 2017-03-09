@@ -1,4 +1,7 @@
-<%@ page import="MainPackage.ManagerAccountsServlet" %><%--
+<%@ page import="MainPackage.ManagerAccountsServlet" %>
+<%@ page import="MainPackage.Aircraft" %>
+<%@ page import="MainPackage.ManageAircraftServlet" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Rachel
   Date: 2/13/2017
@@ -15,21 +18,8 @@
 <div class="tab">
     <a style="width:230px" href="javascript:void(0)" id="defaultOpen" class="tablinks" onclick="openTab(event,'Manager Accounts')">Manager Accounts</a>
     <a style="width:230px" href="javascript:void(0)" class="tablinks" onclick="openTab(event,'Flight Schedule')">Flight Schedule</a>
-    <a style="width:230px" href="javascript:void(0)" class="tablinks" onclick="openTab(event,'Manage Aircraft')">Manage Aircraft</a>
+    <a style="width:230px" href="javascript:void(0)" id="ManageAircraft" class="tablinks" onclick="openTab(event,'Manage Aircraft')">Manage Aircraft</a>
 </div>
-
-<%if(session.getAttribute("currenttab")!=null){
-    if(session.getAttribute("currenttab").equals("Flight Schedule")){%>
-        <script>
-            openTab(event,"Flight Schedule")
-        </script>
-    <%}
-    else if(session.getAttribute("currenttab").equals("Manage Aircraft")){%>
-        <script>
-            openTab(event,"Manage Aircraft")
-        </script>
-    <%}
-}%>
 
 <div id="Manager Accounts" class="tabcontent" style="text-align:left">
     <form action="/manageraccountsservlet">
@@ -68,28 +58,38 @@
         <input type="submit" class="prettybutton" style="bottom-padding:10px;float:left" value="Add Aircraft" name="newaircraft">
         <br>
         <h3 style="color:#2c71c9;float:left">Aircraft</h3>
+        <% ArrayList<Aircraft> aircrafts = ManageAircraftServlet.getAircraft();%>
         <table class="prettytable" border="1">
             <tr>
                 <th>Name</th>
                 <th>Type</th>
                 <th>Classes</th>
-                <th>Number</th>
                 <th>Manage</th>
             </tr>
+            <% for(Aircraft a : aircrafts){%>
             <tr>
-                <td>Group 1</td>
-                <td>Boeing 777</td>
+                <td><input type="text" style="text-align:center" size="10" name="<%="name"+a.getName()%>" value="<%=a.getName()%>"></td>
+                <td><select id="type" name="<%="type"+a.getName()%>">
+                    <option <%if (a.getAircraft_type().equals("Boeing 777")) {%>selected<%}%>>Boeing 777</option>
+                    <option <%if (a.getAircraft_type().equals("Boeing 767")) {%>selected<%}%>>Boeing 767</option>
+                    <option <%if (a.getAircraft_type().equals("Boeing 747")) {%>selected<%}%>>Boeing 747</option>
+                    <option <%if (a.getAircraft_type().equals("Airbus 380")) {%>selected<%}%>>Airbus 380</option>
+                </select></td>
                 <td>
-                    <table>
-                    <tr><td>First Class</td><td>40 seats</td></tr>
+                    <table style="padding:1px">
+                        <% if(a.getClasses()!=null){for(int i = 0; i<a.getClasses().size();i++){%>
+                    <tr><td><input type="text" size="10" style="text-align:center" name="<%="class"+a.getName()+a.getClasses().get(i)%>" value="<%=a.getClasses().get(i)%>"></td>
+                        <td><input type="number" style="width:50px;text-align:center" min="0" name="<%="seats"+a.getName()+a.getClasses().get(i)%>" value=<%=a.getSeats().get(i)%>> seats</td>
+                    <td><input type="submit" class="prettybutton" name="<%="deleteclass"+a.getName()+a.getClasses().get(i)%>" value="X"></td></tr>
                     <br>
-                    <tr><td>Economy Class</td><td>160 seats</td></tr>
+                        <%}}%>
                     </table>
+                    <input style="float:left" class="prettybutton" value="Add Class" type="submit" name="<%=a.getName()%>">
                 </td>
-                <td>8</td>
-                <td style="text-align:center"><input type="submit" class="prettybutton" value="Edit" name="editaircraft">
-                <input type="submit" class="prettybutton" value="Delete" name="deleteaircraft"></td>
+                <td style="text-align:center"><input type="submit" class="prettybutton" value="Save Changes" name="<%=a.getName()%>">
+                <input type="submit" class="prettybutton" value="Delete" name="<%=a.getName()%>"></td>
             </tr>
+            <%}%>
         </table>
     </form>
 </div>

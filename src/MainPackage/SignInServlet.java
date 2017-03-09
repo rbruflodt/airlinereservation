@@ -26,6 +26,7 @@ public class SignInServlet extends HttpServlet {
         }
         else if(request.getParameter("signout")!=null){
             session.removeAttribute("currentuser");
+            session.removeAttribute("currenttab");
            response.sendRedirect("/index.jsp");
         }
         else if(request.getParameter("newpassword")!=null){

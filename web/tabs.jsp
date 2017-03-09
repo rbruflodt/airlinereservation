@@ -67,6 +67,13 @@
         // Show the current tab, and add an "active" class to the link that opened the tab
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
+
     }
+    <%if(session.getAttribute("currenttab")!=null){%>
+    document.getElementById('<%=session.getAttribute("currenttab")%>').click();
+    <%
+    session.removeAttribute("currenttab");}
+    else{%>
     document.getElementById("defaultOpen").click();
+    <%};%>
 </script>

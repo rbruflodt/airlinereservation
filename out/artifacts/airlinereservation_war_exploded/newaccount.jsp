@@ -26,7 +26,7 @@
             </div>
             <div style="padding:10px">
             <span>Phone number: </span>
-            <input type="number" name="phone number" style="float:right" value="<%=currentInfo.getPhoneNumber()%>">
+            <input type="number" name="phone number" min="1000000000" max="9999999999" style="float:right" value="<%=currentInfo.getPhoneNumber()%>">
               </div>
             <div style="padding:10px">
                 <span>Email address: </span>

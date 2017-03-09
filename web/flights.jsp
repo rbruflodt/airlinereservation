@@ -31,7 +31,7 @@
             <option>San Fransisco, CA</option>
         </select>
         <label for="numpassengers">Passengers: </label>
-        <input type="number" id="numpassengers" style="width:50px">
+        <input type="number" id="numpassengers" min="1" style="width:50px">
         <input type="radio" id="oneway" name="radio" value="oneway">
         <label for="oneway">One way </label>
         <input type="radio" id="roundtrip" name="radio" value="roundtrip">
