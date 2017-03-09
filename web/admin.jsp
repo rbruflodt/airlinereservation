@@ -57,8 +57,33 @@
     <form action="/manageaircraftservlet">
         <input type="submit" class="prettybutton" style="bottom-padding:10px;float:left" value="Add Aircraft" name="newaircraft">
         <br>
-        <h3 style="color:#2c71c9;float:left">Aircraft</h3>
-        <% ArrayList<Aircraft> aircrafts = ManageAircraftServlet.getAircraft();%>
+        <div style="float:left;height:10px;padding-top:15px">
+        <label for="namefield" >Name: </label>
+            <%if(session.getAttribute("namefield")!=null){%>
+        <input type="search" size="15" value="<%=session.getAttribute("namefield")%>" id="namefield" name="namefield">
+            <%}else{%>
+            <input type="search" size="15" id="namefield" name="namefield">
+            <%}%>
+        <label for="typefield">Type: </label>
+        <select id="typefield" name="typefield">
+            <option></option>
+            <option <%if (session.getAttribute("typefield")!=null&&session.getAttribute("typefield").equals("Boeing 777")) {%>selected<%}%>>Boeing 777</option>
+            <option <%if (session.getAttribute("typefield")!=null&&session.getAttribute("typefield").equals("Boeing 767")) {%>selected<%}%>>Boeing 767</option>
+            <option <%if (session.getAttribute("typefield")!=null&&session.getAttribute("typefield").equals("Boeing 747")) {%>selected<%}%>>Boeing 747</option>
+            <option <%if (session.getAttribute("typefield")!=null&&session.getAttribute("typefield").equals("Airbus 380")) {%>selected<%}%>>Airbus 380</option>
+        </select>
+        <input type="submit" class="prettybutton" name="searchaircraft" value="Search">
+        </div>
+        <br>
+        <br>
+            <div>
+        <h3 style="color:#2c71c9;float:left;">Aircraft</h3>
+
+
+        <%if(session.getAttribute("aircrafterror")!=null){%>
+        <h4 style="color:#903723;"><%=session.getAttribute("aircrafterror")%></h4>
+        <% session.removeAttribute("aircrafterror");}%>
+        <% ArrayList<Aircraft> aircrafts = ManageAircraftServlet.getAircraft(session);%>
         <table class="prettytable" border="1">
             <tr>
                 <th>Name</th>
@@ -91,6 +116,7 @@
             </tr>
             <%}%>
         </table>
+        </div>
     </form>
 </div>
 </body>

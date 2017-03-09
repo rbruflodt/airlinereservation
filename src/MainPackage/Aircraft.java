@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Rachel on 3/9/2017.
  */
-public class Aircraft {
+public class Aircraft implements Comparable<Aircraft>{
     public String name;
     public String aircraft_type;
     public ArrayList<String> classes;
@@ -14,6 +14,11 @@ public class Aircraft {
     public Aircraft(String name, String type){
         this.name=name;
         aircraft_type=type;
+    }
+
+    @Override
+    public int compareTo(Aircraft aircraft){
+        return name.compareTo(aircraft.getName());
     }
 
     public String getName() {
