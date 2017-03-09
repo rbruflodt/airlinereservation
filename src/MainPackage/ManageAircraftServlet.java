@@ -63,8 +63,6 @@ public class ManageAircraftServlet  extends HttpServlet {
                         stmt.execute(query);
                         query="delete from seats where aircraft_name='"+aircrafts.get(i).getName()+"'";
                         stmt.execute(query);
-                        session.setAttribute("namefield",aircrafts.get(i).getName());
-                        session.setAttribute("typefield","");
                     }
                 else if(request.getParameter(aircrafts.get(i).getName()).equals("Save Changes")) {
                     String aircrafterror="";
@@ -120,6 +118,8 @@ public class ManageAircraftServlet  extends HttpServlet {
                             if (request.getParameter("deleteclass" + aircrafts.get(i).getName() + aircrafts.get(i).getClasses().get(j)) != null) {
                                 query = "delete from seats where (aircraft_name='" + aircrafts.get(i).getName() + "') and (class='" + aircrafts.get(i).getClasses().get(j) + "')";
                                 stmt.execute(query);
+                                session.setAttribute("namefield",aircrafts.get(i).getName());
+                                session.setAttribute("typefield","");
                             }
                         }
                     }
