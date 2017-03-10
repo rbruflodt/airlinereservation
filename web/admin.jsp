@@ -1,7 +1,11 @@
 <%@ page import="MainPackage.ManagerAccountsServlet" %>
 <%@ page import="MainPackage.Aircraft" %>
 <%@ page import="MainPackage.ManageAircraftServlet" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="sun.misc.Request" %>
+
+
+<%--
   Created by IntelliJ IDEA.
   User: Rachel
   Date: 2/13/2017
@@ -16,9 +20,9 @@
 </head>
 <body>
 <div class="tab">
-    <a style="width:230px" href="javascript:void(0)" id="defaultOpen" class="tablinks" onclick="openTab(event,'Manager Accounts')">Manager Accounts</a>
-    <a style="width:230px" href="javascript:void(0)" class="tablinks" onclick="openTab(event,'Flight Schedule')">Flight Schedule</a>
-    <a style="width:230px" href="javascript:void(0)" id="ManageAircraft" class="tablinks" onclick="openTab(event,'Manage Aircraft')">Manage Aircraft</a>
+    <a style="width:230px" href="javascript:void(0)" name="Manager Accounts" id="defaultOpen" class="tablinks" onclick="openTab(event,'Manager Accounts')">Manager Accounts</a>
+    <a style="width:230px" href="javascript:void(0)" name="Flight Schedule" class="tablinks" onclick="openTab(event,'Flight Schedule')">Flight Schedule</a>
+    <a style="width:230px" href="javascript:void(0)" name="Manage Aircraft" class="tablinks" onclick="openTab(event,'Manage Aircraft')">Manage Aircraft</a>
 </div>
 
 <div id="Manager Accounts" class="tabcontent" style="text-align:left">
@@ -101,17 +105,17 @@
                     <option <%if (a.getAircraft_type().equals("Airbus 380")) {%>selected<%}%>>Airbus 380</option>
                 </select></td>
                 <td>
-                    <table style="padding:1px">
+                    <table style="padding:1px;">
                         <% if(a.getClasses()!=null){for(int i = 0; i<a.getClasses().size();i++){%>
                     <tr><td><input type="text" size="10" style="text-align:center" name="<%="class"+a.getName()+a.getClasses().get(i)%>" value="<%=a.getClasses().get(i)%>"></td>
                         <td><input type="number" style="width:50px;text-align:center" min="0" name="<%="seats"+a.getName()+a.getClasses().get(i)%>" value=<%=a.getSeats().get(i)%>> seats</td>
-                    <td><input type="submit" class="prettybutton" name="<%="deleteclass"+a.getName()+a.getClasses().get(i)%>" value="X"></td></tr>
+                    <td><input type="submit" class="prettybutton" onclick="getScroll()" name="<%="deleteclass"+a.getName()+a.getClasses().get(i)%>" value="X"></td></tr>
                     <br>
                         <%}}%>
                     </table>
-                    <input style="float:left" class="prettybutton" value="Add Class" type="submit" name="<%=a.getName()%>">
+                    <input style="float:left" class="prettybutton" value="Add Class" onclick="getScroll()" type="submit" name="<%=a.getName()%>">
                 </td>
-                <td style="text-align:center"><input type="submit" class="prettybutton" value="Save Changes" name="<%=a.getName()%>">
+                <td style="text-align:center"><input type="submit" onclick="getScroll()" class="prettybutton" value="Save Changes" name="<%=a.getName()%>">
                 <input type="submit" class="prettybutton" value="Delete" name="<%=a.getName()%>"></td>
             </tr>
             <%}%>
@@ -122,3 +126,5 @@
 </body>
 </html>
 <%@ include file="tabs.jsp"%>
+
+

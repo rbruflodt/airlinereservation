@@ -24,7 +24,7 @@
             <div style="padding:5px">Password: </div>
             <input type="password" name="password">
         <div style="padding:5px">
-            <input type="submit" class="signinbutton" name="signin" value="Sign in">
+            <input type="submit" class="signinbutton" name="signin" onclick="Delete_Cookie('currentTab')" value="Sign in">
             <input type="submit" class="signinbutton"name="newaccount" value="Create account">
         </div>
                 <%if(session.getAttribute("verificationoption")!=null){%>
@@ -45,7 +45,7 @@
         %>
         <h3>Welcome, <%=user.getFirstName() + " "+user.getLastName()+"!"%></h3>
         <form action="/signin">
-            <input type="submit" class="signinbutton" name="signout" value="Sign out">
+            <input type="submit" class="signinbutton" onclick="Delete_Cookie('currentTab')" name="signout" value="Sign out">
             <input type="submit" class="signinbutton" name="newpassword" value="Change password">
         </form>
         <% if(session.getAttribute("newpasswordmessage")!=null){%>

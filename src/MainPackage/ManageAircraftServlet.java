@@ -18,7 +18,6 @@ public class ManageAircraftServlet  extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {
         HttpSession session = request.getSession(true);
-        session.setAttribute("currenttab","ManageAircraft");
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
@@ -55,8 +54,6 @@ public class ManageAircraftServlet  extends HttpServlet {
                         }
                         query = "insert into seats (class, max_seats, remaining_seats, aircraft_name, price) values ('Class " + String.valueOf(size + 1) + "', 0, 0, '" + aircrafts.get(i).getName() + "', 0)";
                         stmt.execute(query);
-                        session.setAttribute("namefield",aircrafts.get(i).getName());
-                        session.setAttribute("typefield","");
                     }
                     else if(request.getParameter(aircrafts.get(i).getName()).equals("Delete")){
                         query="delete from aircraft where name='"+aircrafts.get(i).getName()+"'";
@@ -82,8 +79,6 @@ public class ManageAircraftServlet  extends HttpServlet {
                                             "max_seats=" + (request.getParameter("seats" + aircrafts.get(i).getName() + aircrafts.get(i).getClasses().get(j)) + " " +
                                             "where (class='" + aircrafts.get(i).getClasses().get(j)) + "') and (aircraft_name='" + aircrafts.get(i).getName() + "')";
                                     stmt.execute(query);
-                                    session.setAttribute("namefield",aircrafts.get(i).getName());
-                                    session.setAttribute("typefield","");
                                 }
                             }
                         }
@@ -104,8 +99,6 @@ public class ManageAircraftServlet  extends HttpServlet {
                                     "aircraft_name='"+request.getParameter("name" + aircrafts.get(i).getName())+"' " +
                                     "where aircraft_name='"+aircrafts.get(i).getName()+"'";
                             stmt.execute(query);
-                            session.setAttribute("namefield",request.getParameter("name" + aircrafts.get(i).getName()));
-                            session.setAttribute("typefield","");
                         }
 
                         session.setAttribute("aircrafterror",aircrafterror);
@@ -118,8 +111,6 @@ public class ManageAircraftServlet  extends HttpServlet {
                             if (request.getParameter("deleteclass" + aircrafts.get(i).getName() + aircrafts.get(i).getClasses().get(j)) != null) {
                                 query = "delete from seats where (aircraft_name='" + aircrafts.get(i).getName() + "') and (class='" + aircrafts.get(i).getClasses().get(j) + "')";
                                 stmt.execute(query);
-                                session.setAttribute("namefield",aircrafts.get(i).getName());
-                                session.setAttribute("typefield","");
                             }
                         }
                     }
