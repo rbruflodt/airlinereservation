@@ -54,7 +54,106 @@
 </div>
 
 <div id="Flight Schedule" class="tabcontent">
-    <%@ include file="flights.jsp"%>
+    <form action="/adminflightservlet" style="padding:10px; text-align:left; border-bottom:solid 1px #ccc">
+        <h3 style="color:#2c71c9;">Search For Flights</h3>
+        <label for="flightidfield" >Flight ID: </label>
+        <%if(session.getAttribute("flightidfield")!=null){%>
+        <input type="search" size="15" value="<%=session.getAttribute("flightidfield")%>" id="flightidfield" name="flightidfield">
+        <%}else{%>
+        <input type="search" size="10" id="flightidfield" name="flightidfield">
+        <%}%>
+        <label for="aircraftnamefield" >Aircraft name: </label>
+        <%if(session.getAttribute("aircraftnamefield")!=null){%>
+        <input type="search" size="15" value="<%=session.getAttribute("aircraftnamefield")%>" id="aircraftnamefield" name="aircraftnamefield">
+        <%}else{%>
+        <input type="search" size="10" id="aircraftnamefield" name="aircraftnamefield">
+        <%}%>
+        <label for="from">From: </label>
+        <select id="from">
+            <option></option>
+            <option>Iowa City, IA</option>
+            <option>Chicago, IL</option>
+            <option>New York City, NY</option>
+            <option>Atlanta, GA</option>
+            <option>San Fransisco, CA</option>
+        </select>
+        <label for="to">To: </label>
+        <select id="to">
+            <option></option>
+            <option>Iowa City, IA</option>
+            <option>Chicago, IL</option>
+            <option>New York City, NY</option>
+            <option>Atlanta, GA</option>
+            <option>San Fransisco, CA</option>
+        </select>
+        <br>
+        <input type="submit" class="prettybutton" name="searchflights" value="Search">
+    </form>
+    <input type="submit" class="prettybutton" name="newflight" value="Add new flight" style="float:left">
+    <br>
+    <table class="prettytable" border="1">
+        <tr>
+            <th>Flight ID</th>
+            <th>Depart</th>
+            <th>Arrive</th>
+            <th>Aircraft</th>
+            <th>Manage</th>
+        </tr>
+        <%ArrayList<Flight> flights = FlightsServlet.getFlights(session);
+            session.removeAttribute("namefield");
+            session.removeAttribute("typefield");
+            ArrayList<Aircraft> flight_aircraft = ManageAircraftServlet.getAircraft(session);
+            for(Flight f : flights){%>
+        <tr>
+            <form action="/adminflightservlet">
+            <td><input type="text" style="width:100px" name="<%="name"+f.getFlight_id()%>" value="<%=f.getFlight_id()%>"></td>
+            <td><select name="<%="depart_city"+f.getFlight_id()%>">
+                <option <%if (f.getDepart_city().equals("Iowa City, IA")) {%>selected<%}%>>Iowa City, IA</option>
+                <option <%if (f.getDepart_city().equals("Chicago, IL")) {%>selected<%}%>>Chicago, IL</option>
+                <option <%if (f.getDepart_city().equals("New York City, NY")) {%>selected<%}%>>New York City, NY</option>
+                <option <%if (f.getDepart_city().equals("Atlanta, GA")) {%>selected<%}%>>Atlanta, GA</option>
+                <option <%if (f.getDepart_city().equals("San Fransisco, CA")) {%>selected<%}%>>San Fransisco, CA</option>
+            </select> <br>
+                <input type="number" style="width:50px" value="<%=f.getDepart_time().substring(0,1)%>">: <input type="number" style="width:50px" value="<%=f.getDepart_time().substring(2,4)%>">
+                <select name ="<%="depart_AMPM"+f.getDepart_AMPM()%>">
+                    <option <%if (f.getDepart_AMPM().equals("AM")) {%>selected<%}%>>AM</option>
+                    <option <%if (f.getDepart_AMPM().equals("PM")) {%>selected<%}%>>PM</option>
+                </select>
+                <select name ="<%="depart_timezone"+f.getDepart_timezone()%>">
+                    <option <%if (f.getDepart_timezone().equals("CST")) {%>selected<%}%>>CST</option>
+                    <option <%if (f.getDepart_timezone().equals("EST")) {%>selected<%}%>>EST</option>
+                    <option <%if (f.getDepart_timezone().equals("PDT")) {%>selected<%}%>>PDT</option>
+                </select>
+            </td>
+            <td><select name="<%="arrive_city"+f.getFlight_id()%>">
+                <option <%if (f.getArrive_city().equals("Iowa City, IA")) {%>selected<%}%>>Iowa City, IA</option>
+                <option <%if (f.getArrive_city().equals("Chicago, IL")) {%>selected<%}%>>Chicago, IL</option>
+                <option <%if (f.getArrive_city().equals("New York City, NY")) {%>selected<%}%>>New York City, NY</option>
+                <option <%if (f.getArrive_city().equals("Atlanta, GA")) {%>selected<%}%>>Atlanta, GA</option>
+                <option <%if (f.getArrive_city().equals("San Fransisco, CA")) {%>selected<%}%>>San Fransisco, CA</option>
+            </select><br>
+                <input type="number" style="width:50px" value="<%=f.getArrive_time().substring(0,1)%>">: <input type="number" style="width:50px" value="<%=f.getArrive_time().substring(2,4)%>">
+                <select name ="<%="arrive_AMPM"+f.getDepart_AMPM()%>">
+                    <option <%if (f.getArrive_AMPM().equals("AM")) {%>selected<%}%>>AM</option>
+                    <option <%if (f.getArrive_AMPM().equals("PM")) {%>selected<%}%>>PM</option>
+                </select>
+                <select name ="<%="arrive_timezone"+f.getDepart_timezone()%>">
+                    <option <%if (f.getArrive_timezone().equals("CST")) {%>selected<%}%>>CST</option>
+                    <option <%if (f.getArrive_timezone().equals("EST")) {%>selected<%}%>>EST</option>
+                    <option <%if (f.getArrive_timezone().equals("PDT")) {%>selected<%}%>>PDT</option>
+                </select></td>
+            <td><select name="<%="aircraft"+f.getFlight_id()%>">
+                <%for(Aircraft a : flight_aircraft){%>
+                <option <% if (f.getAircraft_name().equals(a.getName())) {%>selected<%}%>><%=a.getName()%></option>
+                <%}%>
+            </select></td>
+            <td><input type="submit" class="prettybutton" value="Edit" name="<%="edit"+f.getFlight_id()%>">
+                <input type="submit" class="prettybutton" value="Save" name="<%="save"+f.getFlight_id()%>">
+                <input type="submit" class="prettybutton" value="Delete" name="<%="delete"+f.getFlight_id()%>"></td>
+            </form>
+        </tr>
+        <%}%>
+    </table>
 </div>
 
 <div id="Manage Aircraft" class="tabcontent">
@@ -66,7 +165,7 @@
             <%if(session.getAttribute("namefield")!=null){%>
         <input type="search" size="15" value="<%=session.getAttribute("namefield")%>" id="namefield" name="namefield">
             <%}else{%>
-            <input type="search" size="15" id="namefield" name="namefield">
+            <input type="search" size="10" id="namefield" name="namefield">
             <%}%>
         <label for="typefield">Type: </label>
         <select id="typefield" name="typefield">

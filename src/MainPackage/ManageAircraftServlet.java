@@ -52,7 +52,7 @@ public class ManageAircraftServlet  extends HttpServlet {
                         else{
                             size = 0;
                         }
-                        query = "insert into seats (class, max_seats, remaining_seats, aircraft_name, price) values ('Class " + String.valueOf(size + 1) + "', 0, 0, '" + aircrafts.get(i).getName() + "', 0)";
+                        query = "insert into seats (class, max_seats, aircraft_name, price) values ('Class " + String.valueOf(size + 1) + "', 0, '" + aircrafts.get(i).getName() + "', 0)";
                         stmt.execute(query);
                     }
                     else if(request.getParameter(aircrafts.get(i).getName()).equals("Delete")){
@@ -144,7 +144,7 @@ public class ManageAircraftServlet  extends HttpServlet {
             else{
                 ArrayList<Aircraft> aircrafts= new ArrayList<>();
                 do{
-                    if(session.getAttribute("namefield")==null||rs.getString("name").indexOf((String)(session.getAttribute("namefield")))==0) {
+                    if(session.getAttribute("namefield")==null||rs.getString("name").toLowerCase().indexOf(((String)(session.getAttribute("namefield"))).toLowerCase())==0) {
                          aircrafts.add(new Aircraft(rs.getString("name"), rs.getString("type")));
                     }
                 }

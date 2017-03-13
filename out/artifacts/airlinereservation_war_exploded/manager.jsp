@@ -13,8 +13,8 @@
 </head>
 <body>
 <div class="tab">
-    <a style="width:363px" href="javascript:void(0)" id="defaultOpen" class="tablinks" onclick="openTab(event, 'Flights')">Flights</a>
-    <a style="width:363px" href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Passenger Tickets')">Passenger Tickets</a>
+    <a style="width:363px" href="javascript:void(0)" name="Flights" id="defaultOpen" class="tablinks" onclick="openTab(event, 'Flights')">Flights</a>
+    <a style="width:363px" href="javascript:void(0)" name="Passenger Tickets" class="tablinks" onclick="openTab(event, 'Passenger Tickets')">Passenger Tickets</a>
 </div>
 
 <div id="Flights" class="tabcontent">

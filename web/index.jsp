@@ -25,11 +25,11 @@
             <input type="password" name="password">
         <div style="padding:5px">
             <input type="submit" class="signinbutton" name="signin" onclick="Delete_Cookie('currentTab')" value="Sign in">
-            <input type="submit" class="signinbutton"name="newaccount" value="Create account">
+            <input type="submit" class="signinbutton"name="newaccount" onclick="Delete_Cookie('currentTab')" value="Create account">
         </div>
                 <%if(session.getAttribute("verificationoption")!=null){%>
                 <p style="font-weight:bold;color:#903723">Account not verified.</p>
-                <input type="submit" class="signinbutton" name="verifyaccount" value="Verify Account">
+                <input type="submit" class="signinbutton" onclick="Delete_Cookie('currentTab')" name="verifyaccount" value="Verify Account">
                 <%session.removeAttribute("verificationoption");}%>
             </form>
         <%if(session.getAttribute("loginmessage")!=null){%>
@@ -46,7 +46,7 @@
         <h3>Welcome, <%=user.getFirstName() + " "+user.getLastName()+"!"%></h3>
         <form action="/signin">
             <input type="submit" class="signinbutton" onclick="Delete_Cookie('currentTab')" name="signout" value="Sign out">
-            <input type="submit" class="signinbutton" name="newpassword" value="Change password">
+            <input type="submit" class="signinbutton" onclick="Delete_Cookie('currentTab')" name="newpassword" value="Change password">
         </form>
         <% if(session.getAttribute("newpasswordmessage")!=null){%>
         <%=session.getAttribute("newpasswordmessage")%>

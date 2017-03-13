@@ -11,7 +11,7 @@
 <head>
     <title>Iowa Air New Password</title>
 </head>
-<body style="color:white;heigt:1200px;background:url(Images/homebackground.jpg)">
+<body style="color:white;height:1200px;background:url(Images/homebackground.jpg)">
 <h1>New Password</h1>
 <form action="/newpasswordservlet">
     <div style="padding:10px">

@@ -9,8 +9,8 @@
 <html>
 <link rel="stylesheet" href="/style.css">
 <div class="tab">
-    <a style="width:363px" href="javascript:void(0)" id="defaultOpen" class="tablinks" onclick="openTab(event, 'Flights')">Flights</a>
-    <a style="width:363px" href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Reservations')">Reservations</a>
+    <a style="width:363px" href="javascript:void(0)" name="Flights" id="defaultOpen" class="tablinks" onclick="openTab(event, 'Flights')">Flights</a>
+    <a style="width:363px" href="javascript:void(0)" name="Reservations" class="tablinks" onclick="openTab(event, 'Reservations')">Reservations</a>
 </div>
 
 <div id="Flights" class="tabcontent">

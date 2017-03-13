@@ -115,8 +115,8 @@
 
     function Refresh()
     {
-        document.cookie = 'scrollTop=' + '0';
-        document.cookie = 'scrollLeft=' + '0';
+        document.cookie = 'scrollTop=' + f_scrollTop();
+        document.cookie = 'scrollLeft=' + f_scrollLeft();
         document.location.reload(true);
     }
 

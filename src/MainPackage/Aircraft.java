@@ -6,10 +6,10 @@ import java.util.ArrayList;
  * Created by Rachel on 3/9/2017.
  */
 public class Aircraft implements Comparable<Aircraft>{
-    public String name;
-    public String aircraft_type;
-    public ArrayList<String> classes;
-    public ArrayList<Integer> seats;
+    private String name;
+    private String aircraft_type;
+    private ArrayList<String> classes;
+    private ArrayList<Integer> seats;
 
     public Aircraft(String name, String type){
         this.name=name;
