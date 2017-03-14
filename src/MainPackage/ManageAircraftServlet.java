@@ -28,13 +28,19 @@ public class ManageAircraftServlet  extends HttpServlet {
             int size;
             if(aircrafts!=null){
                 size = aircrafts.size();
+                ResultSet rs;
+                do{
+                    size++;
+                    query="select * from aircraft where name='Aircraft "+String.valueOf(size)+"'";
+                    rs=stmt.executeQuery(query);
+                }while(rs.next());
             }
             else{
-                size = 0;
+                size = 1;
             }
             session.setAttribute("namefield","Aircraft "+String.valueOf(size+1));
             session.setAttribute("typefield","");
-            query="insert into aircraft (name, type) values('Aircraft "+String.valueOf(size+1)+"','Boeing 777')";
+            query="insert into aircraft (name, type) values('Aircraft "+String.valueOf(size)+"','Boeing 777')";
             stmt.execute(query);
         }
         else if(request.getParameter("searchaircraft")!=null){
@@ -48,11 +54,18 @@ public class ManageAircraftServlet  extends HttpServlet {
                         int size;
                         if(aircrafts.get(i).getClasses()!=null){
                             size = aircrafts.get(i).getClasses().size();
+                            ResultSet rs;
+                            do{
+                                size++;
+                                query="select * from seats where aircraft_name='"+aircrafts.get(i).getName()+"' and class='Class "+size+"'";
+                                rs=stmt.executeQuery(query);
+
+                            }while(rs.next());
                         }
                         else{
-                            size = 0;
+                            size = 1;
                         }
-                        query = "insert into seats (class, max_seats, aircraft_name, price) values ('Class " + String.valueOf(size + 1) + "', 0, '" + aircrafts.get(i).getName() + "', 0)";
+                        query = "insert into seats (class, max_seats, aircraft_name) values ('Class " + String.valueOf(size) + "', 0, '" + aircrafts.get(i).getName() + "')";
                         stmt.execute(query);
                     }
                     else if(request.getParameter(aircrafts.get(i).getName()).equals("Delete")){

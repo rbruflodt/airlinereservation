@@ -26,7 +26,12 @@ public class SignInServlet extends HttpServlet {
         }
         else if(request.getParameter("signout")!=null){
             session.removeAttribute("currentuser");
-            session.removeAttribute("currenttab");
+            session.removeAttribute("namefield");
+            session.removeAttribute("typefield");
+            session.removeAttribute("flightidfield");
+            session.removeAttribute("aircraftnamefield");
+            session.removeAttribute("fromfield");
+            session.removeAttribute("tofield");
            response.sendRedirect("/index.jsp");
         }
         else if(request.getParameter("newpassword")!=null){

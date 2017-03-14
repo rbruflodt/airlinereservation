@@ -9,10 +9,12 @@ public class Flight {
     private String depart_city;
     private String arrive_city;
     private String aircraft_name;
-    private String depart_time;
+    private int depart_hours;
+    private int depart_minutes;
     private String depart_AMPM;
     private String depart_timezone;
-    private String arrive_time;
+    private int arrive_hours;
+    private int arrive_minutes;
     private String arrive_AMPM;
     private String arrive_timezone;
     private String flight_id;
@@ -20,20 +22,54 @@ public class Flight {
     private String weekly;
     private String monthly;
 
-    public Flight(String depart_city, String arrive_city, String aircraft_name, String depart_time, String depart_AMPM, String depart_timezone, String arrive_time, String arrive_AMPM, String arrive_timezone, String flight_id, String once, String weekly, String monthly) {
+    public Flight(String depart_city, String arrive_city, String aircraft_name, int depart_hours, int depart_minutes, String depart_AMPM, String depart_timezone, int arrive_hours, int arrive_minutes, String arrive_AMPM, String arrive_timezone, String flight_id, String once, String weekly, String monthly) {
         this.depart_city = depart_city;
         this.arrive_city = arrive_city;
         this.aircraft_name = aircraft_name;
-        this.depart_time = depart_time;
+        this.depart_hours = depart_hours;
+        this.depart_minutes = depart_minutes;
         this.depart_AMPM = depart_AMPM;
         this.depart_timezone = depart_timezone;
-        this.arrive_time = arrive_time;
+        this.arrive_hours = arrive_hours;
+        this.arrive_minutes = arrive_minutes;
         this.arrive_AMPM = arrive_AMPM;
         this.arrive_timezone = arrive_timezone;
         this.flight_id = flight_id;
         this.once = once;
         this.weekly = weekly;
         this.monthly = monthly;
+    }
+
+    public int getDepart_hours() {
+        return depart_hours;
+    }
+
+    public void setDepart_hours(int depart_hours) {
+        this.depart_hours = depart_hours;
+    }
+
+    public int getDepart_minutes() {
+        return depart_minutes;
+    }
+
+    public void setDepart_minutes(int depart_minutes) {
+        this.depart_minutes = depart_minutes;
+    }
+
+    public int getArrive_hours() {
+        return arrive_hours;
+    }
+
+    public void setArrive_hours(int arrive_hours) {
+        this.arrive_hours = arrive_hours;
+    }
+
+    public int getArrive_minutes() {
+        return arrive_minutes;
+    }
+
+    public void setArrive_minutes(int arrive_minutes) {
+        this.arrive_minutes = arrive_minutes;
     }
 
     public String getOnce() {
@@ -126,20 +162,5 @@ public class Flight {
     }
 
 
-    public String getDepart_time() {
-        return depart_time;
-    }
 
-    public void setDepart_time(String depart_time) {
-        this.depart_time = depart_time;
-    }
-
-
-    public String getArrive_time() {
-        return arrive_time;
-    }
-
-    public void setArrive_time(String arrive_time) {
-        this.arrive_time = arrive_time;
-    }
 }

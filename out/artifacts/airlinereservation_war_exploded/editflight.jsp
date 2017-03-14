@@ -42,15 +42,15 @@
         </div>
     <div id="oncepicker" style="display:inline-block; visibility: hidden">
         <label for="once">Date: </label>
-        <input type="date" id="once" <%if(flight.getOnce()!=null){%>value="<%=flight.getOnce()%>"<%}%>>
+        <input type="date" id="once" name="once" <%if(flight.getOnce()!=null){%>value="<%=flight.getOnce()%>"<%}%>>
     </div>
     <br>
     <div id="monthlypicker" style="visibility:hidden; display:inline-block">
-        Day: <input type="number" style="width:50px" name="monthday" <%if(flight.getMonthly()!=null){%>value="<%=flight.getMonthly()%>"<%}%>>
+        Day: <input type="number" min="1" max="31" style="width:50px" name="monthday" <%if(flight.getMonthly()!=null){%>value="<%=flight.getMonthly()%>"<%}%>>
     </div>
     <br>
     <div id="weeklypicker" style="visibility:hidden; display:inline-block">
-<table>
+<table style="font-weight: bold">
         <tr>
             <td><input type="checkbox" name="sunday" <%if(flight.getWeekly()!=null&&flight.getWeekly().contains("sunday")){%>checked<%}%>></td>
             <td><input type="checkbox" name="monday" <%if(flight.getWeekly()!=null&&flight.getWeekly().contains("monday")){%>checked<%}%>></td>
@@ -101,6 +101,13 @@
             document.getElementById("until").style.visibility = 'visible';
         }
     }
+    <%if(flight.getWeekly()!=null){%>
+    document.getElementById("weeklyradio").click();
+    <%}else if(flight.getMonthly()!=null){%>
+    document.getElementById("monthlyradio").click();
+    <%}else{%>
+    document.getElementById("onceradio").click();
+    <%}%>
 </script>
 </html>
 

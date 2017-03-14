@@ -27,9 +27,17 @@ public class FlightsServlet extends HttpServlet {
             Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
             Statement stmt = con.createStatement();
             String search = "select * from flights";
-//            if(session.getAttribute("typefield")!=null&&!session.getAttribute("typefield").equals("")){
-//                search = "select * from aircraft where type='"+session.getAttribute("typefield")+"'";
-//            }
+            if(session.getAttribute("fromfield")!=null&&!session.getAttribute("fromfield").equals("")){
+                search = "select * from flights where depart_city='"+session.getAttribute("fromfield")+"'";
+            }
+            if(session.getAttribute("tofield")!=null&&!session.getAttribute("tofield").equals("")){
+                if(search.equals("select * from flights")) {
+                    search = "select * from flights where arrive_city='" + session.getAttribute("tofield") + "'";
+                }
+                else{
+                    search+=" and arrive_city='"+session.getAttribute("tofield")+"'";
+                }
+            }
             ResultSet rs = stmt.executeQuery(search);
             if(!rs.next()){
                 con.close();
@@ -38,10 +46,10 @@ public class FlightsServlet extends HttpServlet {
             else{
                 ArrayList<Flight> flights= new ArrayList<>();
                 do{
-                    //if(session.getAttribute("namefield")==null||rs.getString("name").toLowerCase().indexOf(((String)(session.getAttribute("namefield"))).toLowerCase())==0) {
-                        flights.add(new Flight(rs.getString("depart_city"), rs.getString("arrive_city"),rs.getString("aircraft_name"),rs.getString("depart_time"),rs.getString("depart_AMPM"),rs.getString("depart_timezone"),
-                                rs.getString("arrive_time"),rs.getString("arrive_AMPM"),rs.getString("arrive_timezone"),rs.getString("flight_id"),rs.getString("once"),rs.getString("weekly"),rs.getString("monthly")));
-                    //}
+                    if((session.getAttribute("flightidfield")==null||rs.getString("flight_id").toLowerCase().indexOf(((String)(session.getAttribute("flightidfield"))).toLowerCase())==0)&&(session.getAttribute("aircraftnamefield")==null||rs.getString("aircraft_name").toLowerCase().indexOf(((String)(session.getAttribute("aircraftnamefield"))).toLowerCase())==0)) {
+                        flights.add(new Flight(rs.getString("depart_city"), rs.getString("arrive_city"),rs.getString("aircraft_name"),rs.getInt("depart_hours"),rs.getInt("depart_minutes"),rs.getString("depart_AMPM"),rs.getString("depart_timezone"),
+                                rs.getInt("arrive_hours"),rs.getInt("arrive_minutes"),rs.getString("arrive_AMPM"),rs.getString("arrive_timezone"),rs.getString("flight_id"),rs.getString("once"),rs.getString("weekly"),rs.getString("monthly")));
+                    }
                 }
                 while(rs.next());
                 //Collections.sort(flights);
