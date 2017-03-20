@@ -103,7 +103,12 @@
             document.documentElement.scrollLeft = scrollLeft;
         }
         if(currentTab!=null){
-            document.getElementsByName(currentTab)[0].click();
+            if(document.getElementsByName(currentTab)[0] !=null) {
+                document.getElementsByName(currentTab)[0].click();
+            }
+            else{
+                document.getElementById("defaultOpen").click();
+            }
         }
         else{
             document.getElementById("defaultOpen").click();
