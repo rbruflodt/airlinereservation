@@ -125,7 +125,8 @@ public class AdminFlightServlet extends HttpServlet {
                             ResultSet rs =stmt.executeQuery(query);
                             while(rs.next()){
                                 query="insert into prices (flight_id, class, price) values ('"+f.getFlight_id()+"', '"+rs.getString("class")+"', 0)";
-                                stmt.execute(query);
+                                Statement stmt2 = con.createStatement();
+                                stmt2.execute(query);
                             }
                         }
                         query = "update flights set depart_hours='" + request.getParameter("departhours" + f.getFlight_id()) + "', depart_minutes='" + request.getParameter("departminutes" + f.getFlight_id()) + "', " +

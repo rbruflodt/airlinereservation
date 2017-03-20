@@ -108,8 +108,6 @@
             <th>Manage</th>
         </tr>
         <%ArrayList<Flight> flights = FlightsServlet.getFlights(session);
-            session.removeAttribute("namefield");
-            session.removeAttribute("typefield");
             ArrayList<Aircraft> flight_aircraft = ManageAircraftServlet.getAircraft(session);
             for(Flight f : flights){%>
         <tr>
@@ -173,7 +171,7 @@
             <%if(session.getAttribute("namefield")!=null){%>
         <input type="search" size="15" value="<%=session.getAttribute("namefield")%>" id="namefield" name="namefield">
             <%}else{%>
-            <input type="search" size="10" id="namefield" name="namefield">
+            <input type="text" size="10" id="namefield" name="namefield">
             <%}%>
         <label for="typefield">Type: </label>
         <select id="typefield" name="typefield">
@@ -223,7 +221,7 @@
                     <input style="float:left" class="prettybutton" value="Add Class" onclick="getScroll()" type="submit" name="<%=a.getName()%>">
                 </td>
                 <td style="text-align:center"><input type="submit" onclick="getScroll()" class="prettybutton" value="Save Changes" name="<%=a.getName()%>">
-                <input type="submit" class="prettybutton" value="Delete" name="<%=a.getName()%>"></td>
+                <input type="submit" class="prettybutton" onclick="getScroll()" value="Delete" name="<%=a.getName()%>"></td>
             </tr>
             <%}%>
         </table>

@@ -38,47 +38,30 @@ public class ManageAircraftServlet  extends HttpServlet {
             else{
                 size = 1;
             }
-            session.setAttribute("namefield","Aircraft "+String.valueOf(size+1));
+            session.setAttribute("namefield","Aircraft "+String.valueOf(size));
             session.setAttribute("typefield","");
             query="insert into aircraft (name, type) values('Aircraft "+String.valueOf(size)+"','Boeing 777')";
             stmt.execute(query);
+            con.close();
         }
         else if(request.getParameter("searchaircraft")!=null){
             session.setAttribute("typefield",request.getParameter("typefield"));
             session.setAttribute("namefield",request.getParameter("namefield"));
+            con.close();
         }
         else {
             for (int i = 0; i < aircrafts.size(); i++) {
-                if (request.getParameter(aircrafts.get(i).getName()) != null) {
-                    if(request.getParameter(aircrafts.get(i).getName()).equals("Add Class")) {
-                        int size;
-                        if(aircrafts.get(i).getClasses()!=null){
-                            size = aircrafts.get(i).getClasses().size();
-                            ResultSet rs;
-                            do{
-                                size++;
-                                query="select * from seats where aircraft_name='"+aircrafts.get(i).getName()+"' and class='Class "+size+"'";
-                                rs=stmt.executeQuery(query);
 
-                            }while(rs.next());
-                        }
-                        else{
-                            size = 1;
-                        }
-                        query = "insert into seats (class, max_seats, aircraft_name) values ('Class " + String.valueOf(size) + "', 0, '" + aircrafts.get(i).getName() + "')";
+                    if (request.getParameter(aircrafts.get(i).getName()) != null&&request.getParameter(aircrafts.get(i).getName()).equals("Delete")) {
+                        query = "delete from aircraft where name='" + aircrafts.get(i).getName() + "'";
                         stmt.execute(query);
-                    }
-                    else if(request.getParameter(aircrafts.get(i).getName()).equals("Delete")){
-                        query="delete from aircraft where name='"+aircrafts.get(i).getName()+"'";
+                        query = "delete from seats where aircraft_name='" + aircrafts.get(i).getName() + "'";
                         stmt.execute(query);
-                        query="delete from seats where aircraft_name='"+aircrafts.get(i).getName()+"'";
-                        stmt.execute(query);
-                    }
-                else if(request.getParameter(aircrafts.get(i).getName()).equals("Save Changes")) {
-                    String aircrafterror="";
-                        if(aircrafts.get(i).getClasses()!=null) {
+                    } else {
+                        String aircrafterror = "";
+                        if (aircrafts.get(i).getClasses() != null) {
                             for (int j = 0; j < aircrafts.get(i).getClasses().size(); j++) {
-                                if(!aircrafts.get(i).getClasses().get(j).equals(request.getParameter("class" + aircrafts.get(i).getName() + aircrafts.get(i).getClasses().get(j)))) {
+                                if (!aircrafts.get(i).getClasses().get(j).equals(request.getParameter("class" + aircrafts.get(i).getName() + aircrafts.get(i).getClasses().get(j)))) {
                                     query = "select * from seats where (class='" + request.getParameter("class" + aircrafts.get(i).getName() + aircrafts.get(i).getClasses().get(j)) + "')" +
                                             "and (aircraft_name='" + aircrafts.get(i).getName() + "')";
                                     ResultSet rs = stmt.executeQuery(query);
@@ -86,48 +69,90 @@ public class ManageAircraftServlet  extends HttpServlet {
                                         aircrafterror += "Class names must be unique within the aircraft.";
                                     }
                                 }
-                                if(!aircrafterror.contains("Class names must be unique within the aircraft.")){
+                                if (!aircrafterror.contains("Class names must be unique within the aircraft.")) {
                                     query = "update seats set " +
                                             "class='" + request.getParameter("class" + aircrafts.get(i).getName() + aircrafts.get(i).getClasses().get(j)) + "', " +
                                             "max_seats=" + (request.getParameter("seats" + aircrafts.get(i).getName() + aircrafts.get(i).getClasses().get(j)) + " " +
                                             "where (class='" + aircrafts.get(i).getClasses().get(j)) + "') and (aircraft_name='" + aircrafts.get(i).getName() + "')";
                                     stmt.execute(query);
+                                    query = "select * from flights where aircraft_name='" + aircrafts.get(i).getName() + "'";
+                                    ResultSet rs = stmt.executeQuery(query);
+                                    if (rs.next()) {
+                                        do {
+                                            query = "update prices set " +
+                                                    "class='" + request.getParameter("class" + aircrafts.get(i).getName() + aircrafts.get(i).getClasses().get(j)) +
+                                                    "' where class='" + aircrafts.get(i).getClasses().get(j) + "'";
+                                            Statement stmt2 = con.createStatement();
+                                            stmt2.execute(query);
+                                        } while (rs.next());
+                                    }
                                 }
                             }
                         }
-                        if(!aircrafts.get(i).getName().equals(request.getParameter("name" + aircrafts.get(i).getName()))) {
+                        if (request.getParameter(aircrafts.get(i).getName()) != null&&!aircrafts.get(i).getName().equals(request.getParameter("name" + aircrafts.get(i).getName()))) {
                             query = "select * from aircraft where name='" + request.getParameter("name" + aircrafts.get(i).getName()) + "'";
                             ResultSet rs = stmt.executeQuery(query);
                             if (rs.next()) {
                                 aircrafterror += "Aircraft names must be unique. ";
                             }
                         }
-                        if(!aircrafterror.contains("Aircraft names must be unique. ")) {
+                        if (!aircrafterror.contains("Aircraft names must be unique. ")) {
                             query = "update aircraft set " +
                                     "name='" + request.getParameter("name" + aircrafts.get(i).getName()) + "', " +
                                     "type='" + request.getParameter("type" + aircrafts.get(i).getName()) + "' " +
                                     "where name='" + aircrafts.get(i).getName() + "'";
                             stmt.execute(query);
                             query = "update seats set " +
-                                    "aircraft_name='"+request.getParameter("name" + aircrafts.get(i).getName())+"' " +
-                                    "where aircraft_name='"+aircrafts.get(i).getName()+"'";
+                                    "aircraft_name='" + request.getParameter("name" + aircrafts.get(i).getName()) + "' " +
+                                    "where aircraft_name='" + aircrafts.get(i).getName() + "'";
                             stmt.execute(query);
                         }
 
-                        session.setAttribute("aircrafterror",aircrafterror);
-                    }
+                        session.setAttribute("aircrafterror", aircrafterror);
+                        if (request.getParameter(aircrafts.get(i).getName()) != null&&request.getParameter(aircrafts.get(i).getName()).equals("Add Class")) {
+                            int size;
+                            if (aircrafts.get(i).getClasses() != null) {
+                                size = aircrafts.get(i).getClasses().size();
+                                ResultSet rs;
+                                do {
+                                    size++;
+                                    query = "select * from seats where aircraft_name='" + aircrafts.get(i).getName() + "' and class='Class " + size + "'";
+                                    rs = stmt.executeQuery(query);
 
-                }
-                else {
-                    if(aircrafts.get(i).getClasses()!=null) {
-                        for (int j = 0; j < aircrafts.get(i).getClasses().size(); j++) {
-                            if (request.getParameter("deleteclass" + aircrafts.get(i).getName() + aircrafts.get(i).getClasses().get(j)) != null) {
-                                query = "delete from seats where (aircraft_name='" + aircrafts.get(i).getName() + "') and (class='" + aircrafts.get(i).getClasses().get(j) + "')";
-                                stmt.execute(query);
+                                } while (rs.next());
+                            } else {
+                                size = 1;
+                            }
+                            query = "insert into seats (class, max_seats, aircraft_name) values ('Class " + String.valueOf(size) + "', 0, '" + aircrafts.get(i).getName() + "')";
+                            stmt.execute(query);
+                            query = "select * from flights where aircraft_name='" + aircrafts.get(i).getName() + "'";
+                            ResultSet rs = stmt.executeQuery(query);
+                            while (rs.next()) {
+                                query = "insert into prices (flight_id, class, price) values ('" + rs.getString("flight_id") + "', 'Class " + size + "', 0)";
+                                Statement stmt2 = con.createStatement();
+                                stmt2.execute(query);
                             }
                         }
                     }
-                }
+
+
+                        if (aircrafts.get(i).getClasses() != null) {
+                            for (int j = 0; j < aircrafts.get(i).getClasses().size(); j++) {
+                                if (request.getParameter("deleteclass" + aircrafts.get(i).getName() + aircrafts.get(i).getClasses().get(j)) != null) {
+                                    query = "delete from seats where (aircraft_name='" + aircrafts.get(i).getName() + "') and (class='" + aircrafts.get(i).getClasses().get(j) + "')";
+                                    stmt.execute(query);
+                                    query = "select * from flights where aircraft_name='" + aircrafts.get(i).getName() + "'";
+                                    ResultSet rs = stmt.executeQuery(query);
+                                    while (rs.next()) {
+                                        query = "delete from prices where (flight_id='" + rs.getString("flight_id") + "') and (class='" + aircrafts.get(i).getClasses().get(j) + "')";
+                                        Statement stmt2 = con.createStatement();
+                                        stmt2.execute(query);
+                                    }
+                                }
+                            }
+                        }
+
+
             }
             con.close();
         }
