@@ -21,8 +21,9 @@ public class Flight {
     private String once;
     private String weekly;
     private String monthly;
+    private boolean same_day;
 
-    public Flight(String depart_city, String arrive_city, String aircraft_name, int depart_hours, int depart_minutes, String depart_AMPM, String depart_timezone, int arrive_hours, int arrive_minutes, String arrive_AMPM, String arrive_timezone, String flight_id, String once, String weekly, String monthly) {
+    public Flight(String depart_city, String arrive_city, String aircraft_name, int depart_hours, int depart_minutes, String depart_AMPM, String depart_timezone, int arrive_hours, int arrive_minutes, String arrive_AMPM, String arrive_timezone, String flight_id, String once, String weekly, String monthly, boolean same_day) {
         this.depart_city = depart_city;
         this.arrive_city = arrive_city;
         this.aircraft_name = aircraft_name;
@@ -38,6 +39,15 @@ public class Flight {
         this.once = once;
         this.weekly = weekly;
         this.monthly = monthly;
+        this.same_day=same_day;
+    }
+
+    public boolean isSame_day() {
+        return same_day;
+    }
+
+    public void setSame_day(boolean same_day) {
+        this.same_day = same_day;
     }
 
     public int getDepart_hours() {

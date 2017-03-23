@@ -104,10 +104,11 @@
             <th>Flight ID</th>
             <th>Depart</th>
             <th>Arrive</th>
+            <th>Same Day</th>
             <th>Aircraft</th>
             <th>Manage</th>
         </tr>
-        <%ArrayList<Flight> flights = FlightsServlet.getFlights(session);
+        <%ArrayList<Flight> flights = AdminFlightServlet.getFlights(session);
             ArrayList<Aircraft> flight_aircraft = ManageAircraftServlet.getAircraft(session);
             for(Flight f : flights){%>
         <tr>
@@ -148,7 +149,10 @@
                     <option <%if (f.getArrive_timezone().equals("EST")) {%>selected<%}%>>EST</option>
                     <option <%if (f.getArrive_timezone().equals("PDT")) {%>selected<%}%>>PDT</option>
                 </select></td>
-            <td><select name="<%="aircraft"+f.getFlight_id()%>">
+                <td>
+                    <input type="checkbox" <%if(f.isSame_day()){%> checked="checked" <%}%> name="<%="same_day"+f.getFlight_id()%>">
+                </td>
+                   <td><select name="<%="aircraft"+f.getFlight_id()%>">
                 <%for(Aircraft a : flight_aircraft){%>
                 <option <% if (f.getAircraft_name().equals(a.getName())) {%>selected<%}%>><%=a.getName()%></option>
                 <%}%>

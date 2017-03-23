@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -17,50 +18,81 @@ import java.util.Collections;
 public class FlightsServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {
+        HttpSession session = request.getSession();
+        if(request.getParameter("searchflights")!=null){
+            session.setAttribute("flightfromfield",request.getParameter("flightfromfield"));
+            session.setAttribute("flighttofield",request.getParameter("flighttofield"));
+            session.removeAttribute("departfield");
+            session.removeAttribute("tripfield");
+            session.removeAttribute("returnfield");
+            String flightsearcherror="";
+            if(!request.getParameter("departfield").equals("")){
+                if(LocalDate.parse(request.getParameter("departfield")).compareTo(LocalDate.now())<0){
+                    flightsearcherror="Must select future date.";
+                }
+                else {
+                    session.setAttribute("departfield", request.getParameter("departfield"));
+                    session.setAttribute("tripfield", "oneway");
+                }
+            }
+            else{
+                flightsearcherror="All fields required.";
+            }
+            if((request.getParameter("radio").equals("roundtrip")&&request.getParameter("returnfield")!=null)){
+                if(LocalDate.parse(request.getParameter("returnfield")).compareTo(LocalDate.now())<0){
+                    flightsearcherror="Must select future date.";
+                }else {
+                    session.setAttribute("tripfield", "roundtrip");
+                    session.setAttribute("returnfield", request.getParameter("returnfield"));
+                }
+            }
+            else if(!request.getParameter("radio").equals("oneway")){
+                flightsearcherror="All fields required.";
+            }
+            session.setAttribute("flightsearcherror",flightsearcherror);
+        }
         response.sendRedirect("/index.jsp");
     }
 
 
-    public static ArrayList<Flight> getFlights(HttpSession session) {
+    public static ArrayList<Flight> getFlights(HttpSession session){
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
-            Statement stmt = con.createStatement();
-            String search = "select * from flights";
-            if(session.getAttribute("fromfield")!=null&&!session.getAttribute("fromfield").equals("")){
-                search = "select * from flights where depart_city='"+session.getAttribute("fromfield")+"'";
-            }
-            if(session.getAttribute("tofield")!=null&&!session.getAttribute("tofield").equals("")){
-                if(search.equals("select * from flights")) {
-                    search = "select * from flights where arrive_city='" + session.getAttribute("tofield") + "'";
+            if((session.getAttribute("flightfromfield")!=null&&session.getAttribute("flighttofield")!=null
+                    &&session.getAttribute("departfield")!=null&&(session.getAttribute("tripfield").equals("oneway"))||
+                    (session.getAttribute("returnfield")!=null))){
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
+                Statement stmt = con.createStatement();
+                String search = "select * from flight_instances where depart_date='"+session.getAttribute("departfield")+"'";
+                ResultSet rs = stmt.executeQuery(search);
+                ArrayList<String> flightids = new ArrayList<>();
+                while(rs.next()){
+                    flightids.add(rs.getString("flight_id"));
                 }
-                else{
-                    search+=" and arrive_city='"+session.getAttribute("tofield")+"'";
-                }
-            }
-            ResultSet rs = stmt.executeQuery(search);
-            if(!rs.next()){
-                con.close();
-                return new ArrayList<Flight>();
-            }
-            else{
-                ArrayList<Flight> flights= new ArrayList<>();
-                do{
-                    if((session.getAttribute("flightidfield")==null||rs.getString("flight_id").toLowerCase().indexOf(((String)(session.getAttribute("flightidfield"))).toLowerCase())==0)&&(session.getAttribute("aircraftnamefield")==null||rs.getString("aircraft_name").toLowerCase().indexOf(((String)(session.getAttribute("aircraftnamefield"))).toLowerCase())==0)) {
-                        flights.add(new Flight(rs.getString("depart_city"), rs.getString("arrive_city"),rs.getString("aircraft_name"),rs.getInt("depart_hours"),rs.getInt("depart_minutes"),rs.getString("depart_AMPM"),rs.getString("depart_timezone"),
-                                rs.getInt("arrive_hours"),rs.getInt("arrive_minutes"),rs.getString("arrive_AMPM"),rs.getString("arrive_timezone"),rs.getString("flight_id"),rs.getString("once"),rs.getString("weekly"),rs.getString("monthly")));
+                search = "select * from flights";
+                rs = stmt.executeQuery(search);
+                ArrayList<Flight> flights = new ArrayList<>();
+                while(rs.next()){
+                    if(flightids.contains(rs.getString("flight_id"))&&rs.getString("depart_city").equals(session.getAttribute("flightfromfield"))&&rs.getString("arrive_city").equals(session.getAttribute("flighttofield"))) {
+                        flights.add(new Flight(rs.getString("depart_city"), rs.getString("arrive_city"), rs.getString("aircraft_name"), rs.getInt("depart_hours"), rs.getInt("depart_minutes"), rs.getString("depart_AMPM"), rs.getString("depart_timezone"),
+                                rs.getInt("arrive_hours"), rs.getInt("arrive_minutes"), rs.getString("arrive_AMPM"), rs.getString("arrive_timezone"), rs.getString("flight_id"), rs.getString("once"), rs.getString("weekly"), rs.getString("monthly"), rs.getBoolean("same_day")));
                     }
                 }
-                while(rs.next());
-                //Collections.sort(flights);
+
                 con.close();
-                return  flights;
+                if(flights.size()>0) {
+                    return flights;
+                }
+                else{
+                    session.setAttribute("flightsearcherror","No matching flights found.");
+                }
+
             }
-        }catch(SQLException e){
-            e.printStackTrace();
         }catch(ClassNotFoundException e){
             e.printStackTrace();
+        }catch (SQLException e){
+            e.printStackTrace();
         }
-        return new ArrayList<>();
+        return null;
     }
 }

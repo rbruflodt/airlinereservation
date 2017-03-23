@@ -165,6 +165,24 @@ public class ManageAircraftServlet  extends HttpServlet {
             response.sendRedirect("/index.jsp");
         }
 
+    public static String getAircraftType(String aircraftName){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
+            Statement stmt = con.createStatement();
+            String search = "select * from aircraft where name='"+aircraftName+"'";
+            ResultSet rs = stmt.executeQuery(search);
+            if(rs.next()){
+                return rs.getString("type");
+            }
+        }catch(ClassNotFoundException e){
+            e.printStackTrace();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return "";
+    }
+
     public static ArrayList<Aircraft> getAircraft(HttpSession session){
         try {
             Class.forName("com.mysql.jdbc.Driver");
