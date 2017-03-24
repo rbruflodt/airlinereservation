@@ -38,7 +38,7 @@
     <br>
     <div id="until" style="visibility: hidden">
     <label for="untilpicker">Until </label>
-    <input type="date" name = "until" id="untilpicker">
+    <input type="date" name = "until" value="<%=flight.getUntil()%>" id="untilpicker">
         </div>
     <div id="oncepicker" style="display:inline-block; visibility: hidden">
         <label for="once">Date: </label>

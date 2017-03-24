@@ -54,6 +54,8 @@
         <p style="color:#903723"><%=session.getAttribute("flightsearcherror")%></p>
         <%session.removeAttribute("flightsearcherror");}%>
         <br>
+        <br>
+        <br>
         <% if(requestedflights!=null){%>
         <table class="prettytable" border="solid">
             <tr>
@@ -67,8 +69,8 @@
         ArrayList<String> fclasses= AdminFlightServlet.getClasses(f);
         ArrayList<Float> fprices = AdminFlightServlet.getPrices(f);%>
             <tr>
-                <td><%=session.getAttribute("departfield")%><br><%=f.getDepart_hours()+":"+String.format("%02d",f.getDepart_minutes())+" "+f.getDepart_AMPM()+" "+f.getDepart_timezone()%></td>
-                <td><%if(f.isSame_day()){%><%=session.getAttribute("departfield")%><%}else{%><%=LocalDate.parse((String) session.getAttribute("departfield")).plusDays(1)%><%}%><br><%=f.getArrive_hours()+":"+String.format("%02d",f.getArrive_minutes())+" "+f.getArrive_AMPM()+" "+f.getArrive_timezone()%></td>
+                <td><%=session.getAttribute("flightfromfield")%><br><%=session.getAttribute("departfield")%><br><%=f.getDepart_hours()+":"+String.format("%02d",f.getDepart_minutes())+" "+f.getDepart_AMPM()+" "+f.getDepart_timezone()%></td>
+                <td><%=session.getAttribute("flighttofield")%><br><%if(f.isSame_day()){%><%=session.getAttribute("departfield")%><%}else{%><%=LocalDate.parse((String) session.getAttribute("departfield")).plusDays(1)%><%}%><br><%=f.getArrive_hours()+":"+String.format("%02d",f.getArrive_minutes())+" "+f.getArrive_AMPM()+" "+f.getArrive_timezone()%></td>
                 <td><%=ManageAircraftServlet.getAircraftType(f.getAircraft_name())%></td>
                 <td><table>
                     <%for(int i = 0; i < fclasses.size();i++){%>

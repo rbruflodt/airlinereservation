@@ -8,14 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Locale;
-import java.util.TimeZone;
-import java.util.concurrent.SynchronousQueue;
+
 
 /**
  * Created by Rachel on 3/13/2017.
@@ -40,9 +38,13 @@ public class AdminFlightServlet extends HttpServlet {
                     query = "update prices set price="+Float.valueOf(request.getParameter(c))+" where class='"+c+"' and flight_id='"+f.getFlight_id()+"'";
                     stmt.execute(query);
                 }
+                LocalDate until = LocalDate.now(ZoneId.of(ZoneId.SHORT_IDS.get(f.getDepart_timezone()))).plusMonths(1);
+                if(!request.getParameter("until").equals("")){
+                    until = LocalDate.parse(request.getParameter("until"));
+                }
                 if(request.getParameter("frequency").equals("onceradio")){
                     if(f.getOnce()==null||!f.getOnce().equals(request.getParameter("once"))){
-                        query="update flights set once='"+request.getParameter("once")+"', monthly=null, weekly=null where flight_id='"+f.getFlight_id()+"'";
+                        query="update flights set once='"+request.getParameter("once")+"', monthly=null, weekly=null, until=null where flight_id='"+f.getFlight_id()+"'";
                         stmt.execute(query);
                         query="delete from flight_instances where flight_id='"+f.getFlight_id()+"'";
                         stmt.execute(query);
@@ -59,15 +61,12 @@ public class AdminFlightServlet extends HttpServlet {
                     }
                 }
                 else if(request.getParameter("frequency").equals("monthlyradio")){
-                    if(f.getMonthly()==null||!f.getMonthly().equals(request.getParameter("monthday"))){
-                        query="update flights set monthly='"+request.getParameter("monthday")+"', once=null, weekly=null where flight_id='"+f.getFlight_id()+"'";
+                    if(f.getMonthly()==null||!f.getMonthly().equals(request.getParameter("monthday"))||!until.equals(f.getUntil())){
+
+                        query="update flights set monthly='"+request.getParameter("monthday")+"', once=null, weekly=null, until='"+until+"' where flight_id='"+f.getFlight_id()+"'";
                         stmt.execute(query);
                         query="delete from flight_instances where flight_id='"+f.getFlight_id()+"'";
                         stmt.execute(query);
-                        LocalDate until = LocalDate.now(ZoneId.of(ZoneId.SHORT_IDS.get(f.getDepart_timezone()))).plusMonths(1);
-                        if(!request.getParameter("until").equals("")){
-                            until = LocalDate.parse(request.getParameter("until"));
-                        }
                         LocalDate currentdate = LocalDate.now(ZoneId.of(ZoneId.SHORT_IDS.get(f.getDepart_timezone())));
                         while(currentdate.compareTo(until)<=0){
                             if(currentdate.getDayOfMonth()==Integer.valueOf(request.getParameter("monthday"))){
@@ -93,15 +92,12 @@ public class AdminFlightServlet extends HttpServlet {
                             weekly += d;
                         }
                     }
-                    if(f.getWeekly()==null||!f.getWeekly().equals(weekly)){
-                        query="update flights set weekly='"+weekly+"', monthly=null, once=null where flight_id='"+f.getFlight_id()+"'";
+                    if(f.getWeekly()==null||!f.getWeekly().equals(weekly)||!until.equals(f.getUntil())){
+
+                        query="update flights set weekly='"+weekly+"', monthly=null, once=null, until='"+until+"' where flight_id='"+f.getFlight_id()+"'";
                         stmt.execute(query);
                         query="delete from flight_instances where flight_id='"+f.getFlight_id()+"'";
                         stmt.execute(query);
-                        LocalDate until = LocalDate.now(ZoneId.of(ZoneId.SHORT_IDS.get(f.getDepart_timezone()))).plusMonths(1);
-                        if(!request.getParameter("until").equals("")){
-                            until = LocalDate.parse(request.getParameter("until"));
-                        }
                         LocalDate currentdate = LocalDate.now(ZoneId.of(ZoneId.SHORT_IDS.get(f.getDepart_timezone())));
                         while(currentdate.compareTo(until)<=0){
                             if(weekly.contains(currentdate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.US).toLowerCase())){
@@ -134,7 +130,7 @@ public class AdminFlightServlet extends HttpServlet {
             else if (request.getParameter("newflight") != null) {
                 int size;
                 String aircraft_name;
-                ArrayList<Aircraft> aircrafts = ManageAircraftServlet.getAircraft(session);
+                ArrayList<Aircraft> aircrafts = getAircraft(session);
                 if(flights!=null){
                     size = flights.size();
                     ResultSet rs;
@@ -153,8 +149,8 @@ public class AdminFlightServlet extends HttpServlet {
                 else{
                     aircraft_name=aircrafts.get(0).getName();
                 }
-                query="insert into flights (depart_city, arrive_city, aircraft_name, flight_id, depart_AMPM, depart_timezone, arrive_AMPM, arrive_timezone, once, weekly, monthly, arrive_hours, arrive_minutes, depart_hours, depart_minutes, same_day)" +
-                        " values ('Iowa City, IA','Iowa City, IA', '"+aircraft_name+"', 'Flight "+size+"', 'AM', 'CST', 'AM', 'CST', '', 'sunday', '', 12,0,12,0,1)";
+                query="insert into flights (depart_city, arrive_city, aircraft_name, flight_id, depart_AMPM, depart_timezone, arrive_AMPM, arrive_timezone, once, weekly, monthly, arrive_hours, arrive_minutes, depart_hours, depart_minutes, same_day, until)" +
+                        " values ('Iowa City, IA','Iowa City, IA', '"+aircraft_name+"', 'Flight "+size+"', 'AM', 'CST', 'AM', 'CST', '', 'sunday', '', 12,0,12,0,1,'')";
                 stmt.execute(query);
                 session.removeAttribute("aircraftnamefield");
                 session.removeAttribute("fromfield");
@@ -244,6 +240,7 @@ public class AdminFlightServlet extends HttpServlet {
                     }
                 }
             }
+            con.close();
         }
 
         catch (SQLException e) {
@@ -338,13 +335,45 @@ public class AdminFlightServlet extends HttpServlet {
                 do{
                     if((session.getAttribute("flightidfield")==null||rs.getString("flight_id").toLowerCase().indexOf(((String)(session.getAttribute("flightidfield"))).toLowerCase())==0)&&(session.getAttribute("aircraftnamefield")==null||rs.getString("aircraft_name").toLowerCase().indexOf(((String)(session.getAttribute("aircraftnamefield"))).toLowerCase())==0)) {
                         flights.add(new Flight(rs.getString("depart_city"), rs.getString("arrive_city"),rs.getString("aircraft_name"),rs.getInt("depart_hours"),rs.getInt("depart_minutes"),rs.getString("depart_AMPM"),rs.getString("depart_timezone"),
-                                rs.getInt("arrive_hours"),rs.getInt("arrive_minutes"),rs.getString("arrive_AMPM"),rs.getString("arrive_timezone"),rs.getString("flight_id"),rs.getString("once"),rs.getString("weekly"),rs.getString("monthly"),rs.getBoolean("same_day")));
+                                rs.getInt("arrive_hours"),rs.getInt("arrive_minutes"),rs.getString("arrive_AMPM"),rs.getString("arrive_timezone"),rs.getString("flight_id"),rs.getString("once"),rs.getString("weekly"),rs.getString("monthly"),rs.getBoolean("same_day"),rs.getString("until")));
                     }
                 }
                 while(rs.next());
-                //Collections.sort(flights);
+                Collections.sort(flights);
                 con.close();
                 return  flights;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(ClassNotFoundException e){
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public static ArrayList<Aircraft> getAircraft(HttpSession session){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
+            Statement stmt = con.createStatement();
+            String search = "select * from aircraft";
+            ResultSet rs = stmt.executeQuery(search);
+            if(!rs.next()){
+                con.close();
+                return new ArrayList<Aircraft>();
+            }
+            else{
+                ArrayList<Aircraft> aircrafts= new ArrayList<>();
+                do{
+                    if(session.getAttribute("namefield")==null||rs.getString("name").toLowerCase().indexOf(((String)(session.getAttribute("namefield"))).toLowerCase())==0) {
+                        aircrafts.add(new Aircraft(rs.getString("name"), rs.getString("type")));
+                    }
+                }
+                while(rs.next());
+                Collections.sort(aircrafts);
+
+                con.close();
+                return  aircrafts;
             }
         }catch(SQLException e){
             e.printStackTrace();

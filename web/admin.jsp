@@ -109,7 +109,7 @@
             <th>Manage</th>
         </tr>
         <%ArrayList<Flight> flights = AdminFlightServlet.getFlights(session);
-            ArrayList<Aircraft> flight_aircraft = ManageAircraftServlet.getAircraft(session);
+            ArrayList<Aircraft> flight_aircraft = AdminFlightServlet.getAircraft(session);
             for(Flight f : flights){%>
         <tr>
             <form action="/adminflightservlet">

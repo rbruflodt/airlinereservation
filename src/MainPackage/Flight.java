@@ -5,7 +5,7 @@ import java.time.ZonedDateTime;
 /**
  * Created by Rachel on 3/13/2017.
  */
-public class Flight {
+public class Flight implements Comparable<Flight>{
     private String depart_city;
     private String arrive_city;
     private String aircraft_name;
@@ -21,9 +21,10 @@ public class Flight {
     private String once;
     private String weekly;
     private String monthly;
+    private String until;
     private boolean same_day;
 
-    public Flight(String depart_city, String arrive_city, String aircraft_name, int depart_hours, int depart_minutes, String depart_AMPM, String depart_timezone, int arrive_hours, int arrive_minutes, String arrive_AMPM, String arrive_timezone, String flight_id, String once, String weekly, String monthly, boolean same_day) {
+    public Flight(String depart_city, String arrive_city, String aircraft_name, int depart_hours, int depart_minutes, String depart_AMPM, String depart_timezone, int arrive_hours, int arrive_minutes, String arrive_AMPM, String arrive_timezone, String flight_id, String once, String weekly, String monthly, boolean same_day, String until) {
         this.depart_city = depart_city;
         this.arrive_city = arrive_city;
         this.aircraft_name = aircraft_name;
@@ -40,8 +41,20 @@ public class Flight {
         this.weekly = weekly;
         this.monthly = monthly;
         this.same_day=same_day;
+        this.until = until;
     }
 
+    public String getUntil() {
+        return until;
+    }
+
+    public void setUntil(String until) {
+        this.until = until;
+    }
+
+    public int compareTo(Flight f){
+        return flight_id.compareTo(f.getFlight_id());
+    }
     public boolean isSame_day() {
         return same_day;
     }

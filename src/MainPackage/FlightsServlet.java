@@ -75,7 +75,7 @@ public class FlightsServlet extends HttpServlet {
                 while(rs.next()){
                     if(flightids.contains(rs.getString("flight_id"))&&rs.getString("depart_city").equals(session.getAttribute("flightfromfield"))&&rs.getString("arrive_city").equals(session.getAttribute("flighttofield"))) {
                         flights.add(new Flight(rs.getString("depart_city"), rs.getString("arrive_city"), rs.getString("aircraft_name"), rs.getInt("depart_hours"), rs.getInt("depart_minutes"), rs.getString("depart_AMPM"), rs.getString("depart_timezone"),
-                                rs.getInt("arrive_hours"), rs.getInt("arrive_minutes"), rs.getString("arrive_AMPM"), rs.getString("arrive_timezone"), rs.getString("flight_id"), rs.getString("once"), rs.getString("weekly"), rs.getString("monthly"), rs.getBoolean("same_day")));
+                                rs.getInt("arrive_hours"), rs.getInt("arrive_minutes"), rs.getString("arrive_AMPM"), rs.getString("arrive_timezone"), rs.getString("flight_id"), rs.getString("once"), rs.getString("weekly"), rs.getString("monthly"), rs.getBoolean("same_day"),rs.getString("until")));
                     }
                 }
 
