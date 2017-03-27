@@ -55,8 +55,21 @@
         <%session.removeAttribute("flightsearcherror");}%>
         <br>
         <br>
-        <br>
+
         <% if(requestedflights!=null){%>
+        <div style="float:left">
+            <label  for="flightsort">Sort by:</label>
+            <select  id="flightsort" name="flightsort">
+                <option <%if(session.getAttribute("flightsort")!=null&&session.getAttribute("flightsort").equals("Price")){%>selected<%}%>>Price</option>
+                <option <%if(session.getAttribute("flightsort")!=null&&session.getAttribute("flightsort").equals("Depart Time")){%>selected<%}%>>Depart Time</option>
+                <option <%if(session.getAttribute("flightsort")!=null&&session.getAttribute("flightsort").equals("Arrive Time")){%>selected<%}%>>Arrive Time</option>
+            </select>
+            <br>
+
+            <input class="prettybutton"  type="submit" name="sortbutton" value="Sort" onclick="getScroll()">
+        </div>
+        <br>
+        <br>
         <table class="prettytable" border="solid">
             <tr>
                 <th>Depart</th>

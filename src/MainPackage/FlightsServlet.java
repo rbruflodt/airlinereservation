@@ -51,6 +51,9 @@ public class FlightsServlet extends HttpServlet {
             }
             session.setAttribute("flightsearcherror",flightsearcherror);
         }
+        else if(request.getParameter("sortbutton")!=null){
+            session.setAttribute("flightsort",request.getParameter("flightsort"));
+        }
         response.sendRedirect("/index.jsp");
     }
 
@@ -81,6 +84,12 @@ public class FlightsServlet extends HttpServlet {
 
                 con.close();
                 if(flights.size()>0) {
+                    Collections.sort(flights,new PriceComparator());
+                    if(session.getAttribute("flightsort").equals("Depart Time")){
+                        Collections.sort(flights, new DepartTimeComparator());
+                    }else if(session.getAttribute("flightsort").equals("Arrive Time")){
+                        Collections.sort(flights, new ArriveTimeComparator());
+                    }
                     return flights;
                 }
                 else{

@@ -152,6 +152,13 @@ public class AdminFlightServlet extends HttpServlet {
                 query="insert into flights (depart_city, arrive_city, aircraft_name, flight_id, depart_AMPM, depart_timezone, arrive_AMPM, arrive_timezone, once, weekly, monthly, arrive_hours, arrive_minutes, depart_hours, depart_minutes, same_day, until)" +
                         " values ('Iowa City, IA','Iowa City, IA', '"+aircraft_name+"', 'Flight "+size+"', 'AM', 'CST', 'AM', 'CST', '', 'sunday', null, 12,0,12,0,1,null)";
                 stmt.execute(query);
+                query="select * from seats where aircraft_name='"+aircraft_name+"'";
+                ResultSet rs =stmt.executeQuery(query);
+                while(rs.next()){
+                    query="insert into prices (flight_id, class, price) values ('Flight "+size+"', '"+rs.getString("class")+"', 0)";
+                    Statement stmt2 = con.createStatement();
+                    stmt2.execute(query);
+                }
                 session.removeAttribute("aircraftnamefield");
                 session.removeAttribute("fromfield");
                 session.removeAttribute("tofield");
@@ -191,16 +198,20 @@ public class AdminFlightServlet extends HttpServlet {
                         if(request.getParameter("same_day"+f.getFlight_id())!=null){
                             same_day=true;
                         }
-                        if(same_day!=f.isSame_day()){
-                            LocalDate departdate=LocalDate.parse(request.getParameter("once"));
-                            if(same_day){
-                                query="update flight_instances set depart_date='"+departdate+"', arrive_date='"+departdate+"'";
-                            }
-                            else{
-                                query="update flight_instances set depart_date='"+departdate+"', arrive_date='"+departdate.plusDays(1)+"'";
-                            }
-                            stmt.execute(query);
-                        }
+                        if(same_day!=f.isSame_day()) {
+                            query = "select * from flight_instances where flight_id='"+f.getFlight_id()+"'";
+                            ResultSet rs = stmt.executeQuery(query);
+                            while(rs.next()) {
+                                LocalDate departdate = LocalDate.parse(rs.getString("depart_date"));
+
+                                if (same_day) {
+                                    query = "update flight_instances set depart_date='" + departdate + "', arrive_date='" + departdate + "' where (flight_id='"+f.getFlight_id()+"') and (depat_date='"+departdate+"')";
+                                } else {
+                                    query = "update flight_instances set depart_date='" + departdate + "', arrive_date='" + departdate.plusDays(1) + "' where (flight_id='"+f.getFlight_id()+"') and (depat_date='"+departdate+"')";
+                                }
+                                stmt.execute(query);
+                            }}
+
                         query = "update flights set depart_hours='" + request.getParameter("departhours" + f.getFlight_id()) + "', depart_minutes='" + request.getParameter("departminutes" + f.getFlight_id()) + "', " +
                                 "arrive_hours='" + request.getParameter("arrivehours" + f.getFlight_id()) + "', arrive_minutes='" + request.getParameter("arriveminutes" + f.getFlight_id()) + "', same_day="+same_day+
                                 " where flight_id='" + f.getFlight_id() + "'";
@@ -257,7 +268,7 @@ public class AdminFlightServlet extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
             Statement stmt = con.createStatement();
-            String search = "select * from prices where flight_id='"+f.getFlight_id()+"'";
+            String search = "select * from prices where flight_id='"+f.getFlight_id()+"' order by price";
             ResultSet rs = stmt.executeQuery(search);
             if(!rs.next()){
                 con.close();
@@ -285,7 +296,7 @@ public class AdminFlightServlet extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
             Statement stmt = con.createStatement();
-            String search = "select * from prices where flight_id='"+f.getFlight_id()+"'";
+            String search = "select * from prices where flight_id='"+f.getFlight_id()+"' order by price";
             ResultSet rs = stmt.executeQuery(search);
             if(!rs.next()){
                 con.close();

@@ -24,7 +24,7 @@
         <%for(int i = 0; i < classes.size();i++){%>
             <tr>
                 <td><%=classes.get(i)%>: </td>
-                <td>$ <input type="number" style="width:50px" name="<%=classes.get(i)%>" value="<%=prices.get(i)%>"></td>
+                <td>$ <input type="number" step="0.01" style="width:50px" name="<%=classes.get(i)%>" value="<%=prices.get(i)%>"></td>
             </tr>
         <%}%>
     </table>
