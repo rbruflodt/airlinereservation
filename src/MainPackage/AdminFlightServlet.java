@@ -150,7 +150,7 @@ public class AdminFlightServlet extends HttpServlet {
                     aircraft_name=aircrafts.get(0).getName();
                 }
                 query="insert into flights (depart_city, arrive_city, aircraft_name, flight_id, depart_AMPM, depart_timezone, arrive_AMPM, arrive_timezone, once, weekly, monthly, arrive_hours, arrive_minutes, depart_hours, depart_minutes, same_day, until)" +
-                        " values ('Iowa City, IA','Iowa City, IA', '"+aircraft_name+"', 'Flight "+size+"', 'AM', 'CST', 'AM', 'CST', '', 'sunday', '', 12,0,12,0,1,'')";
+                        " values ('Iowa City, IA','Iowa City, IA', '"+aircraft_name+"', 'Flight "+size+"', 'AM', 'CST', 'AM', 'CST', '', 'sunday', null, 12,0,12,0,1,null)";
                 stmt.execute(query);
                 session.removeAttribute("aircraftnamefield");
                 session.removeAttribute("fromfield");
