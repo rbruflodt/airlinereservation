@@ -1,26 +1,27 @@
 package MainPackage;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Comparator;
 
 /**
  * Created by Rachel on 3/27/2017.
  */
-public class ArriveTimeComparator implements Comparator<Flight> {
-    public int compare(Flight a, Flight b){
-        if(a.isSame_day()&&!b.isSame_day()){
+public class ArriveTimeComparator implements Comparator<ArrayList<Flight>> {
+    public int compare(ArrayList<Flight> a, ArrayList<Flight> b){
+        if(a.get(a.size()-1).isSame_day()&&!b.get(b.size()-1).isSame_day()){
             return -1;
-        }else if(b.isSame_day()&&!a.isSame_day()){
+        }else if(b.get(b.size()-1).isSame_day()&&!a.get(a.size()-1).isSame_day()){
             return 1;
         }
         else {
-            LocalTime atime = LocalTime.parse(String.format("%02d", a.getArrive_hours()) + ":" + String.format("%02d", a.getArrive_minutes()));
-            LocalTime btime = LocalTime.parse(String.format("%02d", b.getArrive_hours()) + ":" + String.format("%02d", b.getArrive_minutes()));
-            if (a.getArrive_AMPM().equals("PM")) {
-                atime = LocalTime.parse(String.format("%02d", a.getArrive_hours() + 12) + ":" + String.format("%02d", a.getArrive_minutes()));
+            LocalTime atime = LocalTime.parse(String.format("%02d", a.get(a.size()-1).getArrive_hours()) + ":" + String.format("%02d", a.get(a.size()-1).getArrive_minutes()));
+            LocalTime btime = LocalTime.parse(String.format("%02d", b.get(b.size()-1).getArrive_hours()) + ":" + String.format("%02d", b.get(b.size()-1).getArrive_minutes()));
+            if (a.get(a.size()-1).getArrive_AMPM().equals("PM")) {
+                atime = LocalTime.parse(String.format("%02d", a.get(a.size()-1).getArrive_hours() + 12) + ":" + String.format("%02d", a.get(a.size()-1).getArrive_minutes()));
             }
-            if (b.getArrive_AMPM().equals("PM")) {
-                btime = LocalTime.parse(String.format("%02d", b.getArrive_hours() + 12) + ":" + String.format("%02d", (b.getArrive_minutes())));
+            if (b.get(b.size()-1).getArrive_AMPM().equals("PM")) {
+                btime = LocalTime.parse(String.format("%02d", b.get(b.size()-1).getArrive_hours() + 12) + ":" + String.format("%02d", (b.get(b.size()-1).getArrive_minutes())));
             }
             return atime.compareTo(btime);
         }

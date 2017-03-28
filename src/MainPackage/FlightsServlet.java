@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -58,7 +60,7 @@ public class FlightsServlet extends HttpServlet {
     }
 
 
-    public static ArrayList<Flight> getFlights(HttpSession session){
+    public static ArrayList<ArrayList<Flight>> getFlights(HttpSession session){
         try {
             if((session.getAttribute("flightfromfield")!=null&&session.getAttribute("flighttofield")!=null
                     &&session.getAttribute("departfield")!=null&&(session.getAttribute("tripfield").equals("oneway"))||
@@ -74,20 +76,51 @@ public class FlightsServlet extends HttpServlet {
                 }
                 search = "select * from flights";
                 rs = stmt.executeQuery(search);
-                ArrayList<Flight> flights = new ArrayList<>();
+                ArrayList<ArrayList<Flight>> flights = new ArrayList<>();
                 while(rs.next()){
+                    ArrayList<Flight> tempflights = new ArrayList<>();
                     if(flightids.contains(rs.getString("flight_id"))&&rs.getString("depart_city").equals(session.getAttribute("flightfromfield"))&&rs.getString("arrive_city").equals(session.getAttribute("flighttofield"))) {
-                        flights.add(new Flight(rs.getString("depart_city"), rs.getString("arrive_city"), rs.getString("aircraft_name"), rs.getInt("depart_hours"), rs.getInt("depart_minutes"), rs.getString("depart_AMPM"), rs.getString("depart_timezone"),
-                                rs.getInt("arrive_hours"), rs.getInt("arrive_minutes"), rs.getString("arrive_AMPM"), rs.getString("arrive_timezone"), rs.getString("flight_id"), rs.getString("once"), rs.getString("weekly"), rs.getString("monthly"), rs.getBoolean("same_day"),rs.getString("until")));
+                        tempflights.add(new Flight(rs.getString("depart_city"), rs.getString("arrive_city"), rs.getString("aircraft_name"), rs.getInt("depart_hours"), rs.getInt("depart_minutes"), rs.getString("depart_AMPM"), rs.getString("depart_timezone"),
+                                rs.getInt("arrive_hours"), rs.getInt("arrive_minutes"), rs.getString("arrive_AMPM"), rs.getString("arrive_timezone"), rs.getString("flight_id"), rs.getString("once"), rs.getString("weekly"), rs.getString("monthly"), rs.getBoolean("same_day"),rs.getString("until"),(String)session.getAttribute("departfield")));
+                        flights.add(tempflights);
+                    }
+                    else if(flightids.contains(rs.getString("flight_id"))&&rs.getString("depart_city").equals(session.getAttribute("flightfromfield"))){
+                        search = "select * from flights where (depart_city='"+rs.getString("arrive_city")+"') and (arrive_city='"+session.getAttribute("flighttofield")+"')";
+                        Statement stmt2 = con.createStatement();
+                        ResultSet rs2 = stmt2.executeQuery(search);
+                        String arrday;
+                        if(rs.getBoolean("same_day")){
+                            arrday = LocalDate.parse((String)session.getAttribute("departfield")).toString();
+                        }else {
+                            arrday=LocalDate.parse((String) session.getAttribute("departfield")).plusDays(1).toString();
+                        }
+                        while(rs2.next()) {
+                            search = "select * from flight_instances where (flight_id='"+rs2.getString("flight_id")+"') and ((depart_date='"+arrday+"') or (depart_date='"+LocalDate.parse(arrday).plusDays(1)+"'))";
+                            Statement stmt3 = con.createStatement();
+                            ResultSet rs3 = stmt3.executeQuery(search);
+                            System.out.println(rs2.getString("flight_id"));
+                            while(rs3.next()) {
+
+                                if (timeDifference(rs.getInt("arrive_hours"), rs.getInt("arrive_minutes"), rs.getString("arrive_AMPM"), arrday, rs2.getInt("depart_hours"), rs2.getInt("depart_minutes"), rs2.getString("depart_AMPM"), rs3.getString("depart_date"))) {
+                                    tempflights.add(new Flight(rs.getString("depart_city"), rs.getString("arrive_city"), rs.getString("aircraft_name"), rs.getInt("depart_hours"), rs.getInt("depart_minutes"), rs.getString("depart_AMPM"), rs.getString("depart_timezone"),
+                                            rs.getInt("arrive_hours"), rs.getInt("arrive_minutes"), rs.getString("arrive_AMPM"), rs.getString("arrive_timezone"), rs.getString("flight_id"), rs.getString("once"), rs.getString("weekly"), rs.getString("monthly"), rs.getBoolean("same_day"), rs.getString("until"),(String)session.getAttribute("departfield")));
+                                    tempflights.add(new Flight(rs2.getString("depart_city"), rs2.getString("arrive_city"), rs2.getString("aircraft_name"), rs2.getInt("depart_hours"), rs2.getInt("depart_minutes"), rs2.getString("depart_AMPM"), rs2.getString("depart_timezone"),
+                                            rs2.getInt("arrive_hours"), rs2.getInt("arrive_minutes"), rs2.getString("arrive_AMPM"), rs2.getString("arrive_timezone"), rs2.getString("flight_id"), rs2.getString("once"), rs2.getString("weekly"), rs2.getString("monthly"), rs2.getBoolean("same_day"), rs2.getString("until"),rs3.getString("depart_date")));
+                                    flights.add(tempflights);
+                                }
+                            }
+                        }
                     }
                 }
+
+
 
                 con.close();
                 if(flights.size()>0) {
                     Collections.sort(flights,new PriceComparator());
-                    if(session.getAttribute("flightsort").equals("Depart Time")){
+                    if(session.getAttribute("flightsort")!=null&&session.getAttribute("flightsort").equals("Depart Time")){
                         Collections.sort(flights, new DepartTimeComparator());
-                    }else if(session.getAttribute("flightsort").equals("Arrive Time")){
+                    }else if(session.getAttribute("flightsort")!=null&&session.getAttribute("flightsort").equals("Arrive Time")){
                         Collections.sort(flights, new ArriveTimeComparator());
                     }
                     return flights;
@@ -103,5 +136,21 @@ public class FlightsServlet extends HttpServlet {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static boolean timeDifference(int a_hours, int a_minutes, String a_AMPM, String a_arrive,int b_hours, int b_minutes, String b_AMPM, String b_depart ){
+        LocalDateTime atime = LocalDateTime.parse(a_arrive+"T"+String.format("%02d", a_hours) + ":" + String.format("%02d", a_minutes));
+        LocalDateTime btime = LocalDateTime.parse(b_depart+"T"+String.format("%02d", b_hours) + ":" + String.format("%02d",b_minutes));
+        if (a_AMPM.equals("PM")) {
+            atime = LocalDateTime.parse(a_arrive+"T"+String.format("%02d", a_hours+12) + ":" + String.format("%02d", a_minutes)+":00");
+        }
+        if (b_AMPM.equals("PM")) {
+            btime = LocalDateTime.parse(b_depart+"T"+String.format("%02d", b_hours+12 )+ ":" + String.format("%02d",b_minutes)+":00");
+        }
+        if(btime.minusHours(3).isAfter(atime)){
+            return false;
+        }else{
+            return true;
+        }
     }
 }

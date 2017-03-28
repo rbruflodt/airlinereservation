@@ -48,7 +48,7 @@
         <label for="return">Return: </label>
         <input type="date" id="return" value="<%=session.getAttribute("returnfield")%>" name="returnfield">
         </div><br>
-        <%ArrayList<Flight> requestedflights=FlightsServlet.getFlights(session);%>
+        <%ArrayList<ArrayList<Flight>> requestedflights=FlightsServlet.getFlights(session);%>
         <input type="submit" class="prettybutton" name="searchflights" value="Search">
         <%if(session.getAttribute("flightsearcherror")!=null){%>
         <p style="color:#903723"><%=session.getAttribute("flightsearcherror")%></p>
@@ -78,12 +78,15 @@
                 <th>Price</th>
                 <th>Book</th>
             </tr>
-        <%for(Flight f : requestedflights){
+        <%for(ArrayList<Flight> flightArrayList : requestedflights){%>
+
+            <%for(int k = 0;k<flightArrayList.size();k++){
+                Flight f=flightArrayList.get(k);
         ArrayList<String> fclasses= AdminFlightServlet.getClasses(f);
         ArrayList<Float> fprices = AdminFlightServlet.getPrices(f);%>
-            <tr>
-                <td><%=session.getAttribute("flightfromfield")%><br><%=session.getAttribute("departfield")%><br><%=f.getDepart_hours()+":"+String.format("%02d",f.getDepart_minutes())+" "+f.getDepart_AMPM()+" "+f.getDepart_timezone()%></td>
-                <td><%=session.getAttribute("flighttofield")%><br><%if(f.isSame_day()){%><%=session.getAttribute("departfield")%><%}else{%><%=LocalDate.parse((String) session.getAttribute("departfield")).plusDays(1)%><%}%><br><%=f.getArrive_hours()+":"+String.format("%02d",f.getArrive_minutes())+" "+f.getArrive_AMPM()+" "+f.getArrive_timezone()%></td>
+            <tr <%if(k!=flightArrayList.size()-1){%>style="border-bottom: none"<%}%>>
+                <td><%=f.getDepart_city()%><br><%=session.getAttribute("departfield")%><br><%=f.getDepart_hours()+":"+String.format("%02d",f.getDepart_minutes())+" "+f.getDepart_AMPM()+" "+f.getDepart_timezone()%></td>
+                <td><%=f.getArrive_city()%><br><%if(f.isSame_day()){%><%=f.getDepart_date()%><%}else{%><%=LocalDate.parse(f.getDepart_date()).plusDays(1)%><%}%><br><%=f.getArrive_hours()+":"+String.format("%02d",f.getArrive_minutes())+" "+f.getArrive_AMPM()+" "+f.getArrive_timezone()%></td>
                 <td><%=ManageAircraftServlet.getAircraftType(f.getAircraft_name())%></td>
                 <td><table>
                     <%for(int i = 0; i < fclasses.size();i++){%>
@@ -100,13 +103,13 @@
                         <input type="radio" checked="checked" name="<%="bookclass"+f.getFlight_id()%> value="<%=c%>">
                     </td></tr>
                     <%}%>
-                    <tr><td><input type="submit" value="Book" class="prettybutton" name="<%="book"+f.getFlight_id()%>"></td></tr></table>
+                        <%if(k==flightArrayList.size()-1){%><tr><td><input type="submit" value="Book" class="prettybutton" name="<%="book"+f.getFlight_id()%>"></td></tr><%}%></table>
                     <%}else{%>
                     <p style="color:#903723">Sign in to book flight</p>
                     <%}%>
                 </td>
             </tr>
-            <%}}%>
+            <%}}}%>
         </table>
     </form>
 

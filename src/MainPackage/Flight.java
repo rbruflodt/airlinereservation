@@ -23,8 +23,9 @@ public class Flight implements Comparable<Flight>{
     private String monthly;
     private String until;
     private boolean same_day;
+    private String depart_date;
 
-    public Flight(String depart_city, String arrive_city, String aircraft_name, int depart_hours, int depart_minutes, String depart_AMPM, String depart_timezone, int arrive_hours, int arrive_minutes, String arrive_AMPM, String arrive_timezone, String flight_id, String once, String weekly, String monthly, boolean same_day, String until) {
+    public Flight(String depart_city, String arrive_city, String aircraft_name, int depart_hours, int depart_minutes, String depart_AMPM, String depart_timezone, int arrive_hours, int arrive_minutes, String arrive_AMPM, String arrive_timezone, String flight_id, String once, String weekly, String monthly, boolean same_day, String until, String departdate) {
         this.depart_city = depart_city;
         this.arrive_city = arrive_city;
         this.aircraft_name = aircraft_name;
@@ -42,6 +43,15 @@ public class Flight implements Comparable<Flight>{
         this.monthly = monthly;
         this.same_day=same_day;
         this.until = until;
+        this.depart_date = departdate;
+    }
+
+    public String getDepart_date() {
+        return depart_date;
+    }
+
+    public void setDepart_date(String depart_date) {
+        this.depart_date = depart_date;
     }
 
     public String getUntil() {

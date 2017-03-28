@@ -346,7 +346,7 @@ public class AdminFlightServlet extends HttpServlet {
                 do{
                     if((session.getAttribute("flightidfield")==null||rs.getString("flight_id").toLowerCase().indexOf(((String)(session.getAttribute("flightidfield"))).toLowerCase())==0)&&(session.getAttribute("aircraftnamefield")==null||rs.getString("aircraft_name").toLowerCase().indexOf(((String)(session.getAttribute("aircraftnamefield"))).toLowerCase())==0)) {
                         flights.add(new Flight(rs.getString("depart_city"), rs.getString("arrive_city"),rs.getString("aircraft_name"),rs.getInt("depart_hours"),rs.getInt("depart_minutes"),rs.getString("depart_AMPM"),rs.getString("depart_timezone"),
-                                rs.getInt("arrive_hours"),rs.getInt("arrive_minutes"),rs.getString("arrive_AMPM"),rs.getString("arrive_timezone"),rs.getString("flight_id"),rs.getString("once"),rs.getString("weekly"),rs.getString("monthly"),rs.getBoolean("same_day"),rs.getString("until")));
+                                rs.getInt("arrive_hours"),rs.getInt("arrive_minutes"),rs.getString("arrive_AMPM"),rs.getString("arrive_timezone"),rs.getString("flight_id"),rs.getString("once"),rs.getString("weekly"),rs.getString("monthly"),rs.getBoolean("same_day"),rs.getString("until"),null));
                     }
                 }
                 while(rs.next());
