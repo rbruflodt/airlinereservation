@@ -147,7 +147,7 @@ public class FlightsServlet extends HttpServlet {
         if (b_AMPM.equals("PM")) {
             btime = LocalDateTime.parse(b_depart+"T"+String.format("%02d", b_hours+12 )+ ":" + String.format("%02d",b_minutes)+":00");
         }
-        if(btime.minusHours(3).isAfter(atime)){
+        if(btime.minusHours(6).isAfter(atime)){
             return false;
         }else{
             return true;

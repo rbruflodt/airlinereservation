@@ -173,13 +173,16 @@ public class ManageAircraftServlet  extends HttpServlet {
             String search = "select * from aircraft where name='"+aircraftName+"'";
             ResultSet rs = stmt.executeQuery(search);
             if(rs.next()){
-                return rs.getString("type");
+                String type = rs.getString("type");
+                con.close();
+                return type;
             }
         }catch(ClassNotFoundException e){
             e.printStackTrace();
         }catch(SQLException e){
             e.printStackTrace();
         }
+
         return "";
     }
 
