@@ -205,11 +205,12 @@ public class AdminFlightServlet extends HttpServlet {
                                 LocalDate departdate = LocalDate.parse(rs.getString("depart_date"));
 
                                 if (same_day) {
-                                    query = "update flight_instances set depart_date='" + departdate + "', arrive_date='" + departdate + "' where (flight_id='"+f.getFlight_id()+"') and (depat_date='"+departdate+"')";
+                                    query = "update flight_instances set depart_date='" + departdate + "', arrive_date='" + departdate + "' where (flight_id='"+f.getFlight_id()+"') and (depart_date='"+departdate+"')";
                                 } else {
-                                    query = "update flight_instances set depart_date='" + departdate + "', arrive_date='" + departdate.plusDays(1) + "' where (flight_id='"+f.getFlight_id()+"') and (depat_date='"+departdate+"')";
+                                    query = "update flight_instances set depart_date='" + departdate + "', arrive_date='" + departdate.plusDays(1) + "' where (flight_id='"+f.getFlight_id()+"') and (depart_date='"+departdate+"')";
                                 }
-                                stmt.execute(query);
+                                Statement stmt2 = con.createStatement();
+                                stmt2.execute(query);
                             }}
 
                         query = "update flights set depart_hours='" + request.getParameter("departhours" + f.getFlight_id()) + "', depart_minutes='" + request.getParameter("departminutes" + f.getFlight_id()) + "', " +

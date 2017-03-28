@@ -9,9 +9,9 @@ import java.util.Comparator;
  */
 public class ArriveTimeComparator implements Comparator<ArrayList<Flight>> {
     public int compare(ArrayList<Flight> a, ArrayList<Flight> b){
-        if(a.get(a.size()-1).isSame_day()&&!b.get(b.size()-1).isSame_day()){
+        if(a.get(0).isSame_day()&&a.get(a.size()-1).isSame_day()&&(!b.get(b.size()-1).isSame_day()||!b.get(0).isSame_day())){
             return -1;
-        }else if(b.get(b.size()-1).isSame_day()&&!a.get(a.size()-1).isSame_day()){
+        }else if(b.get(0).isSame_day()&&b.get(b.size()-1).isSame_day()&&(!a.get(a.size()-1).isSame_day()||!a.get(0).isSame_day())){
             return 1;
         }
         else {
