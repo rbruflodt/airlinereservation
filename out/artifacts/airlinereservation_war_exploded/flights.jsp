@@ -34,7 +34,7 @@
             <option <%if(session.getAttribute("flighttofield")!=null&&session.getAttribute("flighttofield").equals("San Fransisco, CA")){%>selected<%}%>>San Fransisco, CA</option>
         </select>
         <label for="numpassengers">Passengers: </label>
-        <input type="number" name="numpassengers" id="numpassengers" min="1" style="width:50px">
+        <input type="number" <%if(session.getAttribute("numpassengers")!=null){%> value="<%=session.getAttribute("numpassengers")%>" <%}else{%> value="1" <%}%> name="numpassengers" id="numpassengers" min="1" style="width:50px">
         <input type="radio" id="oneway" <%if(session.getAttribute("tripfield")==null||session.getAttribute("tripfield").equals("oneway")){%>checked="checked" <%}%>name="radio" value="oneway">
         <label for="oneway">One way </label>
         <input type="radio" id="roundtrip" name="radio" <%if(session.getAttribute("tripfield")!=null&&session.getAttribute("tripfield").equals("roundtrip")){%>checked="checked" <%}%> value="roundtrip">
@@ -102,9 +102,9 @@
                 </table></td>
                 <td>
                 <%if(session.getAttribute("currentuser")!=null){%>
-                    <table style="padding-top:40px">
+                    <table<% if(k==flightArrayList.size()-1){%> style="padding-top:40px"<%}%>>
                         <%for(String c : fclasses){%><tr><td>
-                        <input type="radio" checked="checked" name="<%="bookclass"+f.getFlight_id()%> value="<%=c%>">
+                        <input type="radio" checked="checked" name="<%="bookclass"+f.getFlight_id()%>" value="<%=c%>">
                     </td></tr>
                     <%}%>
                         <%if(k==flightArrayList.size()-1){%><tr><td><input type="submit" value="Book" class="prettybutton" name="<%="book"+f.getFlight_id()%>"></td></tr><%}%></table>

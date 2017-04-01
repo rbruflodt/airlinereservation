@@ -24,6 +24,7 @@ public class FlightsServlet extends HttpServlet {
         if(request.getParameter("searchflights")!=null){
             session.setAttribute("flightfromfield",request.getParameter("flightfromfield"));
             session.setAttribute("flighttofield",request.getParameter("flighttofield"));
+            session.setAttribute("numpassengers",request.getParameter("numpassengers"));
             session.removeAttribute("departfield");
             session.removeAttribute("tripfield");
             session.removeAttribute("returnfield");
@@ -40,9 +41,14 @@ public class FlightsServlet extends HttpServlet {
             else{
                 flightsearcherror="All fields required.";
             }
-            if((request.getParameter("radio").equals("roundtrip")&&request.getParameter("returnfield")!=null)){
-                if(LocalDate.parse(request.getParameter("returnfield")).compareTo(LocalDate.now())<0){
+            if((request.getParameter("radio").equals("roundtrip"))&&flightsearcherror==""){
+                if(request.getParameter("returnfield")==null||request.getParameter("returnfield").equals("")){
+                    flightsearcherror="All fields required";
+                    session.setAttribute("tripfield","roundtrip");
+                }
+                else if(LocalDate.parse(request.getParameter("returnfield")).compareTo(LocalDate.parse(request.getParameter("departfield")))<0){
                     flightsearcherror="Must select future date.";
+                    session.setAttribute("tripfield","roundtrip");
                 }else {
                     session.setAttribute("tripfield", "roundtrip");
                     session.setAttribute("returnfield", request.getParameter("returnfield"));
@@ -52,11 +58,41 @@ public class FlightsServlet extends HttpServlet {
                 flightsearcherror="All fields required.";
             }
             session.setAttribute("flightsearcherror",flightsearcherror);
+            response.sendRedirect("/index.jsp");
         }
         else if(request.getParameter("sortbutton")!=null){
             session.setAttribute("flightsort",request.getParameter("flightsort"));
+            response.sendRedirect("/index.jsp");
+        }else{
+            session.setAttribute("numpassengers",request.getParameter("numpassengers"));
+            ArrayList<ArrayList<Flight>> flights = getFlights(session);
+            flights.addAll(getReturnFlights(session));
+            for(ArrayList<Flight> flightArrayList : flights){
+                if(request.getParameter("book"+flightArrayList.get(flightArrayList.size()-1).getFlight_id())!=null){
+                    session.setAttribute("flightstobook",flightArrayList);
+                    float totalprice=0;
+                    ArrayList<String> bookedclasses = new ArrayList<>();
+                    for(Flight f : flightArrayList) {
+                        String c = request.getParameter("bookclass"+f.getFlight_id());
+                        bookedclasses.add(c);
+                        ArrayList<String> classes = AdminFlightServlet.getClasses(f);
+                        ArrayList<Float> prices = AdminFlightServlet.getPrices(f);
+                        for(int j = 0; j < classes.size();j++) {
+                            if(classes.get(j).equals(c)) {
+                                totalprice += prices.get(j);
+
+                            }
+                        }
+                    }
+                    totalprice=totalprice*((Integer.valueOf(request.getParameter("numpassengers"))));
+                    session.setAttribute("totalprice",String.valueOf(totalprice));
+                    session.setAttribute("bookedclasses",bookedclasses);
+
+                }
+            }
+            response.sendRedirect("/bookflights.jsp");
         }
-        response.sendRedirect("/index.jsp");
+
     }
 
 
