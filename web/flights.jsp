@@ -155,7 +155,7 @@
                     <%if(session.getAttribute("currentuser")!=null){%>
                     <table style="padding-top:40px">
                         <%for(String c : fclasses){%><tr><td>
-                        <input type="radio" checked="checked" name="<%="bookclass"+f.getFlight_id()%> value="<%=c%>">
+                        <input type="radio" checked="checked" name="<%="bookclass"+f.getFlight_id()%>" value="<%=c%>">
                     </td></tr>
                         <%}%>
                         <%if(k==flightArrayList.size()-1){%><tr><td><input type="submit" value="Book" class="prettybutton" name="<%="book"+f.getFlight_id()%>"></td></tr><%}%></table>

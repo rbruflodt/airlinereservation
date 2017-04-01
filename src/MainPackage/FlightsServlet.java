@@ -66,12 +66,15 @@ public class FlightsServlet extends HttpServlet {
         }else{
             session.setAttribute("numpassengers",request.getParameter("numpassengers"));
             ArrayList<ArrayList<Flight>> flights = getFlights(session);
-            flights.addAll(getReturnFlights(session));
+            if(session.getAttribute("tripfield").equals("roundtrip")) {
+                flights.addAll(getReturnFlights(session));
+            }
             for(ArrayList<Flight> flightArrayList : flights){
                 if(request.getParameter("book"+flightArrayList.get(flightArrayList.size()-1).getFlight_id())!=null){
                     session.setAttribute("flightstobook",flightArrayList);
                     float totalprice=0;
                     ArrayList<String> bookedclasses = new ArrayList<>();
+                    ArrayList<Float> bookedprices = new ArrayList<>();
                     for(Flight f : flightArrayList) {
                         String c = request.getParameter("bookclass"+f.getFlight_id());
                         bookedclasses.add(c);
@@ -80,6 +83,7 @@ public class FlightsServlet extends HttpServlet {
                         for(int j = 0; j < classes.size();j++) {
                             if(classes.get(j).equals(c)) {
                                 totalprice += prices.get(j);
+                                bookedprices.add(prices.get(j));
 
                             }
                         }
@@ -87,6 +91,7 @@ public class FlightsServlet extends HttpServlet {
                     totalprice=totalprice*((Integer.valueOf(request.getParameter("numpassengers"))));
                     session.setAttribute("totalprice",String.valueOf(totalprice));
                     session.setAttribute("bookedclasses",bookedclasses);
+                    session.setAttribute("bookedprices",bookedprices);
 
                 }
             }
@@ -238,7 +243,7 @@ public class FlightsServlet extends HttpServlet {
                     return flights;
                 }
                 else{
-                    session.setAttribute("flightsearcherror","No matching flights found.");
+                    session.setAttribute("flightsearcherror","No matching return flights found.");
                 }
 
             }

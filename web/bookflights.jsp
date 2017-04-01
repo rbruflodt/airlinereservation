@@ -22,7 +22,7 @@
         <input type="text" id="<%="firstname"+i%>" size="15" name="<%="firstname"+i%>">
 
         <label for="<%="lastname"+i%>">Last name: </label>
-        <input type="text" id="<%="lastname"+i%>" size="15" name="<%="gender"+i%>">
+        <input type="text" id="<%="lastname"+i%>" size="15" name="<%="lastname"+i%>">
         <br>
         <label for="<%="gender"+i%>">Gender: </label>
         <input type="text" id="<%="gender"+i%>" size="15" name="<%="gender"+i%>">
@@ -55,7 +55,11 @@
         <input type="number" step="0.01" id="priceconfirmation"  name="priceconfirmation">
         <br>
         <br>
-        <input type="submit" class="prettybutton" name="bookflights">
+        <%if(session.getAttribute("bookflighterror")!=null){%>
+        <p style="color:#903723;font-weight: bold"><%=session.getAttribute("bookflighterror")%></p>
+        <%session.removeAttribute("bookflighterror");}%>
+        <br>
+        <input type="submit" class="signinbutton" name="bookflights">
 
     </form>
 </div>
