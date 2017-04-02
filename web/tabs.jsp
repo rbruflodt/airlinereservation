@@ -37,6 +37,10 @@
         background-color: #2c71c9;
     }
 
+    .active{
+        background-color: #2c71c9;
+    }
+
     /* Style the tab content */
     .tabcontent {
         display: none;
@@ -62,10 +66,12 @@
         tablinks = document.getElementsByClassName("tablinks");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
+            tablinks[i].style.backgroundColor="#7fb0cc";
         }
 
         // Show the current tab, and add an "active" class to the link that opened the tab
         document.getElementById(tabName).style.display = "block";
+        document.getElementsByName(tabName)[0].style.backgroundColor="#2c71c9";
         evt.currentTarget.className += " active";
         document.cookie='currentTab='+tabName;
 
@@ -104,14 +110,18 @@
         }
         if(currentTab!=null){
             if(document.getElementsByName(currentTab)[0] !=null) {
-                document.getElementsByName(currentTab)[0].click();
+                //document.getElementsByName(currentTab)[0].click();
+
+                openTab(document.getElementsByName(currentTab)[0].event,currentTab);
             }
             else{
-                document.getElementById("defaultOpen").click();
+                //document.getElementById("defaultOpen").click();
+                openTab(document.getElementsById("defaultOpen")[0].event,document.getElementsById("defaultOpen")[0].name);
             }
         }
         else{
-            document.getElementById("defaultOpen").click();
+            //document.getElementById("defaultOpen").click();
+            openTab(document.getElementsById("defaultOpen")[0].event,document.getElementsById("defaultOpen")[0].name);
         }
 
         Delete_Cookie("scrollTop");
