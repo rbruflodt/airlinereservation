@@ -116,12 +116,12 @@
             }
             else{
                 //document.getElementById("defaultOpen").click();
-                openTab(document.getElementsById("defaultOpen")[0].event,document.getElementsById("defaultOpen")[0].name);
+                openTab(document.getElementById("defaultOpen").event,document.getElementById("defaultOpen").name);
             }
         }
         else{
             //document.getElementById("defaultOpen").click();
-            openTab(document.getElementsById("defaultOpen")[0].event,document.getElementsById("defaultOpen")[0].name);
+            openTab(document.getElementById("defaultOpen").event,document.getElementById("defaultOpen").name);
         }
 
         Delete_Cookie("scrollTop");
