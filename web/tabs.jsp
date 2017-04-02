@@ -72,7 +72,7 @@
         // Show the current tab, and add an "active" class to the link that opened the tab
         document.getElementById(tabName).style.display = "block";
         document.getElementsByName(tabName)[0].style.backgroundColor="#2c71c9";
-        evt.currentTarget.className += " active";
+        //evt.currentTarget.className += " active";
         document.cookie='currentTab='+tabName;
 
     }
