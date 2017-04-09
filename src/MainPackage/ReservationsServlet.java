@@ -32,7 +32,7 @@ public class ReservationsServlet extends HttpServlet {
             String search = "select * from tickets where email='" + ((User) session.getAttribute("currentuser")).getEmail() + "'";
             ResultSet rs = stmt.executeQuery(search);
             while(rs.next()) {
-                if (request.getParameter("emailreceipt"+rs.getInt("ticket_number"))!=null){
+                /*if (request.getParameter("emailreceipt"+rs.getInt("ticket_number"))!=null){
                     Message message = NewAccountServlet.getEmailMessage(((User) session.getAttribute("currentuser")).getEmail());
                     message.setSubject("Iowa Air Flight Confirmation");
                     BodyPart messageBodyPart = new MimeBodyPart();
@@ -49,7 +49,7 @@ public class ReservationsServlet extends HttpServlet {
                     message.setContent(multipart);
                     Transport.send(message);
                     session.setAttribute("reservationmessage","The receipt was sent to your email address.");
-                }else if(request.getParameter("cancelticket"+rs.getString("ticket_number"))!=null){
+                }else */if(request.getParameter("cancelticket"+rs.getString("ticket_number"))!=null){
                     search = "delete from tickets where ticket_number='"+rs.getString("ticket_number")+"'";
                     stmt.execute(search);
                 }
@@ -58,9 +58,9 @@ public class ReservationsServlet extends HttpServlet {
             e.printStackTrace();
         }catch(SQLException e){
             e.printStackTrace();
-        }catch(MessagingException e){
+        }/*catch(MessagingException e){
             e.printStackTrace();
-        }
+        }*/
         response.sendRedirect("/index.jsp");
     }
 

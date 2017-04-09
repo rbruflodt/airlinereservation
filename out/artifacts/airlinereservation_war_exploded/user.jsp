@@ -42,7 +42,7 @@
             <td><%=ticket.get(1)%></td>
             <td><%=ticket.get(2)%><br><%=ticket.get(3)+" "%><%=ticket.get(4)%></td>
             <td><%=ticket.get(5)%><br><%=ticket.get(6)+" "%><%=ticket.get(7)%></td>
-            <td style="text-align:center;"><input  type="submit" class="prettybutton" value="Email Receipt" name="<%="emailreceipt"+ticket.get(0)%>">
+            <td style="text-align:center;"><%--<input  type="submit" class="prettybutton" value="Email Receipt" name="<%="emailreceipt"+ticket.get(0)%>">--%>
                 <input type="submit" class="prettybutton" value="Cancel Ticket" name="<%="cancelticket"+ticket.get(0)%>"></td>
         </tr>
         <%}%>
