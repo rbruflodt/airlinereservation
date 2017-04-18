@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.net.MalformedURLException;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -50,7 +51,7 @@ public class ReservationsServlet extends HttpServlet {
                     Transport.send(message);
                     session.setAttribute("reservationmessage","The receipt was sent to your email address.");
                 }else */if(request.getParameter("cancelticket"+rs.getString("ticket_number"))!=null){
-                    search = "delete from tickets where ticket_number='"+rs.getString("ticket_number")+"'";
+                    search = "delete from tickets where (ticket_number='"+rs.getString("ticket_number")+"' and depart_date='"+rs.getString("depart_date")+"')";
                     stmt.execute(search);
                 }
             }
@@ -107,5 +108,25 @@ public class ReservationsServlet extends HttpServlet {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static boolean within24Hours(String date){
+        LocalDate now = LocalDate.now();
+        if(now.isEqual(LocalDate.parse(date))){
+            return true;
+        }
+        now = now.plusDays(1);
+        if(now.isEqual(LocalDate.parse(date))){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isPassed(String date){
+        LocalDate now = LocalDate.now();
+        if(now.isAfter(LocalDate.parse(date))){
+            return true;
+        }
+        return false;
     }
 }
