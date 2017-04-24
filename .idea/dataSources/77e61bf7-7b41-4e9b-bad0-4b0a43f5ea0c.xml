@@ -1,0 +1,164 @@
+<dataSource name="MySQL - ebdb@aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="ebdb">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema" />
+    <schema id="3" name="innodb" />
+    <schema id="4" name="mysql" />
+    <schema id="5" name="performance_schema" />
+    <schema id="6" name="sys" />
+    <schema id="7" name="tmp" />
+    <table id="8" parent="1" name="seats" />
+    <table id="9" parent="1" name="flights" />
+    <table id="10" parent="1" name="tickets" />
+    <table id="11" parent="1" name="users" />
+    <table id="12" parent="1" name="aircraft" />
+    <table id="13" parent="1" name="flight_instances" />
+    <table id="14" parent="1" name="prices" />
+    <column id="15" parent="8" name="class">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="16" parent="8" name="max_seats">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="17" parent="8" name="aircraft_name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="18" parent="9" name="depart_city">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="19" parent="9" name="arrive_city">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="20" parent="9" name="aircraft_name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="21" parent="9" name="flight_id">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="22" parent="9" name="depart_AMPM">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="23" parent="9" name="depart_timezone">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="24" parent="9" name="arrive_AMPM">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="25" parent="9" name="arrive_timezone">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="26" parent="9" name="once">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="27" parent="9" name="weekly">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="28" parent="9" name="monthly">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="29" parent="9" name="arrive_hours">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="30" parent="9" name="arrive_minutes">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="31" parent="9" name="depart_hours">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="32" parent="9" name="depart_minutes">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="33" parent="9" name="same_day">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="34" parent="9" name="until">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="35" parent="10" name="ticket_number">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="36" parent="10" name="gender">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="37" parent="10" name="id">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="38" parent="10" name="checked_in">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="39" parent="10" name="dob">
+      <data-type>date|0</data-type>
+    </column>
+    <column id="40" parent="10" name="first_name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="41" parent="10" name="last_name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="42" parent="10" name="email">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="43" parent="10" name="depart_date">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="44" parent="10" name="flight_id">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="45" parent="10" name="class">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="46" parent="10" name="arrive_date">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="47" parent="11" name="first_name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="48" parent="11" name="last_name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="49" parent="11" name="phone_number">
+      <data-type>mediumtext|0</data-type>
+    </column>
+    <column id="50" parent="11" name="email">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="51" parent="11" name="password">
+      <data-type>varbinary(16)|0</data-type>
+    </column>
+    <column id="52" parent="11" name="is_admin">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="53" parent="11" name="is_manager">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="54" parent="11" name="verification">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="55" parent="12" name="name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="56" parent="12" name="type">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="57" parent="13" name="flight_id">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="58" parent="13" name="depart_date">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="59" parent="13" name="arrive_date">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="60" parent="14" name="flight_id">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="61" parent="14" name="class">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="62" parent="14" name="price">
+      <data-type>float|0</data-type>
+    </column>
+  </database-model>
+</dataSource>
