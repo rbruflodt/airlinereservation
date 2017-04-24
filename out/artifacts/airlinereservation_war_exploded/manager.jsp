@@ -1,4 +1,5 @@
-<%--
+<%@ page import="MainPackage.ManageTickets" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Rachel
   Date: 2/13/2017
@@ -22,38 +23,41 @@
 </div>
 
 <div id="Passenger Tickets" class="tabcontent">
-    <h3 style="color:#2c71c9;float:left">Search for Tickets</h3>
-    <br>
-    <form style="float:left;text-align: left">
-    <label for="ticketnum">Ticket number: </label>
-    <input type="number" id="ticketnum" style="width:150px">
-    <label for="lastname">Last name: </label>
-    <input type="text" id="lastname" style="width:150px">
-    <label for="firstname">First name: </label>
-    <input type="text" id="firstname" style="width:150px">
+    <form action="/managetickets"  style="padding:10px; text-align:left; border-bottom:solid 1px #ccc">
+        <h3 style="color:#2c71c9;">Search for Passenger Tickets</h3>
+        <label for="tnum">Ticket number: </label>
+        <input type="number" id="tnum" style="width:150px" value="<%=session.getAttribute("ticketnum")%>" name="ticketnum">
+        <label for="lastname">Last name: </label>
+        <input type="text" id="lastname" style="width:150px" value="<%=session.getAttribute("lname")%>" name="lname">
+        <label for="firstname">First name: </label>
+        <input type="text" id="firstname" style="width:150px" value="<%=session.getAttribute("fname")%>" name="fname">
         <br>
+        <%ArrayList<ArrayList<String>> tickets = ManageTickets.getTickets(session);%>
+        <input type="submit" class="prettybutton" name="searchtickets" value="Search">
         <br>
-    <input type="submit" class="prettybutton" name="searchtickets" value="Search">
-    </form>
-    <br>
-    <h3 style="color:#2c71c9;float:left">Passenger Tickets</h3>
-    <table class="prettytable" border="1">
+        <% if(tickets!=null){%>
+        <h3 style="color:#2c71c9;float:left">Passenger Tickets</h3>
+        <table class="prettytable" border="1">
         <tr>
             <th>Ticket Number</th>
-            <th>Last Name</th>
-            <th>First Name</th>
-            <th>ID #</th>
+            <th>Passenger Name</th>
+            <th>Depart</th>
+            <th>Arrive</th>
             <th>Manage</th>
         </tr>
+        <%for(ArrayList<String> t : tickets){%>
         <tr>
-            <td>123456789</td>
-            <td>Smith</td>
-            <td>John</td>
-            <td>abc123jkl789</td>
-            <td style="text-align:center"><input type="submit" class="prettybutton" value="Check in" name="ticketnumber">
+            <td><%=t.get(0)%></td>
+            <td><%=t.get(1)%></td>
+            <td><%=t.get(2)%><br><%=t.get(3)+" "%><%=t.get(4)%></td>
+            <td><%=t.get(5)%><br><%=t.get(6)+" "%><%=t.get(7)%></td>
+            <td style="text-align:center"><input type="submit" class="prettybutton" value="Check in" name="checkinticket">
                 <input type="submit" class="prettybutton" value="Cancel ticket" name="cancelticketnumber"></td>
         </tr>
+        <%}}%>
     </table>
+    </form>
+
 </div>
 </body>
 </html>
