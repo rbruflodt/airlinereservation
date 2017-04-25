@@ -4,6 +4,16 @@
     <facet type="web" name="Web">
       <configuration>
         <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/out/artifacts/airlinereservation_war_exploded/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/out/artifacts/airlinereservation_war_exploded" relative="/" />
+        </webroots>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web2">
+      <configuration>
+        <descriptors>
           <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
@@ -20,12 +30,32 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.11" level="application_server_libraries" />
-    <orderEntry type="library" name="Jersey-2.2" level="project" />
-    <orderEntry type="library" exported="" name="mysql-connector-java-5.1.40-bin" level="project" />
+     <orderEntry type="library" name="Jersey-2.2" level="project" />
+     <orderEntry type="library" exported="" name="mysql-connector-java-5.1.40-bin" level="project" />
+    <orderEntry type="library" name="lib1" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../apache-tomcat-8.5.11/lib/mail.jar!/" />
+        <root url="jar://$MODULE_DIR$/../../apache-tomcat-8.5.11/lib/mail.jar!/" />
+
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/Program Files (x86)/apache-tomcat-8.5.11/lib/tomcat-api.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/Program Files (x86)/apache-tomcat-8.5.11/lib/servlet-api.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

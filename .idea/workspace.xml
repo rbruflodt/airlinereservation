@@ -2,7 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4dc2d33-4f28-4685-bd84-b7da711b8262" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MainPackage/ManageTickets.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/WEB-INF/classes/MainPackage/AdminFlightServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/WEB-INF/classes/MainPackage/AdminFlightServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/WEB-INF/classes/MainPackage/BookFlightsServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/WEB-INF/classes/MainPackage/BookFlightsServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/WEB-INF/classes/MainPackage/ManageAircraftServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/WEB-INF/classes/MainPackage/ManageAircraftServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/WEB-INF/receipts/receipt100020.pdf" afterPath="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/WEB-INF/receipts/receipt100020.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/airlinereservation/MainPackage/AdminFlightServlet.class" afterPath="$PROJECT_DIR$/out/production/airlinereservation/MainPackage/AdminFlightServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/airlinereservation/MainPackage/BookFlightsServlet.class" afterPath="$PROJECT_DIR$/out/production/airlinereservation/MainPackage/BookFlightsServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/airlinereservation/MainPackage/ManageAircraftServlet.class" afterPath="$PROJECT_DIR$/out/production/airlinereservation/MainPackage/ManageAircraftServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/airlinereservation_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/airlinereservation_war_exploded.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/airlinereservation.iml" afterPath="$PROJECT_DIR$/airlinereservation.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/manager.jsp" afterPath="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/manager.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/manager.jsp" afterPath="$PROJECT_DIR$/web/manager.jsp" />
     </list>
     <ignored path="airlinereservation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,24 +44,6 @@
         <option name="myItemId" />
         <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
       </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - ebdb@aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - ebdb@aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="tickets" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
     </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -62,6 +58,7 @@
             <state relative-caret-position="1496">
               <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="110" selection-end-column="40" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <marker date="1491089280902" expanded="true" signature="2288:2308" ph="select* from... tickets" />
                 <marker date="1491089280902" expanded="true" signature="2801:2822" ph="select * fro... tickets" />
                 <marker date="1491089280902" expanded="true" signature="4764:4928" ph="insert into tickets... " />
@@ -86,10 +83,9 @@
       <file leaf-file-name="ReservationsServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainPackage/ReservationsServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="1921">
               <caret line="129" column="21" selection-start-line="129" selection-start-column="21" selection-end-line="129" selection-end-column="21" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <marker date="1492475167808" expanded="true" signature="1278:1377" ph="select * fro... tickets" />
                 <marker date="1492475167808" expanded="true" signature="2875:2917" ph="delete from " />
                 <marker date="1492475167808" expanded="true" signature="2875:2950" ph="delete from " />
@@ -105,61 +101,83 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewPasswordServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MainPackage/NewPasswordServlet.java">
+      <file leaf-file-name="DepartTimeComparator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MainPackage/DepartTimeComparator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            <state relative-caret-position="204">
+              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="false" />
-                <marker date="1487630621842" expanded="true" signature="1498:1776" ph="select * fro... users" />
-                <marker date="1487630621842" expanded="true" signature="2696:2741" ph="update users... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TicketDepartTimeComparator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MainPackage/TicketDepartTimeComparator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" column="98" selection-start-line="14" selection-start-column="98" selection-end-line="14" selection-end-column="98" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ebdb.tickets" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.tickets">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DepartTimeComparator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MainPackage/DepartTimeComparator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="user.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/user.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
+            <state relative-caret-position="32">
               <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="airlinereservation.iml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/airlinereservation.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manager.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/manager.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ManageTickets.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MainPackage/ManageTickets.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding>
+                <marker date="1493078341391" expanded="true" signature="1459:1544" ph="delete from " />
+                <marker date="1493078341391" expanded="true" signature="2232:2331" ph="update ticke... " />
+                <marker date="1493078341391" expanded="true" signature="3192:3389" ph="select * fro... tickets" />
+                <marker date="1493078341391" expanded="true" signature="3661:3734" ph="select * fro... flights" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VerifyAccountServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MainPackage/VerifyAccountServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+              <folding>
+                <marker date="1488736624884" expanded="true" signature="1393:1442" ph="update users... " />
+                <marker date="1488736624884" expanded="true" signature="2785:2834" ph="update users... " />
+                <marker date="1488736624884" expanded="true" signature="3821:3986" ph="insert into users... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -171,42 +189,6 @@
               <caret line="39" column="6" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="flights.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/flights.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="52" column="8" selection-start-line="52" selection-start-column="8" selection-end-line="54" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlightsServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MainPackage/FlightsServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1649">
-              <caret line="108" column="16" selection-start-line="108" selection-start-column="16" selection-end-line="112" selection-end-column="57" />
-              <folding>
-                <marker date="1491076907415" expanded="true" signature="5725:5815" ph="select * fro... flight_instances" />
-                <marker date="1491076907415" expanded="true" signature="6081:6102" ph="select * fro... flights" />
-                <marker date="1491076907415" expanded="true" signature="7416:7458" ph="select * fro... flights" />
-                <marker date="1491076907415" expanded="true" signature="7416:7510" ph="select * fro... flights" />
-                <marker date="1491076907415" expanded="true" signature="7416:7553" ph="select * fro... flights" />
-                <marker date="1491076907415" expanded="true" signature="8154:8203" ph="select * fro... flight_instances" />
-                <marker date="1491076907415" expanded="true" signature="8154:8234" ph="select * fro... flight_instances" />
-                <marker date="1491076907415" expanded="true" signature="8154:8255" ph="select * fro... flight_instances" />
-                <marker date="1491076907415" expanded="true" signature="8154:8285" ph="select * fro... flight_instances" />
-                <marker date="1491076907415" expanded="true" signature="8154:8327" ph="select * fro... flight_instances" />
-                <marker date="1491076907415" expanded="true" signature="8154:8328" ph="select * fro... flight_instances" />
-                <marker date="1491076907415" expanded="true" signature="11952:12042" ph="select * fro... flight_instances" />
-                <marker date="1491076907415" expanded="true" signature="12308:12329" ph="select * fro... flights" />
-                <marker date="1491076907415" expanded="true" signature="13641:13779" ph="select * fro... flights" />
-                <marker date="1491076907415" expanded="true" signature="14380:14553" ph="select * fro... flight_instances" />
               </folding>
             </state>
           </provider>
@@ -279,6 +261,9 @@
         <option value="$PROJECT_DIR$/src/MainPackage/TicketDepartTimeComparator.java" />
         <option value="$PROJECT_DIR$/src/MainPackage/ReservationsServlet.java" />
         <option value="$PROJECT_DIR$/web/user.jsp" />
+        <option value="$PROJECT_DIR$/.idea/artifacts/airlinereservation_war_exploded.xml" />
+        <option value="$PROJECT_DIR$/.idea/dataSources.xml" />
+        <option value="$PROJECT_DIR$/airlinereservation.iml" />
       </list>
     </option>
   </component>
@@ -435,11 +420,47 @@
               <option name="myItemId" value="artifacts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="airlinereservation_war_exploded" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="airlinereservation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="airlinereservation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="airlinereservation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="airlinereservation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="artifacts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -458,16 +479,16 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Rachel\Documents\AirlineReservationSystem\airlinereservation\src\MainPackage" />
-      <recent name="C:\Users\Rachel\Documents\AirlineReservationSystem\airlinereservation\out\artifacts\airlinereservation_war_exploded\WEB-INF\Images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Rachel\Documents\AirlineReservationSystem\airlinereservation\web\Images" />
       <recent name="C:\Users\Rachel\Documents\AirlineReservationSystem\airlinereservation\src\MainPackage" />
       <recent name="C:\Users\Rachel\Documents\AirlineReservationSystem\airlinereservation\web\css folder\css" />
       <recent name="C:\Users\Rachel\Documents\AirlineReservationSystem\airlinereservation\web" />
       <recent name="C:\Users\Rachel\Documents\AirlineReservationSystem\airlinereservation\web\WEB-INF" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Rachel\Documents\AirlineReservationSystem\airlinereservation\src\MainPackage" />
+      <recent name="C:\Users\Rachel\Documents\AirlineReservationSystem\airlinereservation\out\artifacts\airlinereservation_war_exploded\WEB-INF\Images" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.11">
@@ -1030,9 +1051,7 @@
         </SHUTDOWN>
       </ConfigurationWrapper>
       <method>
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="airlinereservation:war exploded" />
-        </option>
+        <option name="BuildArtifacts" enabled="true" />
       </method>
     </configuration>
     <list size="3">
@@ -1087,11 +1106,12 @@
       <workItem from="1491258929919" duration="2306000" />
       <workItem from="1491702137681" duration="9953000" />
       <workItem from="1492473611444" duration="2162000" />
+      <workItem from="1493078390023" duration="562000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="325620000" />
+    <option name="totallyTimeSpent" value="326182000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="0" width="1370" height="728" extended-state="0" />
@@ -1106,8 +1126,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3633388" sideWeight="0.5537065" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3226891" sideWeight="0.49092284" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1117,7 +1137,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.394958" sideWeight="0.4462935" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39327732" sideWeight="0.4462935" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1172,7 +1192,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="143" />
+      <option name="time" value="144" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1181,70 +1201,8 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.users">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.users">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.users">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/verifyaccount.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.users">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.users" />
     <entry file="file://$PROJECT_DIR$/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/web/manager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="16" column="78" selection-start-line="16" selection-start-column="78" selection-end-line="16" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPackage/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1252,18 +1210,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.reservations">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.reservations" />
     <entry file="file://$PROJECT_DIR$/src/MainPackage/SignInServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1271,18 +1218,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.aircraft">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.aircraft" />
     <entry file="file://$PROJECT_DIR$/web/editflight.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-612">
@@ -1342,18 +1278,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="94">
           <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="15" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainPackage/VerifyAccountServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <marker date="1488736624884" expanded="true" signature="1393:1442" ph="update users... " />
-            <marker date="1488736624884" expanded="true" signature="2785:2834" ph="update users... " />
-            <marker date="1488736624884" expanded="true" signature="3821:3986" ph="insert into users... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1438,50 +1362,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.prices">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.seats">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.flight_instances">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.prices" />
+    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.seats" />
+    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.flight_instances" />
     <entry file="file://$PROJECT_DIR$/web/tabs.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1258">
@@ -1513,31 +1396,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.flights">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.tickets">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.flights" />
+    <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.tickets" />
     <entry file="file://$PROJECT_DIR$/src/MainPackage/TicketDepartTimeComparator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1563,6 +1423,7 @@
         <state relative-caret-position="1649">
           <caret line="108" column="16" selection-start-line="108" selection-start-column="16" selection-end-line="112" selection-end-column="57" />
           <folding>
+            <element signature="imports" expanded="false" />
             <marker date="1491076907415" expanded="true" signature="5725:5815" ph="select * fro... flight_instances" />
             <marker date="1491076907415" expanded="true" signature="6081:6102" ph="select * fro... flights" />
             <marker date="1491076907415" expanded="true" signature="7416:7458" ph="select * fro... flights" />
@@ -1595,6 +1456,7 @@
         <state relative-caret-position="1496">
           <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="110" selection-end-column="40" />
           <folding>
+            <element signature="imports" expanded="false" />
             <marker date="1491089280902" expanded="true" signature="2288:2308" ph="select* from... tickets" />
             <marker date="1491089280902" expanded="true" signature="2801:2822" ph="select * fro... tickets" />
             <marker date="1491089280902" expanded="true" signature="4764:4928" ph="insert into tickets... " />
@@ -1627,18 +1489,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPackage/DepartTimeComparator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
+        <state relative-caret-position="204">
           <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="55" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPackage/ReservationsServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="1921">
           <caret line="129" column="21" selection-start-line="129" selection-start-column="21" selection-end-line="129" selection-end-column="21" />
           <folding>
-            <element signature="imports" expanded="true" />
             <marker date="1492475167808" expanded="true" signature="1278:1377" ph="select * fro... tickets" />
             <marker date="1492475167808" expanded="true" signature="2875:2917" ph="delete from " />
             <marker date="1492475167808" expanded="true" signature="2875:2950" ph="delete from " />
@@ -1655,9 +1518,74 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/user.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
+        <state relative-caret-position="32">
           <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/artifacts/airlinereservation_war_exploded.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainPackage/VerifyAccountServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+          <folding>
+            <marker date="1488736624884" expanded="true" signature="1393:1442" ph="update users... " />
+            <marker date="1488736624884" expanded="true" signature="2785:2834" ph="update users... " />
+            <marker date="1488736624884" expanded="true" signature="3821:3986" ph="insert into users... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/dataSources.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="78" selection-start-line="2" selection-start-column="78" selection-end-line="2" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/manager.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/airlinereservation.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainPackage/ManageTickets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <marker date="1493078341391" expanded="true" signature="1459:1544" ph="delete from " />
+            <marker date="1493078341391" expanded="true" signature="2232:2331" ph="update ticke... " />
+            <marker date="1493078341391" expanded="true" signature="3192:3389" ph="select * fro... tickets" />
+            <marker date="1493078341391" expanded="true" signature="3661:3734" ph="select * fro... flights" />
+          </folding>
         </state>
       </provider>
     </entry>
