@@ -76,9 +76,10 @@
         <%if(session.getAttribute("tripfield")!=null&&session.getAttribute("tripfield").equals("roundtrip")){%>
         <h2 style="color:#2c71c9">Departure Trip:</h2>
         <br>
+        <%}%>
         <img src="<%=session.getAttribute("flightsmap")%>">
         <br>
-        <%}%>
+
         <table class="prettytable" border="solid">
             <tr>
                 <th>Depart</th>
