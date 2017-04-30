@@ -48,6 +48,7 @@ public class ManageTickets extends HttpServlet {
             response.sendRedirect("/index.jsp");
         }
         else if(request.getParameter("checkinticket")!=null) {
+            session.setAttribute("whichcity", request.getParameter("whichcity"));
             response.sendRedirect("/passengercheckin.jsp");
         }
         else if(request.getParameter("boardingpass")!=null){
@@ -70,6 +71,9 @@ public class ManageTickets extends HttpServlet {
                     Statement stmt2 = con.createStatement();
                     ResultSet rs2 = stmt2.executeQuery(search);
                     while(rs2.next()) {
+                        if(rs2.getString("depart_city").equals(session.getAttribute("whichcity"))){
+                            session.setAttribute("whichflight",rs2.getString("flight_id"));
+                        }
                         flightstrings.add(rs2.getString("depart_city"));
                         flightstrings.add(rs2.getString("arrive_city"));
                         flightstrings.add(String.format("%02d", rs2.getInt("depart_hours")) + ":" + String.format("%02d", rs2.getInt("depart_minutes")) + " " + rs2.getString("depart_AMPM") + " (" + rs2.getString("depart_timezone") + ")");
@@ -117,7 +121,7 @@ public class ManageTickets extends HttpServlet {
                 Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
                 Statement stmt = null;
                 stmt = con.createStatement();
-                String search = "update tickets set checked_in = '1' where ticket_number='" + session.getAttribute("ticketnum") + "'";
+                String search = "update tickets set checked_in = '1' where (ticket_number='" + session.getAttribute("ticketnum") + "' and flight_id='"+session.getAttribute("whichflight")+"')";
                 stmt.execute(search);
                 con.close();
             }

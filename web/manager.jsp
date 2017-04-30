@@ -54,7 +54,7 @@
             <td><%=t.get(2)%><br><%=t.get(3)+" "%><%=t.get(4)%></td>
             <td><%=t.get(5)%><br><%=t.get(6)+" "%><%=t.get(7)%></td>
             <% if(t.size()==8){%>
-            <td style="text-align:center"><input type="submit" class="prettybutton" value="Check in" name="checkinticket">
+            <td style="text-align:center"><input type="submit" class="prettybutton" onmouseover="whichCity('<%=t.get(2)%>')" value="Check in" name="checkinticket">
                 <input type="submit" class="prettybutton" value="Cancel ticket" name="cancelticketnumber"></td>
             <%}else{%>
             <td><p style="color:#903723">Checked in</p></td>
@@ -62,9 +62,12 @@
         </tr>
         <%}}%>
     </table>
+        <input type="text" id="whichcity" name="whichcity" style="visibility: hidden">
     </form>
 
 </div>
 </body>
+
 </html>
 <%@ include file="tabs.jsp"%>
+

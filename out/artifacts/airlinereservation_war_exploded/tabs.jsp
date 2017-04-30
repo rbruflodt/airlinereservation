@@ -173,6 +173,10 @@
         document.location.reload(true);
     }
 
+    function whichCity(city){
+        document.getElementById("whichcity").value=city;
+    }
+
     window.onload=doload;
 
 </script>
