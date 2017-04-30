@@ -30,9 +30,9 @@
         <label for="tnum">Ticket number: </label>
         <input type="number" id="tnum" style="width:150px" value="<%=session.getAttribute("ticketnum")%>" name="ticketnum">
         <label for="lastname">Last name: </label>
-        <input type="text" id="lastname" style="width:150px" value="<%=session.getAttribute("lname")%>" name="lname">
+        <input type="text" id="lastname" style="width:150px" <%if(session.getAttribute("lname")!=null){%>value="<%=session.getAttribute("lname")%>"<%}%> name="lname">
         <label for="firstname">First name: </label>
-        <input type="text" id="firstname" style="width:150px" value="<%=session.getAttribute("fname")%>" name="fname">
+        <input type="text" id="firstname" style="width:150px" <%if(session.getAttribute("fname")!=null){%>value="<%=session.getAttribute("fname")%>"<%}%> name="fname">
         <br>
         <%ArrayList<ArrayList<String>> tickets = ManageTickets.getTickets(session);%>
         <input type="submit" class="prettybutton" name="searchtickets" value="Search">
@@ -53,8 +53,12 @@
             <td><%=t.get(1)%></td>
             <td><%=t.get(2)%><br><%=t.get(3)+" "%><%=t.get(4)%></td>
             <td><%=t.get(5)%><br><%=t.get(6)+" "%><%=t.get(7)%></td>
+            <% if(t.size()==8){%>
             <td style="text-align:center"><input type="submit" class="prettybutton" value="Check in" name="checkinticket">
                 <input type="submit" class="prettybutton" value="Cancel ticket" name="cancelticketnumber"></td>
+            <%}else{%>
+            <td><p style="color:#903723">Checked in</p></td>
+            <%}%>
         </tr>
         <%}}%>
     </table>

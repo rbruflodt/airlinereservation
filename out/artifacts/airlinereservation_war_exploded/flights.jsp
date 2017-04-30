@@ -1,7 +1,9 @@
 <%@ page import="MainPackage.Flight" %>
 <%@ page import="MainPackage.FlightsServlet" %>
 <%@ page import="MainPackage.AdminFlightServlet" %>
-<%@ page import="java.time.LocalDate" %><%--
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="MainPackage.ManageAircraftServlet" %><%--
   Created by IntelliJ IDEA.
   User: Rachel
   Date: 2/11/2017

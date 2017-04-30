@@ -1,11 +1,16 @@
 package MainPackage;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -23,6 +28,7 @@ public class ManageTickets extends HttpServlet {
             session.setAttribute("fname", request.getParameter("fname"));
             //response.sendRedirect("/index.jsp");
             String ticketsearcherror = "";
+            response.sendRedirect("/index.jsp");
         }
         if (request.getParameter("cancelticketnumber") != null) {
             try {
@@ -39,9 +45,74 @@ public class ManageTickets extends HttpServlet {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
+            response.sendRedirect("/index.jsp");
         }
-        else if(request.getParameter("checkinticket")!=null){
-            try {
+        else if(request.getParameter("checkinticket")!=null) {
+            response.sendRedirect("/passengercheckin.jsp");
+        }
+        else if(request.getParameter("boardingpass")!=null){
+                ArrayList<String> passengerstrings = new ArrayList<>();
+                ArrayList<String> flightstrings = new ArrayList<>();
+                passengerstrings.add((String)session.getAttribute("ticketnum"));
+                passengerstrings.add((String)session.getAttribute("lname"));
+                passengerstrings.add((String) session.getAttribute("fname"));
+                passengerstrings.add(request.getParameter("seatnumber"));
+                passengerstrings.add(request.getParameter("numbags"));
+            try{
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
+                Statement stmt = null;
+                stmt = con.createStatement();
+                String search = "select * from tickets where ticket_number ='" + session.getAttribute("ticketnum") + "'";
+                ResultSet rs = stmt.executeQuery(search);
+                while(rs.next()){
+                    search="select * from flights where flight_id='"+rs.getString("flight_id")+"'";
+                    Statement stmt2 = con.createStatement();
+                    ResultSet rs2 = stmt2.executeQuery(search);
+                    while(rs2.next()) {
+                        flightstrings.add(rs2.getString("depart_city"));
+                        flightstrings.add(rs2.getString("arrive_city"));
+                        flightstrings.add(String.format("%02d", rs2.getInt("depart_hours")) + ":" + String.format("%02d", rs2.getInt("depart_minutes")) + " " + rs2.getString("depart_AMPM") + " (" + rs2.getString("depart_timezone") + ")");
+                        flightstrings.add(String.format("%02d", rs2.getInt("arrive_hours")) + ":" + String.format("%02d", rs2.getInt("arrive_minutes")) + " " + rs2.getString("arrive_AMPM") + " (" + rs2.getString("arrive_timezone") + ")");
+                    }
+                }
+                con.close();
+
+                BoardingPassMaker.makeBoardingPass(session,session.getId()+"boardingpass",passengerstrings,flightstrings);
+                try {
+                    Thread.sleep(10000);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                response.setContentType("application/pdf");
+                response.setHeader("Content-Disposition",
+                        "attachment;filename="+session.getId()+"boardingpass"+".pdf");
+                ServletContext ctx = getServletContext();
+                InputStream is = ctx.getResourceAsStream("/WEB-INF/receipts/"+session.getId()+"boardingpass"+".pdf");
+
+                int read=0;
+                byte[] bytes = new byte[1024];
+                OutputStream os = response.getOutputStream();
+
+                while((read = is.read(bytes))!= -1){
+                    os.write(bytes, 0, read);
+                }
+
+                os.flush();
+                os.close();
+
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            ServletContext sc = session.getServletContext();
+            Files.deleteIfExists(Paths.get(sc.getRealPath("/WEB-INF/receipts/"+session.getId()+"boardingpass.pdf")));
+            request.getRequestDispatcher("/passengercheckin.jsp").forward(request,response);
+        }
+        else if(request.getParameter("finishcheckin")!=null){
+            try{
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
                 Statement stmt = null;
@@ -55,8 +126,9 @@ public class ManageTickets extends HttpServlet {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
+            response.sendRedirect("/index.jsp");
         }
-        response.sendRedirect("/index.jsp");
+
     }
 
     public static ArrayList<ArrayList<String>> getTickets(HttpSession session){
@@ -82,6 +154,9 @@ public class ManageTickets extends HttpServlet {
                     temptickets.add(rs2.getString("arrive_city"));
                     temptickets.add(rs.getString("arrive_date"));
                     temptickets.add(String.format("%02d", rs2.getInt("arrive_hours")) + ":" + String.format("%02d", rs2.getInt("arrive_minutes")) + " " + rs2.getString("arrive_AMPM") + " (" + rs2.getString("arrive_timezone") + ")");
+                    if(rs.getBoolean("checked_in")){
+                        temptickets.add("Checked in");
+                    }
                     tickets.add(temptickets);
                 }
                 tickets.sort(new TicketDepartTimeComparator());
