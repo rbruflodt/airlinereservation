@@ -59,7 +59,9 @@
         <br>
 
         <% if(requestedflights!=null){%>
-        <div style="float:left">
+
+        <br>
+        <div style="float:right">
             <label  for="flightsort">Sort by:</label>
             <select  id="flightsort" name="flightsort">
                 <option <%if(session.getAttribute("flightsort")!=null&&session.getAttribute("flightsort").equals("Price")){%>selected<%}%>>Price</option>
@@ -71,9 +73,10 @@
             <input class="prettybutton"  type="submit" name="sortbutton" value="Sort" onclick="getScroll()">
         </div>
         <br>
-        <br>
         <%if(session.getAttribute("tripfield")!=null&&session.getAttribute("tripfield").equals("roundtrip")){%>
         <h2 style="color:#2c71c9">Departure Trip:</h2>
+        <br>
+        <img src="<%=session.getAttribute("flightsmap")%>">
         <br>
         <%}%>
         <table class="prettytable" border="solid">
@@ -126,6 +129,8 @@
         <br>
         <br>
         <h2 style="color:#2c71c9">Return Trip:</h2>
+        <br>
+        <img src="<%=session.getAttribute("returnflightsmap")%>">
         <br>
         <table class="prettytable" border="solid">
             <tr>

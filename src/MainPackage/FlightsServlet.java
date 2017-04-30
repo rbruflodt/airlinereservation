@@ -12,12 +12,17 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Hashtable;
+import java.util.Random;
 
 /**
  * Created by Rachel on 2/16/2017.
  */
+
+
 @WebServlet("/flightsservlet")
 public class FlightsServlet extends HttpServlet {
+    private static final Hashtable<String,String> airportcodes = new Hashtable();
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {
         HttpSession session = request.getSession();
@@ -102,11 +107,20 @@ public class FlightsServlet extends HttpServlet {
 
 
     public static ArrayList<ArrayList<Flight>> getFlights(HttpSession session){
+        airportcodes.put("Iowa City, IA","CID");
+        airportcodes.put("Atlanta, GA","ATL");
+        airportcodes.put("Chicago, IL","ORD");
+        airportcodes.put("New York City, NY", "JFK");
+        airportcodes.put("San Fransisco, CA", "SFO");
         try {
             if((session.getAttribute("flightfromfield")!=null&&session.getAttribute("flighttofield")!=null
                     &&session.getAttribute("departfield")!=null&&(session.getAttribute("tripfield").equals("oneway"))||
                     (session.getAttribute("returnfield")!=null))){
                 Class.forName("com.mysql.jdbc.Driver");
+                String flightsmap = null;
+                flightsmap="https://maps.googleapis.com/maps/api/staticmap?&zoom=3&size=300x200&scale=2";
+                boolean simplepath = false;
+                Random random = new Random();
                 Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
                 Statement stmt = con.createStatement();
                 String search = "select * from flight_instances where depart_date='"+session.getAttribute("departfield")+"'";
@@ -124,6 +138,16 @@ public class FlightsServlet extends HttpServlet {
                         tempflights.add(new Flight(rs.getString("depart_city"), rs.getString("arrive_city"), rs.getString("aircraft_name"), rs.getInt("depart_hours"), rs.getInt("depart_minutes"), rs.getString("depart_AMPM"), rs.getString("depart_timezone"),
                                 rs.getInt("arrive_hours"), rs.getInt("arrive_minutes"), rs.getString("arrive_AMPM"), rs.getString("arrive_timezone"), rs.getString("flight_id"), rs.getString("once"), rs.getString("weekly"), rs.getString("monthly"), rs.getBoolean("same_day"),rs.getString("until"),(String)session.getAttribute("departfield")));
                         flights.add(tempflights);
+                        if(!simplepath) {
+                            String colorstring = "0x" + String.format("%06x", random.nextInt(256 * 256 * 256));
+                            flightsmap += "&markers=color:" + colorstring;
+                            flightsmap += "%7C" + airportcodes.get(rs.getString("depart_city"));
+                            flightsmap += "%7C" + airportcodes.get(rs.getString("arrive_city"));
+                            flightsmap += "&path=color:" + colorstring;
+                            flightsmap += "%7C" + airportcodes.get(rs.getString("depart_city"));
+                            flightsmap += "%7C" + airportcodes.get(rs.getString("arrive_city"));
+                            simplepath=true;
+                        }
                     }
                     else if(flightids.contains(rs.getString("flight_id"))&&rs.getString("depart_city").equals(session.getAttribute("flightfromfield"))){
                         search = "select * from flights where (depart_city='"+rs.getString("arrive_city")+"') and (arrive_city='"+session.getAttribute("flighttofield")+"')";
@@ -144,9 +168,19 @@ public class FlightsServlet extends HttpServlet {
                                 if (timeDifference(rs.getInt("arrive_hours"), rs.getInt("arrive_minutes"), rs.getString("arrive_AMPM"), arrday, rs2.getInt("depart_hours"), rs2.getInt("depart_minutes"), rs2.getString("depart_AMPM"), rs3.getString("depart_date"))) {
                                     tempflights.add(new Flight(rs.getString("depart_city"), rs.getString("arrive_city"), rs.getString("aircraft_name"), rs.getInt("depart_hours"), rs.getInt("depart_minutes"), rs.getString("depart_AMPM"), rs.getString("depart_timezone"),
                                             rs.getInt("arrive_hours"), rs.getInt("arrive_minutes"), rs.getString("arrive_AMPM"), rs.getString("arrive_timezone"), rs.getString("flight_id"), rs.getString("once"), rs.getString("weekly"), rs.getString("monthly"), rs.getBoolean("same_day"), rs.getString("until"),(String)session.getAttribute("departfield")));
+                                    String colorstring="0x"+String.format("%06x", random.nextInt(256*256*256));
+                                    flightsmap+="&markers=color:"+colorstring;
+                                    flightsmap+="%7C"+airportcodes.get(rs.getString("depart_city"));
+                                    flightsmap+="%7C"+airportcodes.get(rs.getString("arrive_city"));
+                                    flightsmap+="%7C"+airportcodes.get(rs2.getString("arrive_city"));
+                                    flightsmap+="&path=color:"+colorstring;
+                                    flightsmap+="%7C"+airportcodes.get(rs.getString("depart_city"));
+                                    flightsmap+="%7C"+airportcodes.get(rs.getString("arrive_city"));
+                                    flightsmap+="%7C"+airportcodes.get(rs2.getString("arrive_city"));
                                     tempflights.add(new Flight(rs2.getString("depart_city"), rs2.getString("arrive_city"), rs2.getString("aircraft_name"), rs2.getInt("depart_hours"), rs2.getInt("depart_minutes"), rs2.getString("depart_AMPM"), rs2.getString("depart_timezone"),
                                             rs2.getInt("arrive_hours"), rs2.getInt("arrive_minutes"), rs2.getString("arrive_AMPM"), rs2.getString("arrive_timezone"), rs2.getString("flight_id"), rs2.getString("once"), rs2.getString("weekly"), rs2.getString("monthly"), rs2.getBoolean("same_day"), rs2.getString("until"),rs3.getString("depart_date")));
                                     flights.add(tempflights);
+
                                 }
                             }
                         }
@@ -163,6 +197,8 @@ public class FlightsServlet extends HttpServlet {
                     }else if(session.getAttribute("flightsort")!=null&&session.getAttribute("flightsort").equals("Arrive Time")){
                         Collections.sort(flights, new ArriveTimeComparator());
                     }
+                    flightsmap+="&key=AIzaSyDGr_3M0ut21RlUQRg6zYekc5uawL6SOuk";
+                    session.setAttribute("flightsmap",flightsmap);
                     return flights;
                 }
                 else{
@@ -183,6 +219,9 @@ public class FlightsServlet extends HttpServlet {
             if((session.getAttribute("flightfromfield")!=null&&session.getAttribute("flighttofield")!=null
                     &&session.getAttribute("departfield")!=null&&(session.getAttribute("tripfield").equals("oneway"))||
                     (session.getAttribute("returnfield")!=null))){
+                String returnflightsmap="https://maps.googleapis.com/maps/api/staticmap?&zoom=3&size=300x200&scale=2";
+                boolean simplepath = false;
+                Random random = new Random();
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
                 Statement stmt = con.createStatement();
@@ -200,7 +239,18 @@ public class FlightsServlet extends HttpServlet {
                     if(flightids.contains(rs.getString("flight_id"))&&rs.getString("depart_city").equals(session.getAttribute("flighttofield"))&&rs.getString("arrive_city").equals(session.getAttribute("flightfromfield"))) {
                         tempflights.add(new Flight(rs.getString("depart_city"), rs.getString("arrive_city"), rs.getString("aircraft_name"), rs.getInt("depart_hours"), rs.getInt("depart_minutes"), rs.getString("depart_AMPM"), rs.getString("depart_timezone"),
                                 rs.getInt("arrive_hours"), rs.getInt("arrive_minutes"), rs.getString("arrive_AMPM"), rs.getString("arrive_timezone"), rs.getString("flight_id"), rs.getString("once"), rs.getString("weekly"), rs.getString("monthly"), rs.getBoolean("same_day"),rs.getString("until"),(String)session.getAttribute("returnfield")));
+
                         flights.add(tempflights);
+                        if(!simplepath) {
+                            String colorstring = "0x" + String.format("%06x", random.nextInt(256 * 256 * 256));
+                            returnflightsmap += "&markers=color:" + colorstring;
+                            returnflightsmap += "%7C" + airportcodes.get(rs.getString("depart_city"));
+                            returnflightsmap += "%7C" + airportcodes.get(rs.getString("arrive_city"));
+                            returnflightsmap += "&path=color:" + colorstring;
+                            returnflightsmap += "%7C" + airportcodes.get(rs.getString("depart_city"));
+                            returnflightsmap += "%7C" + airportcodes.get(rs.getString("arrive_city"));
+                            simplepath=true;
+                        }
                     }
                     else if(flightids.contains(rs.getString("flight_id"))&&rs.getString("depart_city").equals(session.getAttribute("flighttofield"))){
                         search = "select * from flights where (depart_city='"+rs.getString("arrive_city")+"') and (arrive_city='"+session.getAttribute("flightromfield")+"')";
@@ -223,6 +273,16 @@ public class FlightsServlet extends HttpServlet {
                                             rs.getInt("arrive_hours"), rs.getInt("arrive_minutes"), rs.getString("arrive_AMPM"), rs.getString("arrive_timezone"), rs.getString("flight_id"), rs.getString("once"), rs.getString("weekly"), rs.getString("monthly"), rs.getBoolean("same_day"), rs.getString("until"),(String)session.getAttribute("returnfield")));
                                     tempflights.add(new Flight(rs2.getString("depart_city"), rs2.getString("arrive_city"), rs2.getString("aircraft_name"), rs2.getInt("depart_hours"), rs2.getInt("depart_minutes"), rs2.getString("depart_AMPM"), rs2.getString("depart_timezone"),
                                             rs2.getInt("arrive_hours"), rs2.getInt("arrive_minutes"), rs2.getString("arrive_AMPM"), rs2.getString("arrive_timezone"), rs2.getString("flight_id"), rs2.getString("once"), rs2.getString("weekly"), rs2.getString("monthly"), rs2.getBoolean("same_day"), rs2.getString("until"),rs3.getString("depart_date")));
+
+                                    String colorstring="0x"+String.format("%06x", random.nextInt(256*256*256));
+                                    returnflightsmap+="&markers=color:"+colorstring;
+                                    returnflightsmap+="%7C"+airportcodes.get(rs.getString("depart_city"));
+                                    returnflightsmap+="%7C"+airportcodes.get(rs.getString("arrive_city"));
+                                    returnflightsmap+="%7C"+airportcodes.get(rs2.getString("arrive_city"));
+                                    returnflightsmap+="&path=color:"+colorstring;
+                                    returnflightsmap+="%7C"+airportcodes.get(rs.getString("depart_city"));
+                                    returnflightsmap+="%7C"+airportcodes.get(rs.getString("arrive_city"));
+                                    returnflightsmap+="%7C"+airportcodes.get(rs2.getString("arrive_city"));
                                     flights.add(tempflights);
                                 }
                             }
@@ -240,6 +300,7 @@ public class FlightsServlet extends HttpServlet {
                     }else if(session.getAttribute("flightsort")!=null&&session.getAttribute("flightsort").equals("Arrive Time")){
                         Collections.sort(flights, new ArriveTimeComparator());
                     }
+                    session.setAttribute("returnflightsmap",returnflightsmap);
                     return flights;
                 }
                 else{
