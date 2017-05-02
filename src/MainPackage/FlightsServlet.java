@@ -319,10 +319,10 @@ public class FlightsServlet extends HttpServlet {
     public static boolean timeDifference(int a_hours, int a_minutes, String a_AMPM, String a_arrive,int b_hours, int b_minutes, String b_AMPM, String b_depart ){
         LocalDateTime atime = LocalDateTime.parse(a_arrive+"T"+String.format("%02d", a_hours) + ":" + String.format("%02d", a_minutes));
         LocalDateTime btime = LocalDateTime.parse(b_depart+"T"+String.format("%02d", b_hours) + ":" + String.format("%02d",b_minutes));
-        if (a_AMPM.equals("PM")) {
+        if (a_AMPM.equals("PM") && a_hours<12) {
             atime = LocalDateTime.parse(a_arrive+"T"+String.format("%02d", a_hours+12) + ":" + String.format("%02d", a_minutes)+":00");
         }
-        if (b_AMPM.equals("PM")) {
+        if (b_AMPM.equals("PM") && b_hours<12) {
             btime = LocalDateTime.parse(b_depart+"T"+String.format("%02d", b_hours+12 )+ ":" + String.format("%02d",b_minutes)+":00");
         }
         if(!btime.isAfter(atime)||btime.minusHours(12).isAfter(atime)){
