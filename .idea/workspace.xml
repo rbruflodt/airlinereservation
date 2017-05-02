@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4dc2d33-4f28-4685-bd84-b7da711b8262" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainPackage/FlightsServlet.java" afterPath="$PROJECT_DIR$/src/MainPackage/FlightsServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainPackage/ArriveTimeComparator.java" afterPath="$PROJECT_DIR$/src/MainPackage/ArriveTimeComparator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainPackage/DepartTimeComparator.java" afterPath="$PROJECT_DIR$/src/MainPackage/DepartTimeComparator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainPackage/TicketDepartTimeComparator.java" afterPath="$PROJECT_DIR$/src/MainPackage/TicketDepartTimeComparator.java" />
     </list>
     <ignored path="airlinereservation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,32 +54,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ManageTickets.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MainPackage/ManageTickets.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1904">
-              <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <marker date="1493567742280" expanded="true" signature="1658:1743" ph="delete from " />
-                <marker date="1493567742280" expanded="true" signature="3215:3301" ph="select * fro... tickets" />
-                <marker date="1493567742280" expanded="true" signature="3424:3463" ph="select * fro... flights" />
-                <marker date="1493567742280" expanded="true" signature="3424:3493" ph="select * fro... flights" />
-                <marker date="1493567742280" expanded="true" signature="6439:6539" ph="update ticke... " />
-                <marker date="1493567742280" expanded="true" signature="6439:6555" ph="update ticke... " />
-                <marker date="1493567742280" expanded="true" signature="6439:6595" ph="update ticke... " />
-                <marker date="1493567742280" expanded="true" signature="6439:6596" ph="update ticke... " />
-                <marker date="1493567742280" expanded="true" signature="7462:7659" ph="select * fro... tickets" />
-                <marker date="1493567742280" expanded="true" signature="7931:8004" ph="select * fro... flights" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlightsServlet.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FlightsServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainPackage/FlightsServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
+            <state relative-caret-position="1037">
               <caret line="321" column="45" selection-start-line="321" selection-start-column="45" selection-end-line="321" selection-end-column="45" />
               <folding>
                 <marker date="1493767930056" expanded="true" signature="6351:6441" ph="select * fro... flight_instances" />
@@ -101,11 +80,92 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/admin.jsp">
+      <file leaf-file-name="AdminFlightServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MainPackage/AdminFlightServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="164" column="13" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="13" />
+            <state relative-caret-position="-2856">
+              <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
+              <folding>
+                <marker date="1490668585290" expanded="true" signature="1540:1663" ph="update price... " />
+                <marker date="1490668585290" expanded="true" signature="2202:2338" ph="update fligh... " />
+                <marker date="1490668585290" expanded="true" signature="2417:2484" ph="delete from " />
+                <marker date="1490668585290" expanded="true" signature="2703:2908" ph="insert into flight_instances... " />
+                <marker date="1490668585290" expanded="true" signature="3002:3201" ph="insert into flight_instances... " />
+                <marker date="1490668585290" expanded="true" signature="3563:3710" ph="update fligh... " />
+                <marker date="1490668585290" expanded="true" signature="3789:3856" ph="delete from " />
+                <marker date="1490668585290" expanded="true" signature="4295:4474" ph="insert into flight_instances... " />
+                <marker date="1490668585290" expanded="true" signature="4592:4783" ph="insert into flight_instances... " />
+                <marker date="1490668585290" expanded="true" signature="5536:5657" ph="update fligh... " />
+                <marker date="1490668585290" expanded="true" signature="5736:5803" ph="delete from " />
+                <marker date="1490668585290" expanded="true" signature="6263:6442" ph="insert into flight_instances... " />
+                <marker date="1490668585290" expanded="true" signature="6560:6751" ph="insert into flight_instances... " />
+                <marker date="1490668585290" expanded="true" signature="8115:8170" ph="select * fro... flights" />
+                <marker date="1490668585290" expanded="true" signature="8575:8981" ph="insert into flights... " />
+                <marker date="1490668585290" expanded="true" signature="9044:9103" ph="select * fro... seats" />
+                <marker date="1490668585290" expanded="true" signature="9223:9326" ph="insert into prices... " />
+                <marker date="1490668585290" expanded="true" signature="10291:11169" ph="update fligh... " />
+                <marker date="1490668585290" expanded="true" signature="11361:11418" ph="delete from " />
+                <marker date="1490668585290" expanded="true" signature="11505:11600" ph="select * fro... seats" />
+                <marker date="1490668585290" expanded="true" signature="11756:11864" ph="insert into prices... " />
+                <marker date="1490668585290" expanded="true" signature="12344:12413" ph="select * fro... flight_instances" />
+                <marker date="1490668585290" expanded="true" signature="12727:12897" ph="update fligh... " />
+                <marker date="1490668585290" expanded="true" signature="12986:13168" ph="update fligh... " />
+                <marker date="1490668585290" expanded="true" signature="13397:13874" ph="update fligh... " />
+                <marker date="1490668585290" expanded="true" signature="14064:14159" ph="select * fro... flights" />
+                <marker date="1490668585290" expanded="true" signature="14454:14628" ph="update fligh... " />
+                <marker date="1490668585290" expanded="true" signature="14725:14908" ph="update fligh... " />
+                <marker date="1490668585290" expanded="true" signature="15005:15178" ph="update price... " />
+                <marker date="1490668585290" expanded="true" signature="15275:15449" ph="update ticke... " />
+                <marker date="1490668585290" expanded="true" signature="15759:15817" ph="delete from " />
+                <marker date="1490668585290" expanded="true" signature="15896:15963" ph="delete from " />
+                <marker date="1490668585290" expanded="true" signature="16042:16099" ph="delete from " />
+                <marker date="1490668585290" expanded="true" signature="16178:16236" ph="delete from " />
+                <marker date="1490668585290" expanded="true" signature="16965:17039" ph="select * fro... prices" />
+                <marker date="1490668585290" expanded="true" signature="18055:18129" ph="select * fro... prices" />
+                <marker date="1490668585290" expanded="true" signature="19153:19174" ph="select * fro... flights" />
+                <marker date="1490668585290" expanded="true" signature="19307:19386" ph="select * fro... flights" />
+                <marker date="1490668585290" expanded="true" signature="19594:19675" ph="select * fro... flights" />
+                <marker date="1490668585290" expanded="true" signature="21784:21806" ph="select * fro... aircraft" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Aircraft.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MainPackage/Aircraft.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArriveTimeComparator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MainPackage/ArriveTimeComparator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="19" column="100" selection-start-line="19" selection-start-column="100" selection-end-line="19" selection-end-column="100" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DepartTimeComparator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MainPackage/DepartTimeComparator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="14" column="77" selection-start-line="14" selection-start-column="77" selection-end-line="14" selection-end-column="77" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TicketDepartTimeComparator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MainPackage/TicketDepartTimeComparator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="21" column="165" selection-start-line="21" selection-start-column="165" selection-end-line="21" selection-end-column="165" />
               <folding />
             </state>
           </provider>
@@ -137,41 +197,6 @@
             <state relative-caret-position="663">
               <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tabs.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/tabs.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2992">
-              <caret line="176" column="56" selection-start-line="176" selection-start-column="56" selection-end-line="176" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ebdb.tickets" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.tickets">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -220,11 +245,9 @@
         <option value="$PROJECT_DIR$/web/admin.jsp" />
         <option value="$PROJECT_DIR$/web/editflight.jsp" />
         <option value="$PROJECT_DIR$/src/MainPackage/DateComparator.java" />
-        <option value="$PROJECT_DIR$/src/MainPackage/DepartTimeComparator.java" />
         <option value="$PROJECT_DIR$/src/MainPackage/PriceComparator.java" />
         <option value="$PROJECT_DIR$/src/MainPackage/Flight.java" />
         <option value="$PROJECT_DIR$/src/MainPackage/ManageAircraftServlet.java" />
-        <option value="$PROJECT_DIR$/src/MainPackage/ArriveTimeComparator.java" />
         <option value="$PROJECT_DIR$/src/MainPackage/AdminFlightServlet.java" />
         <option value="$PROJECT_DIR$/web/test.txt" />
         <option value="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/test.txt" />
@@ -234,7 +257,6 @@
         <option value="$PROJECT_DIR$/src/MainPackage/ReceiptMaker.java" />
         <option value="$PROJECT_DIR$/src/MainPackage/BookFlightsServlet.java" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
-        <option value="$PROJECT_DIR$/src/MainPackage/TicketDepartTimeComparator.java" />
         <option value="$PROJECT_DIR$/src/MainPackage/ReservationsServlet.java" />
         <option value="$PROJECT_DIR$/web/user.jsp" />
         <option value="$PROJECT_DIR$/.idea/artifacts/airlinereservation_war_exploded.xml" />
@@ -249,6 +271,9 @@
         <option value="$PROJECT_DIR$/web/manager.jsp" />
         <option value="$PROJECT_DIR$/web/tabs.jsp" />
         <option value="$PROJECT_DIR$/src/MainPackage/FlightsServlet.java" />
+        <option value="$PROJECT_DIR$/src/MainPackage/TicketDepartTimeComparator.java" />
+        <option value="$PROJECT_DIR$/src/MainPackage/DepartTimeComparator.java" />
+        <option value="$PROJECT_DIR$/src/MainPackage/ArriveTimeComparator.java" />
       </list>
     </option>
   </component>
@@ -1113,12 +1138,12 @@
       <workItem from="1493078390023" duration="1388000" />
       <workItem from="1493484280413" duration="18687000" />
       <workItem from="1493563684017" duration="6021000" />
-      <workItem from="1493689686699" duration="5047000" />
+      <workItem from="1493689686699" duration="5267000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="356763000" />
+    <option name="totallyTimeSpent" value="356983000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="0" width="1370" height="728" extended-state="0" />
@@ -1224,13 +1249,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainPackage/Aircraft.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPackage/ManagerAccountsServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -1254,13 +1272,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2856">
           <caret line="176" column="28" selection-start-line="176" selection-start-column="28" selection-end-line="176" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainPackage/AdminFlightServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3247">
-          <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1348,32 +1359,7 @@
     <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.prices" />
     <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.seats" />
     <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.flight_instances" />
-    <entry file="file://$PROJECT_DIR$/src/MainPackage/ArriveTimeComparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="101" selection-start-line="11" selection-start-column="101" selection-end-line="11" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/4e8d83c1/77e61bf7-7b41-4e9b-bad0-4b0a43f5ea0c/ebdb.flights" />
-    <entry file="file://$PROJECT_DIR$/src/MainPackage/TicketDepartTimeComparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="98" selection-start-line="14" selection-start-column="98" selection-end-line="14" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainPackage/DepartTimeComparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPackage/ReservationsServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1921">
@@ -1603,7 +1589,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPackage/FlightsServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
+        <state relative-caret-position="1037">
           <caret line="321" column="45" selection-start-line="321" selection-start-column="45" selection-end-line="321" selection-end-column="45" />
           <folding>
             <marker date="1493767930056" expanded="true" signature="6351:6441" ph="select * fro... flight_instances" />
@@ -1622,6 +1608,87 @@
             <marker date="1493767930056" expanded="true" signature="17056:17194" ph="select * fro... flights" />
             <marker date="1493767930056" expanded="true" signature="17795:17968" ph="select * fro... flight_instances" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainPackage/AdminFlightServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2856">
+          <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
+          <folding>
+            <marker date="1490668585290" expanded="true" signature="1540:1663" ph="update price... " />
+            <marker date="1490668585290" expanded="true" signature="2202:2338" ph="update fligh... " />
+            <marker date="1490668585290" expanded="true" signature="2417:2484" ph="delete from " />
+            <marker date="1490668585290" expanded="true" signature="2703:2908" ph="insert into flight_instances... " />
+            <marker date="1490668585290" expanded="true" signature="3002:3201" ph="insert into flight_instances... " />
+            <marker date="1490668585290" expanded="true" signature="3563:3710" ph="update fligh... " />
+            <marker date="1490668585290" expanded="true" signature="3789:3856" ph="delete from " />
+            <marker date="1490668585290" expanded="true" signature="4295:4474" ph="insert into flight_instances... " />
+            <marker date="1490668585290" expanded="true" signature="4592:4783" ph="insert into flight_instances... " />
+            <marker date="1490668585290" expanded="true" signature="5536:5657" ph="update fligh... " />
+            <marker date="1490668585290" expanded="true" signature="5736:5803" ph="delete from " />
+            <marker date="1490668585290" expanded="true" signature="6263:6442" ph="insert into flight_instances... " />
+            <marker date="1490668585290" expanded="true" signature="6560:6751" ph="insert into flight_instances... " />
+            <marker date="1490668585290" expanded="true" signature="8115:8170" ph="select * fro... flights" />
+            <marker date="1490668585290" expanded="true" signature="8575:8981" ph="insert into flights... " />
+            <marker date="1490668585290" expanded="true" signature="9044:9103" ph="select * fro... seats" />
+            <marker date="1490668585290" expanded="true" signature="9223:9326" ph="insert into prices... " />
+            <marker date="1490668585290" expanded="true" signature="10291:11169" ph="update fligh... " />
+            <marker date="1490668585290" expanded="true" signature="11361:11418" ph="delete from " />
+            <marker date="1490668585290" expanded="true" signature="11505:11600" ph="select * fro... seats" />
+            <marker date="1490668585290" expanded="true" signature="11756:11864" ph="insert into prices... " />
+            <marker date="1490668585290" expanded="true" signature="12344:12413" ph="select * fro... flight_instances" />
+            <marker date="1490668585290" expanded="true" signature="12727:12897" ph="update fligh... " />
+            <marker date="1490668585290" expanded="true" signature="12986:13168" ph="update fligh... " />
+            <marker date="1490668585290" expanded="true" signature="13397:13874" ph="update fligh... " />
+            <marker date="1490668585290" expanded="true" signature="14064:14159" ph="select * fro... flights" />
+            <marker date="1490668585290" expanded="true" signature="14454:14628" ph="update fligh... " />
+            <marker date="1490668585290" expanded="true" signature="14725:14908" ph="update fligh... " />
+            <marker date="1490668585290" expanded="true" signature="15005:15178" ph="update price... " />
+            <marker date="1490668585290" expanded="true" signature="15275:15449" ph="update ticke... " />
+            <marker date="1490668585290" expanded="true" signature="15759:15817" ph="delete from " />
+            <marker date="1490668585290" expanded="true" signature="15896:15963" ph="delete from " />
+            <marker date="1490668585290" expanded="true" signature="16042:16099" ph="delete from " />
+            <marker date="1490668585290" expanded="true" signature="16178:16236" ph="delete from " />
+            <marker date="1490668585290" expanded="true" signature="16965:17039" ph="select * fro... prices" />
+            <marker date="1490668585290" expanded="true" signature="18055:18129" ph="select * fro... prices" />
+            <marker date="1490668585290" expanded="true" signature="19153:19174" ph="select * fro... flights" />
+            <marker date="1490668585290" expanded="true" signature="19307:19386" ph="select * fro... flights" />
+            <marker date="1490668585290" expanded="true" signature="19594:19675" ph="select * fro... flights" />
+            <marker date="1490668585290" expanded="true" signature="21784:21806" ph="select * fro... aircraft" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainPackage/Aircraft.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainPackage/TicketDepartTimeComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="21" column="165" selection-start-line="21" selection-start-column="165" selection-end-line="21" selection-end-column="165" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainPackage/DepartTimeComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="14" column="77" selection-start-line="14" selection-start-column="77" selection-end-line="14" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainPackage/ArriveTimeComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="19" column="100" selection-start-line="19" selection-start-column="100" selection-end-line="19" selection-end-column="100" />
+          <folding />
         </state>
       </provider>
     </entry>
