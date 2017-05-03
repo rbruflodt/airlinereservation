@@ -109,17 +109,14 @@ public class BookFlightsServlet extends HttpServlet{
                 multipart.addBodyPart(messageBodyPart);
                 message.setContent(multipart);
                 Transport.send(message);
-            /*}catch(ClassNotFoundException e){
+            }catch(ClassNotFoundException e){
                 e.printStackTrace();
             }catch(SQLException e){
                 e.printStackTrace();
             }catch(MessagingException e){
                 e.printStackTrace();
-            }*/
+            }
                 session.setAttribute("flightsearcherror", "A confirmation was sent to your email address.");
-            }catch(Exception e){
-                session.setAttribute("flightsearcherror", e.getStackTrace());
-                }
                 response.sendRedirect("/index.jsp");
         }
     }

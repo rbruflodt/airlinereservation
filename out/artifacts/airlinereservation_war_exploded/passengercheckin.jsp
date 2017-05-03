@@ -25,5 +25,8 @@
     <input class="prettybutton" type="submit" value="Generate Boarding Pass" name="boardingpass">
     <input class="prettybutton" type="submit" value="Finish Check In" name="finishcheckin">
     </form>
+<%if(session.getAttribute("error1")!=null){%>
+<p><%=session.getAttribute("error1")%></p>
+<%}%>
 </body>
 </html>

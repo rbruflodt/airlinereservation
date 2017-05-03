@@ -49,6 +49,27 @@ public class ManageTickets extends HttpServlet {
         }
         else if(request.getParameter("checkinticket")!=null) {
             session.setAttribute("whichcity", request.getParameter("whichcity"));
+            try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
+            Statement stmt = null;
+            stmt = con.createStatement();
+            String search = "select * from tickets where ticket_number ='" + session.getAttribute("ticketnum") + "'";
+            ResultSet rs = stmt.executeQuery(search);
+            while(rs.next()){
+                search="select * from flights where flight_id='"+rs.getString("flight_id")+"'";
+                Statement stmt2 = con.createStatement();
+                ResultSet rs2 = stmt2.executeQuery(search);
+                while(rs2.next()) {
+                    if(rs2.getString("depart_city").equals(session.getAttribute("whichcity"))){
+                        session.setAttribute("whichflight",rs2.getString("flight_id"));
+                    }
+
+                }
+            }
+            con.close();}catch(Exception e){
+                e.printStackTrace();
+            }
             response.sendRedirect("/passengercheckin.jsp");
         }
         else if(request.getParameter("boardingpass")!=null){
@@ -111,6 +132,7 @@ public class ManageTickets extends HttpServlet {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
+
             ServletContext sc = session.getServletContext();
             Files.deleteIfExists(Paths.get(sc.getRealPath("/WEB-INF/receipts/"+session.getId()+"boardingpass.pdf")));
             request.getRequestDispatcher("/passengercheckin.jsp").forward(request,response);
