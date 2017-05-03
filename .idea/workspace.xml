@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4dc2d33-4f28-4685-bd84-b7da711b8262" name="Default" comment="" />
+    <list default="true" id="b4dc2d33-4f28-4685-bd84-b7da711b8262" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainPackage/AdminFlightServlet.java" afterPath="$PROJECT_DIR$/src/MainPackage/AdminFlightServlet.java" />
+    </list>
     <ignored path="airlinereservation.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -40,16 +42,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="flights.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/flights.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="79" column="58" selection-start-line="79" selection-start-column="58" selection-end-line="79" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FlightsServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainPackage/FlightsServlet.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -76,52 +68,52 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminFlightServlet.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AdminFlightServlet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MainPackage/AdminFlightServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2856">
-              <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
+            <state relative-caret-position="34">
+              <caret line="41" column="97" selection-start-line="41" selection-start-column="97" selection-end-line="41" selection-end-column="97" />
               <folding>
-                <marker date="1490668585290" expanded="true" signature="1540:1663" ph="update price... " />
-                <marker date="1490668585290" expanded="true" signature="2202:2338" ph="update fligh... " />
-                <marker date="1490668585290" expanded="true" signature="2417:2484" ph="delete from " />
-                <marker date="1490668585290" expanded="true" signature="2703:2908" ph="insert into flight_instances... " />
-                <marker date="1490668585290" expanded="true" signature="3002:3201" ph="insert into flight_instances... " />
-                <marker date="1490668585290" expanded="true" signature="3563:3710" ph="update fligh... " />
-                <marker date="1490668585290" expanded="true" signature="3789:3856" ph="delete from " />
-                <marker date="1490668585290" expanded="true" signature="4295:4474" ph="insert into flight_instances... " />
-                <marker date="1490668585290" expanded="true" signature="4592:4783" ph="insert into flight_instances... " />
-                <marker date="1490668585290" expanded="true" signature="5536:5657" ph="update fligh... " />
-                <marker date="1490668585290" expanded="true" signature="5736:5803" ph="delete from " />
-                <marker date="1490668585290" expanded="true" signature="6263:6442" ph="insert into flight_instances... " />
-                <marker date="1490668585290" expanded="true" signature="6560:6751" ph="insert into flight_instances... " />
-                <marker date="1490668585290" expanded="true" signature="8115:8170" ph="select * fro... flights" />
-                <marker date="1490668585290" expanded="true" signature="8575:8981" ph="insert into flights... " />
-                <marker date="1490668585290" expanded="true" signature="9044:9103" ph="select * fro... seats" />
-                <marker date="1490668585290" expanded="true" signature="9223:9326" ph="insert into prices... " />
-                <marker date="1490668585290" expanded="true" signature="10291:11169" ph="update fligh... " />
-                <marker date="1490668585290" expanded="true" signature="11361:11418" ph="delete from " />
-                <marker date="1490668585290" expanded="true" signature="11505:11600" ph="select * fro... seats" />
-                <marker date="1490668585290" expanded="true" signature="11756:11864" ph="insert into prices... " />
-                <marker date="1490668585290" expanded="true" signature="12344:12413" ph="select * fro... flight_instances" />
-                <marker date="1490668585290" expanded="true" signature="12727:12897" ph="update fligh... " />
-                <marker date="1490668585290" expanded="true" signature="12986:13168" ph="update fligh... " />
-                <marker date="1490668585290" expanded="true" signature="13397:13874" ph="update fligh... " />
-                <marker date="1490668585290" expanded="true" signature="14064:14159" ph="select * fro... flights" />
-                <marker date="1490668585290" expanded="true" signature="14454:14628" ph="update fligh... " />
-                <marker date="1490668585290" expanded="true" signature="14725:14908" ph="update fligh... " />
-                <marker date="1490668585290" expanded="true" signature="15005:15178" ph="update price... " />
-                <marker date="1490668585290" expanded="true" signature="15275:15449" ph="update ticke... " />
-                <marker date="1490668585290" expanded="true" signature="15759:15817" ph="delete from " />
-                <marker date="1490668585290" expanded="true" signature="15896:15963" ph="delete from " />
-                <marker date="1490668585290" expanded="true" signature="16042:16099" ph="delete from " />
-                <marker date="1490668585290" expanded="true" signature="16178:16236" ph="delete from " />
-                <marker date="1490668585290" expanded="true" signature="16965:17039" ph="select * fro... prices" />
-                <marker date="1490668585290" expanded="true" signature="18055:18129" ph="select * fro... prices" />
-                <marker date="1490668585290" expanded="true" signature="19153:19174" ph="select * fro... flights" />
-                <marker date="1490668585290" expanded="true" signature="19307:19386" ph="select * fro... flights" />
-                <marker date="1490668585290" expanded="true" signature="19594:19675" ph="select * fro... flights" />
-                <marker date="1490668585290" expanded="true" signature="21784:21806" ph="select * fro... aircraft" />
+                <marker date="1493772693514" expanded="true" signature="1540:1663" ph="update price... " />
+                <marker date="1493772693514" expanded="true" signature="2239:2375" ph="update fligh... " />
+                <marker date="1493772693514" expanded="true" signature="2454:2521" ph="delete from " />
+                <marker date="1493772693514" expanded="true" signature="2740:2945" ph="insert into flight_instances... " />
+                <marker date="1493772693514" expanded="true" signature="3039:3238" ph="insert into flight_instances... " />
+                <marker date="1493772693514" expanded="true" signature="3600:3747" ph="update fligh... " />
+                <marker date="1493772693514" expanded="true" signature="3826:3893" ph="delete from " />
+                <marker date="1493772693514" expanded="true" signature="4332:4511" ph="insert into flight_instances... " />
+                <marker date="1493772693514" expanded="true" signature="4629:4820" ph="insert into flight_instances... " />
+                <marker date="1493772693514" expanded="true" signature="5573:5694" ph="update fligh... " />
+                <marker date="1493772693514" expanded="true" signature="5773:5840" ph="delete from " />
+                <marker date="1493772693514" expanded="true" signature="6300:6479" ph="insert into flight_instances... " />
+                <marker date="1493772693514" expanded="true" signature="6597:6788" ph="insert into flight_instances... " />
+                <marker date="1493772693514" expanded="true" signature="8152:8207" ph="select * fro... flights" />
+                <marker date="1493772693514" expanded="true" signature="8612:9018" ph="insert into flights... " />
+                <marker date="1493772693514" expanded="true" signature="9081:9140" ph="select * fro... seats" />
+                <marker date="1493772693514" expanded="true" signature="9260:9363" ph="insert into prices... " />
+                <marker date="1493772693514" expanded="true" signature="10328:11206" ph="update fligh... " />
+                <marker date="1493772693514" expanded="true" signature="11398:11455" ph="delete from " />
+                <marker date="1493772693514" expanded="true" signature="11542:11637" ph="select * fro... seats" />
+                <marker date="1493772693514" expanded="true" signature="11793:11901" ph="insert into prices... " />
+                <marker date="1493772693514" expanded="true" signature="12381:12450" ph="select * fro... flight_instances" />
+                <marker date="1493772693514" expanded="true" signature="12764:12934" ph="update fligh... " />
+                <marker date="1493772693514" expanded="true" signature="13023:13205" ph="update fligh... " />
+                <marker date="1493772693514" expanded="true" signature="13434:13911" ph="update fligh... " />
+                <marker date="1493772693514" expanded="true" signature="14101:14196" ph="select * fro... flights" />
+                <marker date="1493772693514" expanded="true" signature="14491:14665" ph="update fligh... " />
+                <marker date="1493772693514" expanded="true" signature="14762:14945" ph="update fligh... " />
+                <marker date="1493772693514" expanded="true" signature="15042:15215" ph="update price... " />
+                <marker date="1493772693514" expanded="true" signature="15312:15486" ph="update ticke... " />
+                <marker date="1493772693514" expanded="true" signature="15796:15854" ph="delete from " />
+                <marker date="1493772693514" expanded="true" signature="15933:16000" ph="delete from " />
+                <marker date="1493772693514" expanded="true" signature="16079:16136" ph="delete from " />
+                <marker date="1493772693514" expanded="true" signature="16215:16273" ph="delete from " />
+                <marker date="1493772693514" expanded="true" signature="17002:17076" ph="select * fro... prices" />
+                <marker date="1493772693514" expanded="true" signature="18092:18166" ph="select * fro... prices" />
+                <marker date="1493772693514" expanded="true" signature="19190:19211" ph="select * fro... flights" />
+                <marker date="1493772693514" expanded="true" signature="19344:19423" ph="select * fro... flights" />
+                <marker date="1493772693514" expanded="true" signature="19631:19712" ph="select * fro... flights" />
+                <marker date="1493772693514" expanded="true" signature="21821:21843" ph="select * fro... aircraft" />
               </folding>
             </state>
           </provider>
@@ -137,7 +129,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArriveTimeComparator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ArriveTimeComparator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainPackage/ArriveTimeComparator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
@@ -167,21 +159,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bookflights.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/bookflights.jsp">
+      <file leaf-file-name="user.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/user.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="78" selection-start-line="24" selection-start-column="78" selection-end-line="24" selection-end-column="78" />
+            <state relative-caret-position="170">
+              <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/user.jsp">
+      <file leaf-file-name="manager.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/manager.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+            <state relative-caret-position="175">
+              <caret line="56" column="95" selection-start-line="56" selection-start-column="95" selection-end-line="56" selection-end-column="95" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="passengercheckin.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/passengercheckin.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="269">
+              <caret line="25" column="67" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -234,7 +246,6 @@
         <option value="$PROJECT_DIR$/src/MainPackage/PriceComparator.java" />
         <option value="$PROJECT_DIR$/src/MainPackage/Flight.java" />
         <option value="$PROJECT_DIR$/src/MainPackage/ManageAircraftServlet.java" />
-        <option value="$PROJECT_DIR$/src/MainPackage/AdminFlightServlet.java" />
         <option value="$PROJECT_DIR$/web/test.txt" />
         <option value="$PROJECT_DIR$/out/artifacts/airlinereservation_war_exploded/test.txt" />
         <option value="$PROJECT_DIR$/web/bookflights.jsp" />
@@ -260,6 +271,7 @@
         <option value="$PROJECT_DIR$/src/MainPackage/TicketDepartTimeComparator.java" />
         <option value="$PROJECT_DIR$/src/MainPackage/DepartTimeComparator.java" />
         <option value="$PROJECT_DIR$/src/MainPackage/ArriveTimeComparator.java" />
+        <option value="$PROJECT_DIR$/src/MainPackage/AdminFlightServlet.java" />
       </list>
     </option>
   </component>
@@ -410,104 +422,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="out" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="artifacts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="airlinereservation_war_exploded" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="airlinereservation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="airlinereservation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="out" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="artifacts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="airlinereservation_war_exploded" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="airlinereservation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="airlinereservation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="out" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="artifacts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="airlinereservation_war_exploded" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="airlinereservation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="airlinereservation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="out" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="artifacts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="airlinereservation_war_exploded" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MainPackage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1218,12 +1132,12 @@
       <workItem from="1493078390023" duration="1388000" />
       <workItem from="1493484280413" duration="18687000" />
       <workItem from="1493563684017" duration="6021000" />
-      <workItem from="1493689686699" duration="5986000" />
+      <workItem from="1493689686699" duration="8496000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="357702000" />
+    <option name="totallyTimeSpent" value="360212000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="0" width="1370" height="728" extended-state="0" />
@@ -1508,14 +1422,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/passengercheckin.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="67" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPackage/BookFlightsServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1496">
@@ -1563,14 +1469,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPackage/JavaApplication55.java" />
-    <entry file="file://$PROJECT_DIR$/web/manager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="95" selection-start-line="56" selection-start-column="95" selection-end-line="56" selection-end-column="95" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/tabs.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2992">
@@ -1620,14 +1518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/editflight.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1640,14 +1530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="24" column="78" selection-start-line="24" selection-start-column="78" selection-end-line="24" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/user.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
           <folding />
         </state>
       </provider>
@@ -1680,55 +1562,6 @@
             <marker date="1493767930056" expanded="true" signature="14926:14947" ph="select * fro... flights" />
             <marker date="1493767930056" expanded="true" signature="17056:17194" ph="select * fro... flights" />
             <marker date="1493767930056" expanded="true" signature="17795:17968" ph="select * fro... flight_instances" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainPackage/AdminFlightServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2856">
-          <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
-          <folding>
-            <marker date="1490668585290" expanded="true" signature="1540:1663" ph="update price... " />
-            <marker date="1490668585290" expanded="true" signature="2202:2338" ph="update fligh... " />
-            <marker date="1490668585290" expanded="true" signature="2417:2484" ph="delete from " />
-            <marker date="1490668585290" expanded="true" signature="2703:2908" ph="insert into flight_instances... " />
-            <marker date="1490668585290" expanded="true" signature="3002:3201" ph="insert into flight_instances... " />
-            <marker date="1490668585290" expanded="true" signature="3563:3710" ph="update fligh... " />
-            <marker date="1490668585290" expanded="true" signature="3789:3856" ph="delete from " />
-            <marker date="1490668585290" expanded="true" signature="4295:4474" ph="insert into flight_instances... " />
-            <marker date="1490668585290" expanded="true" signature="4592:4783" ph="insert into flight_instances... " />
-            <marker date="1490668585290" expanded="true" signature="5536:5657" ph="update fligh... " />
-            <marker date="1490668585290" expanded="true" signature="5736:5803" ph="delete from " />
-            <marker date="1490668585290" expanded="true" signature="6263:6442" ph="insert into flight_instances... " />
-            <marker date="1490668585290" expanded="true" signature="6560:6751" ph="insert into flight_instances... " />
-            <marker date="1490668585290" expanded="true" signature="8115:8170" ph="select * fro... flights" />
-            <marker date="1490668585290" expanded="true" signature="8575:8981" ph="insert into flights... " />
-            <marker date="1490668585290" expanded="true" signature="9044:9103" ph="select * fro... seats" />
-            <marker date="1490668585290" expanded="true" signature="9223:9326" ph="insert into prices... " />
-            <marker date="1490668585290" expanded="true" signature="10291:11169" ph="update fligh... " />
-            <marker date="1490668585290" expanded="true" signature="11361:11418" ph="delete from " />
-            <marker date="1490668585290" expanded="true" signature="11505:11600" ph="select * fro... seats" />
-            <marker date="1490668585290" expanded="true" signature="11756:11864" ph="insert into prices... " />
-            <marker date="1490668585290" expanded="true" signature="12344:12413" ph="select * fro... flight_instances" />
-            <marker date="1490668585290" expanded="true" signature="12727:12897" ph="update fligh... " />
-            <marker date="1490668585290" expanded="true" signature="12986:13168" ph="update fligh... " />
-            <marker date="1490668585290" expanded="true" signature="13397:13874" ph="update fligh... " />
-            <marker date="1490668585290" expanded="true" signature="14064:14159" ph="select * fro... flights" />
-            <marker date="1490668585290" expanded="true" signature="14454:14628" ph="update fligh... " />
-            <marker date="1490668585290" expanded="true" signature="14725:14908" ph="update fligh... " />
-            <marker date="1490668585290" expanded="true" signature="15005:15178" ph="update price... " />
-            <marker date="1490668585290" expanded="true" signature="15275:15449" ph="update ticke... " />
-            <marker date="1490668585290" expanded="true" signature="15759:15817" ph="delete from " />
-            <marker date="1490668585290" expanded="true" signature="15896:15963" ph="delete from " />
-            <marker date="1490668585290" expanded="true" signature="16042:16099" ph="delete from " />
-            <marker date="1490668585290" expanded="true" signature="16178:16236" ph="delete from " />
-            <marker date="1490668585290" expanded="true" signature="16965:17039" ph="select * fro... prices" />
-            <marker date="1490668585290" expanded="true" signature="18055:18129" ph="select * fro... prices" />
-            <marker date="1490668585290" expanded="true" signature="19153:19174" ph="select * fro... flights" />
-            <marker date="1490668585290" expanded="true" signature="19307:19386" ph="select * fro... flights" />
-            <marker date="1490668585290" expanded="true" signature="19594:19675" ph="select * fro... flights" />
-            <marker date="1490668585290" expanded="true" signature="21784:21806" ph="select * fro... aircraft" />
           </folding>
         </state>
       </provider>
@@ -1772,6 +1605,87 @@
         <state relative-caret-position="289">
           <caret line="19" column="100" selection-start-line="19" selection-start-column="100" selection-end-line="19" selection-end-column="100" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/user.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/manager.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="56" column="95" selection-start-line="56" selection-start-column="95" selection-end-line="56" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/passengercheckin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="25" column="67" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainPackage/AdminFlightServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="41" column="97" selection-start-line="41" selection-start-column="97" selection-end-line="41" selection-end-column="97" />
+          <folding>
+            <marker date="1493772693514" expanded="true" signature="1540:1663" ph="update price... " />
+            <marker date="1493772693514" expanded="true" signature="2239:2375" ph="update fligh... " />
+            <marker date="1493772693514" expanded="true" signature="2454:2521" ph="delete from " />
+            <marker date="1493772693514" expanded="true" signature="2740:2945" ph="insert into flight_instances... " />
+            <marker date="1493772693514" expanded="true" signature="3039:3238" ph="insert into flight_instances... " />
+            <marker date="1493772693514" expanded="true" signature="3600:3747" ph="update fligh... " />
+            <marker date="1493772693514" expanded="true" signature="3826:3893" ph="delete from " />
+            <marker date="1493772693514" expanded="true" signature="4332:4511" ph="insert into flight_instances... " />
+            <marker date="1493772693514" expanded="true" signature="4629:4820" ph="insert into flight_instances... " />
+            <marker date="1493772693514" expanded="true" signature="5573:5694" ph="update fligh... " />
+            <marker date="1493772693514" expanded="true" signature="5773:5840" ph="delete from " />
+            <marker date="1493772693514" expanded="true" signature="6300:6479" ph="insert into flight_instances... " />
+            <marker date="1493772693514" expanded="true" signature="6597:6788" ph="insert into flight_instances... " />
+            <marker date="1493772693514" expanded="true" signature="8152:8207" ph="select * fro... flights" />
+            <marker date="1493772693514" expanded="true" signature="8612:9018" ph="insert into flights... " />
+            <marker date="1493772693514" expanded="true" signature="9081:9140" ph="select * fro... seats" />
+            <marker date="1493772693514" expanded="true" signature="9260:9363" ph="insert into prices... " />
+            <marker date="1493772693514" expanded="true" signature="10328:11206" ph="update fligh... " />
+            <marker date="1493772693514" expanded="true" signature="11398:11455" ph="delete from " />
+            <marker date="1493772693514" expanded="true" signature="11542:11637" ph="select * fro... seats" />
+            <marker date="1493772693514" expanded="true" signature="11793:11901" ph="insert into prices... " />
+            <marker date="1493772693514" expanded="true" signature="12381:12450" ph="select * fro... flight_instances" />
+            <marker date="1493772693514" expanded="true" signature="12764:12934" ph="update fligh... " />
+            <marker date="1493772693514" expanded="true" signature="13023:13205" ph="update fligh... " />
+            <marker date="1493772693514" expanded="true" signature="13434:13911" ph="update fligh... " />
+            <marker date="1493772693514" expanded="true" signature="14101:14196" ph="select * fro... flights" />
+            <marker date="1493772693514" expanded="true" signature="14491:14665" ph="update fligh... " />
+            <marker date="1493772693514" expanded="true" signature="14762:14945" ph="update fligh... " />
+            <marker date="1493772693514" expanded="true" signature="15042:15215" ph="update price... " />
+            <marker date="1493772693514" expanded="true" signature="15312:15486" ph="update ticke... " />
+            <marker date="1493772693514" expanded="true" signature="15796:15854" ph="delete from " />
+            <marker date="1493772693514" expanded="true" signature="15933:16000" ph="delete from " />
+            <marker date="1493772693514" expanded="true" signature="16079:16136" ph="delete from " />
+            <marker date="1493772693514" expanded="true" signature="16215:16273" ph="delete from " />
+            <marker date="1493772693514" expanded="true" signature="17002:17076" ph="select * fro... prices" />
+            <marker date="1493772693514" expanded="true" signature="18092:18166" ph="select * fro... prices" />
+            <marker date="1493772693514" expanded="true" signature="19190:19211" ph="select * fro... flights" />
+            <marker date="1493772693514" expanded="true" signature="19344:19423" ph="select * fro... flights" />
+            <marker date="1493772693514" expanded="true" signature="19631:19712" ph="select * fro... flights" />
+            <marker date="1493772693514" expanded="true" signature="21821:21843" ph="select * fro... aircraft" />
+          </folding>
         </state>
       </provider>
     </entry>

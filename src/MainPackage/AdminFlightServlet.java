@@ -39,7 +39,7 @@ public class AdminFlightServlet extends HttpServlet {
                     stmt.execute(query);
                 }
                 LocalDate until = LocalDate.now(ZoneId.of(ZoneId.SHORT_IDS.get(f.getDepart_timezone()))).plusMonths(1);
-                if(!request.getParameter("until").equals("")){
+                if(!request.getParameter("until").equals("")&&request.getParameter("until")!=null){
                     until = LocalDate.parse(request.getParameter("until"));
                 }
                 if(request.getParameter("frequency").equals("onceradio")){
