@@ -40,7 +40,7 @@ public class BookFlightsServlet extends HttpServlet{
             response.sendRedirect("/bookflights.jsp");
         }
         else{
-            try{
+            try {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://aa3zjrg5cjqq3u.c9taiotksa6k.us-east-1.rds.amazonaws.com:3306/ebdb", "team10", "team1010");
                 Statement stmt = con.createStatement();
@@ -49,37 +49,37 @@ public class BookFlightsServlet extends HttpServlet{
                 ArrayList<String> passengerstrings = new ArrayList<>();
                 ArrayList<String> flightstrings = new ArrayList<>();
 
-                for(int i = 0; i < Integer.valueOf((String)session.getAttribute("numpassengers"));i++){
+                for (int i = 0; i < Integer.valueOf((String) session.getAttribute("numpassengers")); i++) {
                     ArrayList<Flight> flights = (ArrayList<Flight>) session.getAttribute("flightstobook");
                     int num = 100000;
                     search = "select * from tickets";
                     ResultSet rs = stmt.executeQuery(search);
-                    if(rs.next()) {
+                    if (rs.next()) {
                         rs.last();
                         num = rs.getInt("ticket_number") + 1;
                     }
-                    ticketnumbers.add(""+num);
-                    passengerstrings.add(""+num);
-                    passengerstrings.add(request.getParameter("lastname"+i));
-                    passengerstrings.add(request.getParameter("firstname"+i));
-                    passengerstrings.add(request.getParameter("gender"+i));
-                    passengerstrings.add(request.getParameter("dob"+i));
-                    passengerstrings.add(request.getParameter("id"+i));
-                    for(int j = 0; j < flights.size(); j++) {
+                    ticketnumbers.add("" + num);
+                    passengerstrings.add("" + num);
+                    passengerstrings.add(request.getParameter("lastname" + i));
+                    passengerstrings.add(request.getParameter("firstname" + i));
+                    passengerstrings.add(request.getParameter("gender" + i));
+                    passengerstrings.add(request.getParameter("dob" + i));
+                    passengerstrings.add(request.getParameter("id" + i));
+                    for (int j = 0; j < flights.size(); j++) {
                         Flight f = flights.get(j);
 
                         String arrday;
-                        if(f.isSame_day()){
+                        if (f.isSame_day()) {
                             arrday = LocalDate.parse(f.getDepart_date()).toString();
-                        }else {
-                            arrday=LocalDate.parse(f.getDepart_date()).plusDays(1).toString();
+                        } else {
+                            arrday = LocalDate.parse(f.getDepart_date()).plusDays(1).toString();
                         }
-                        if(i==0){
+                        if (i == 0) {
                             flightstrings.add(f.getDepart_city());
                             flightstrings.add(f.getArrive_city());
-                            flightstrings.add(f.getDepart_date()+" "+f.getDepart_hours()+":"+String.format("%02d",f.getDepart_minutes())+" "+f.getDepart_AMPM()+" "+f.getDepart_timezone());
-                            flightstrings.add(arrday+" "+f.getArrive_hours()+":"+String.format("%02d",f.getArrive_minutes())+" "+f.getArrive_AMPM()+" "+f.getArrive_timezone());
-                            flightstrings.add("$"+String.format("%.2f",Integer.valueOf((String)session.getAttribute("numpassengers"))*Double.valueOf(((ArrayList<Float>) session.getAttribute("bookedprices")).get(j))));
+                            flightstrings.add(f.getDepart_date() + " " + f.getDepart_hours() + ":" + String.format("%02d", f.getDepart_minutes()) + " " + f.getDepart_AMPM() + " " + f.getDepart_timezone());
+                            flightstrings.add(arrday + " " + f.getArrive_hours() + ":" + String.format("%02d", f.getArrive_minutes()) + " " + f.getArrive_AMPM() + " " + f.getArrive_timezone());
+                            flightstrings.add("$" + String.format("%.2f", Integer.valueOf((String) session.getAttribute("numpassengers")) * Double.valueOf(((ArrayList<Float>) session.getAttribute("bookedprices")).get(j))));
                         }
                         search = "insert into tickets (ticket_number,gender,id,checked_in,dob,first_name,last_name," +
                                 "email,depart_date,flight_id,class,arrive_date) values(" + num + ",'" + request.getParameter("gender" + i) + "'," +
@@ -97,27 +97,30 @@ public class BookFlightsServlet extends HttpServlet{
                 messageBodyPart.setText("This is to confirm your flight reservation on Iowa Air.");
                 Multipart multipart = new MimeMultipart();
                 multipart.addBodyPart(messageBodyPart);
-                messageBodyPart=new MimeBodyPart();
-                for(String t : ticketnumbers) {
-                    ReceiptMaker.makeReceipt(session, "receipt"+t, passengerstrings, flightstrings);
+                messageBodyPart = new MimeBodyPart();
+                for (String t : ticketnumbers) {
+                    ReceiptMaker.makeReceipt(session, "receipt" + t, passengerstrings, flightstrings);
                 }
                 ServletContext sc = session.getServletContext();
 
-                DataSource source = new FileDataSource(sc.getResource("/WEB-INF/receipts/").getPath()+"receipt"+ticketnumbers.get(0)+".pdf");
+                DataSource source = new FileDataSource(sc.getResource("/WEB-INF/receipts/").getPath() + "receipt" + ticketnumbers.get(0) + ".pdf");
                 messageBodyPart.setDataHandler(new DataHandler(source));
                 messageBodyPart.setFileName("receipt.pdf");
                 multipart.addBodyPart(messageBodyPart);
                 message.setContent(multipart);
                 Transport.send(message);
-            }catch(ClassNotFoundException e){
+            /*}catch(ClassNotFoundException e){
                 e.printStackTrace();
             }catch(SQLException e){
                 e.printStackTrace();
             }catch(MessagingException e){
                 e.printStackTrace();
-            }
-            session.setAttribute("flightsearcherror", "A confirmation was sent to your email address.");
-            response.sendRedirect("/index.jsp");
+            }*/
+                session.setAttribute("flightsearcherror", "A confirmation was sent to your email address.");
+            }catch(Exception e){
+                session.setAttribute("flightsearcherror", e.getStackTrace());
+                }
+                response.sendRedirect("/index.jsp");
         }
     }
 }

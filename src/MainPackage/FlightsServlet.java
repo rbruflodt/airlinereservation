@@ -51,7 +51,7 @@ public class FlightsServlet extends HttpServlet {
                     flightsearcherror="All fields required";
                     session.setAttribute("tripfield","roundtrip");
                 }
-                else if(LocalDate.parse(request.getParameter("returnfield")).compareTo(LocalDate.parse(request.getParameter("departfield")))<0){
+                else if(request.getParameter("returnfield")!=null&&LocalDate.parse(request.getParameter("returnfield")).compareTo(LocalDate.parse(request.getParameter("departfield")))<0){
                     flightsearcherror="Must select future date.";
                     session.setAttribute("tripfield","roundtrip");
                 }else {
